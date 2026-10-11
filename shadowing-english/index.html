@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Speak Up English</title>
 <style>
 :root {
@@ -26,6 +26,13 @@
   --green: #2f8a51;
   --done: #2f8a51;
   --shadow: 0 1px 2px rgba(20, 40, 45, .06), 0 4px 16px rgba(20, 40, 45, .06);
+  --bar-shadow: 0 6px 16px -8px rgba(20, 40, 45, .25);
+  /* side gutters, widened by the notch in landscape on iPhone */
+  --gl: max(16px, env(safe-area-inset-left));
+  --gr: max(16px, env(safe-area-inset-right));
+  /* measured by JS: height of the sticky top bar and sticky player */
+  --topbar-h: 0px;
+  --player-h: 0px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -50,6 +57,7 @@
     --green: #6fcf8f;
     --done: #6fcf8f;
     --shadow: none;
+    --bar-shadow: 0 6px 16px -8px rgba(0, 0, 0, .6);
     color-scheme: dark;
   }
 }
@@ -58,33 +66,47 @@
   --line: #2f3a3e; --accent: #6fb0bb; --accent-strong: #8fc7d0; --accent-soft: #24393d; --head: #2f6670; --head-strong: #3a7a85;
   --track: #e6c25a; --tip-bg: #1f2d3d; --smooth: #8ab4f8; --strong: #ffa94d; --weak: #7d8a8e;
   --kw: #8ab4f8; --green: #6fcf8f; --done: #6fcf8f; --shadow: none; color-scheme: dark;
+  --bar-shadow: 0 6px 16px -8px rgba(0, 0, 0, .6);
 }
 
 * { box-sizing: border-box; }
-html { scroll-padding-top: 230px; }
+html {
+  /* keep cards scrolled-to by JS clear of the sticky bars */
+  scroll-padding-top: calc(var(--topbar-h) + var(--player-h) + 14px);
+  -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+}
+html:has(dialog[open]) { overflow: hidden; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font: 15px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: clip; /* never let a long line pan the page sideways on touch screens */
+  -webkit-tap-highlight-color: transparent;
 }
 button, select { font: inherit; color: inherit; }
+button { touch-action: manipulation; }
 a { color: var(--accent-strong); }
+svg.i { width: 18px; height: 18px; fill: currentColor; flex: none; display: block; }
 
 /* ---------- top bar ---------- */
 .topbar {
   position: sticky; top: 0; z-index: 20;
   background: var(--surface);
   border-bottom: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top);
 }
 .topbar-inner {
-  max-width: 1180px; margin: 0 auto; padding: 10px 16px;
+  max-width: 1180px; margin: 0 auto; padding: 10px var(--gr) 10px var(--gl);
   display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
 }
 .brand { font-weight: 700; font-size: 17px; letter-spacing: .2px; margin-right: auto; white-space: nowrap; }
 .brand span { color: var(--accent); }
 .picker { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.picker label { font-size: 13px; color: var(--muted); }
+.topbar select, .topbar .btn { height: 34px; padding-top: 0; padding-bottom: 0; }
+.picker .btn.nav { width: 36px; padding: 6px 0; font-size: 17px; line-height: 1.15; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.btn.icon { display: inline-grid; place-items: center; padding: 6px 8px; }
 select {
   appearance: none; -webkit-appearance: none;
   background: var(--surface-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2366767a'/%3E%3C/svg%3E") no-repeat right 10px center;
@@ -95,16 +117,18 @@ select {
   border: 1px solid var(--line); background: var(--surface-2);
   border-radius: 8px; padding: 6px 11px; cursor: pointer; line-height: 1.3;
 }
-.btn:hover { border-color: var(--accent); }
 .btn:disabled { opacity: .4; cursor: default; border-color: var(--line); }
 .btn.primary { background: var(--head); border-color: var(--head); color: #fff; font-weight: 600; }
-.btn.primary:hover { background: var(--head-strong); border-color: var(--head-strong); }
 :root[data-theme="dark"] .btn.primary, :root:not([data-theme="light"]) .btn.primary { color: #fff; }
 .btn.small { padding: 3px 9px; font-size: 13px; }
 .btn.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 600; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---------- layout ---------- */
-main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
+main {
+  max-width: 1180px; margin: 0 auto;
+  padding: 18px var(--gr) calc(60px + env(safe-area-inset-bottom)) var(--gl);
+}
 .unit-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 12px; }
 .unit-head h1 { margin: 0; font-size: 24px; line-height: 1.2; }
 .unit-head .meta { color: var(--muted); font-size: 14px; }
@@ -113,18 +137,18 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
 
 /* ---------- player ---------- */
 .player {
-  position: sticky; top: 57px; z-index: 10;
+  position: -webkit-sticky; position: sticky; top: var(--topbar-h); z-index: 10;
   background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
-  box-shadow: var(--shadow); padding: 12px; margin-bottom: 18px;
+  box-shadow: var(--shadow); padding: 12px; margin-bottom: 12px;
 }
 .steps { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
 .step {
   position: relative; text-align: left;
   border: 1px solid var(--line); background: var(--surface-2); border-radius: 9px;
-  padding: 6px 8px 7px; cursor: pointer; min-width: 0;
+  padding: 6px 24px 7px 8px; cursor: pointer; min-width: 0;
 }
-.step:hover { border-color: var(--accent); }
-.step .n { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.step .n, .step .t { line-height: 1.35; }
+.step .n { display: block; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .step .t { display: block; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .step.active { background: var(--head); border-color: var(--head); color: #fff; }
 .step.active .check { background: transparent; border-color: rgba(255,255,255,.6); }
@@ -134,21 +158,58 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
   border: 1.5px solid var(--line); background: var(--surface); display: grid; place-items: center;
   font-size: 10px; line-height: 1; color: transparent;
 }
+.step .check::after { content: ""; position: absolute; inset: -8px; } /* bigger tap target */
 .step.done .check { background: var(--done); border-color: var(--done); color: #fff; }
 .step.missing { opacity: .45; cursor: not-allowed; }
-.player-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 10px; }
-.player-row audio { flex: 1 1 320px; min-width: 0; height: 40px; }
-.player-tools { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.player-tools select { min-width: 0; padding: 4px 24px 4px 8px; font-size: 13px; }
+
+/* transport: play · seek bar · tools */
+.player-row { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.player-row audio { display: none; }
+.play {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer;
+  display: grid; place-items: center; background: var(--head); color: #fff;
+}
+.play svg.i { width: 20px; height: 20px; }
+.play:not(.playing) svg.i { transform: translateX(1px); }
+.play:disabled { opacity: .4; cursor: default; }
+.seek {
+  flex: 1 1 auto; min-width: 0;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px;
+}
+.time { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 34px; }
+.time.dur { text-align: right; }
+.seek input[type=range] {
+  -webkit-appearance: none; appearance: none; display: block;
+  width: 100%; height: 24px; margin: 0; padding: 0; background: transparent; cursor: pointer;
+  --pct: 0%;
+}
+.seek input[type=range]::-webkit-slider-runnable-track {
+  height: 5px; border-radius: 5px;
+  background: linear-gradient(to right, var(--accent) var(--pct), var(--line) var(--pct));
+}
+.seek input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 15px; height: 15px; margin-top: -5px;
+  border: 0; border-radius: 50%; background: var(--accent-strong); box-shadow: 0 0 0 3px var(--surface);
+}
+.seek input[type=range]::-moz-range-track { height: 5px; border-radius: 5px; background: var(--line); }
+.seek input[type=range]::-moz-range-progress { height: 5px; border-radius: 5px; background: var(--accent); }
+.seek input[type=range]::-moz-range-thumb {
+  width: 15px; height: 15px; border: 0; border-radius: 50%; background: var(--accent-strong); box-shadow: 0 0 0 3px var(--surface);
+}
+.player-tools { flex: none; display: flex; align-items: center; gap: 6px; }
+.player-tools .btn { display: inline-flex; align-items: center; gap: 4px; height: 34px; padding: 0 10px; font-size: 13px; }
+.player-tools .btn svg.i { width: 16px; height: 16px; }
+.player-tools select { min-width: 0; height: 34px; padding: 0 24px 0 9px; font-size: 13px; background-position: right 8px center; }
+
 .hint {
-  margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
+  margin: 0 0 16px; padding: 8px 12px; border-radius: 10px;
   background: var(--accent-soft); font-size: 14px;
 }
 .hint b { color: var(--accent-strong); }
-.hint .file { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; word-break: break-all; }
+.hint .file { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; overflow-wrap: anywhere; }
 
 /* ---------- lesson cards ---------- */
-.lesson { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.lesson { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .card {
   background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
   box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .2s, border-color .2s;
@@ -160,16 +221,17 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
 }
 .card-h .grow { flex: 1; }
 .card-h .track {
+  display: inline-flex; align-items: center; gap: 4px;
   border: 0; background: rgba(255,255,255,.18); color: #fff; border-radius: 6px;
-  padding: 2px 8px; font-size: 12.5px; cursor: pointer; white-space: nowrap;
+  padding: 3px 9px; font-size: 12.5px; cursor: pointer; white-space: nowrap;
 }
-.card-h .track:hover { background: rgba(255,255,255,.3); }
-.card-b { padding: 12px 14px 14px; }
+.card-h .track svg.i { width: 11px; height: 11px; }
+.card-b { padding: 12px 14px 14px; overflow-wrap: break-word; }
 .card-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .context { font-style: italic; color: var(--muted); margin: 0 0 8px; }
 .empty { color: var(--muted); font-style: italic; margin: 0; }
 
-.dialogue { display: grid; grid-template-columns: max-content 1fr; gap: 5px 12px; }
+.dialogue { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 5px 12px; }
 .dialogue .who { font-weight: 600; color: var(--accent-strong); }
 .dialogue .say { transition: filter .25s; }
 .blurred .say, .say.blurred { filter: blur(6px); user-select: none; cursor: pointer; }
@@ -218,7 +280,6 @@ u.sub { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
   border: 1px solid var(--line); background: var(--surface-2); border-radius: 999px;
   padding: 3px 11px; cursor: pointer; font-size: 14px;
 }
-.opt:hover { border-color: var(--green); }
 .opt.on { border-color: var(--green); background: var(--green); color: #fff; }
 .opt b { margin-right: 3px; }
 
@@ -231,13 +292,15 @@ u.sub { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
 /* ---------- guide dialog ---------- */
 dialog {
   border: 0; border-radius: 14px; padding: 0; width: min(680px, calc(100vw - 32px));
-  max-height: calc(100vh - 40px); background: var(--surface); color: var(--text);
+  max-height: calc(100vh - 40px); max-height: calc(100dvh - 40px);
+  overflow: auto; overscroll-behavior: contain;
+  background: var(--surface); color: var(--text);
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
 dialog::backdrop { background: rgba(10, 20, 22, .55); }
-.dlg-h { display: flex; align-items: center; padding: 14px 18px; background: var(--head); color: #fff; position: sticky; top: 0; }
+.dlg-h { display: flex; align-items: center; padding: 14px 18px; background: var(--head); color: #fff; position: sticky; top: 0; z-index: 1; }
 .dlg-h h2 { margin: 0; font-size: 18px; flex: 1; }
-.dlg-h .close { border: 0; background: rgba(255,255,255,.18); color: #fff; width: 32px; height: 32px; border-radius: 8px; font-size: 18px; cursor: pointer; }
+.dlg-h .close { border: 0; background: rgba(255,255,255,.18); color: #fff; width: 36px; height: 36px; border-radius: 8px; font-size: 20px; line-height: 1; cursor: pointer; }
 .dlg-b { padding: 16px 18px 20px; }
 .dlg-b .intro { margin: 0 0 14px; padding: 10px 12px; background: var(--accent-soft); border-radius: 8px; }
 .guide-steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
@@ -254,18 +317,95 @@ dialog::backdrop { background: rgba(10, 20, 22, .55); }
 .dlg-b .tips { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
 kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font: 12px/1.6 ui-monospace, Consolas, monospace; background: var(--surface-2); color: var(--text); }
 
-@media (max-width: 900px) {
-  .lesson { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: repeat(7, minmax(92px, 1fr)); overflow-x: auto; padding-bottom: 2px; }
-  html { scroll-padding-top: 250px; }
+/* hover only on devices that really hover — on touch screens it sticks after a tap */
+@media (hover: hover) {
+  .btn:hover { border-color: var(--accent); }
+  .btn:disabled:hover { border-color: var(--line); }
+  .btn.primary:hover { background: var(--head-strong); border-color: var(--head-strong); }
+  .step:not(.missing):hover { border-color: var(--accent); }
+  .step.active:hover { border-color: var(--head); }
+  .play:not(:disabled):hover { background: var(--head-strong); }
+  .card-h .track:hover { background: rgba(255,255,255,.3); }
+  .opt:hover { border-color: var(--green); }
 }
+
+/* tablet: one column, step chips scroll sideways */
+@media (max-width: 900px) {
+  .lesson { grid-template-columns: minmax(0, 1fr); }
+  .steps {
+    display: flex; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    margin: -2px; padding: 2px; /* room for focus rings */
+  }
+  .steps::-webkit-scrollbar { display: none; }
+  .step { flex: 0 0 auto; max-width: 168px; scroll-snap-align: center; }
+}
+
+/* phones (portrait) and phones in landscape: the top bar scrolls away,
+   the player becomes a compact full-width bar pinned to the top */
+@media (max-width: 640px), (max-height: 500px) and (orientation: landscape) {
+  .topbar { position: static; }
+  .player {
+    top: 0; padding: 8px var(--gr) 8px var(--gl);
+    margin: 0 calc(-1 * var(--gr)) 12px calc(-1 * var(--gl));
+    border-radius: 0; border-width: 0 0 1px; box-shadow: var(--bar-shadow);
+    padding-top: calc(8px + env(safe-area-inset-top));
+  }
+  /* chip strip runs edge to edge so it reads as swipeable */
+  .steps {
+    margin: -2px calc(-1 * var(--gr)) -2px calc(-1 * var(--gl));
+    padding: 2px var(--gr) 2px var(--gl);
+    scroll-padding-inline: var(--gl) var(--gr);
+  }
+  .step { padding: 4px 24px 5px 9px; border-radius: 8px; }
+  .step .n { font-size: 11px; }
+  .step .t { font-size: 12.5px; }
+  .step .check { top: 50%; margin-top: -8px; }
+  .player-row { gap: 10px; margin-top: 8px; }
+  .seek { grid-template-columns: 1fr 1fr; grid-template-areas: "bar bar" "cur dur"; gap: 0; row-gap: 0; }
+  .seek input[type=range] { grid-area: bar; height: 22px; }
+  .seek .cur { grid-area: cur; }
+  .seek .dur { grid-area: dur; }
+  .time { font-size: 11px; line-height: 1.2; }
+  .player-tools { gap: 5px; }
+  .player-tools .btn { height: 36px; padding: 0 9px; }
+  .player-tools .tool-txt.opt-txt { display: none; }
+  .player-tools select { height: 36px; padding: 0 20px 0 8px; background-position: right 7px center; }
+  .hint { font-size: 13.5px; }
+}
+
 @media (max-width: 640px) {
   body { font-size: 14.5px; }
-  .brand { width: 100%; }
-  .player { top: 0; position: relative; }
-  html { scroll-padding-top: 120px; }
+  .topbar-inner { gap: 8px; padding-top: 8px; padding-bottom: 8px; }
+  .picker { order: 3; width: 100%; flex-wrap: nowrap; }
+  .topbar select, .topbar .btn { height: 38px; }
+  .picker select { min-width: 0; padding: 0 26px 0 10px; }
+  #levelSel { flex: 0 1 auto; }
+  #unitSel { flex: 1 1 auto; }
+  .picker .btn.nav { flex: none; width: 40px; padding: 0; }
+  .btn.icon { width: 40px; }
+  .unit-head { margin-bottom: 10px; }
   .unit-head h1 { font-size: 20px; }
   .unit-head .progress-text { margin-left: 0; width: 100%; }
+  .card-b { padding: 12px 12px 14px; }
+  .card-h { padding: 8px 10px 8px 12px; }
+  .card-h .track { padding: 5px 10px; }
+  .btn.small { padding: 6px 11px; }
+  .opt { padding: 5px 12px; }
+  .dialogue { gap: 6px 10px; }
+  .pairs td:first-child { width: 50%; }
+  dialog { width: calc(100vw - 24px); max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
+  .dlg-b { padding: 14px 16px 18px; }
+}
+@media (max-width: 400px) {
+  .brand .brand-x { display: none; }
+  .player-tools .tool-txt { display: none; }
+}
+
+/* iOS zooms the page when a control under 16px gets focus — keep them at 16px on touch screens */
+@media (pointer: coarse) {
+  select { font-size: 16px; }
+  .player-tools select { font-size: 16px; }
 }
 </style>
 </head>
@@ -273,16 +413,16 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
 
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand">Speak Up <span>English Enhanced</span></div>
+    <div class="brand">Speak Up <span>English<span class="brand-x"> Enhanced</span></span></div>
     <div class="picker">
-      <label for="levelSel">Level</label>
+      <label class="sr-only" for="levelSel">Level</label>
       <select id="levelSel" aria-label="Chọn level"></select>
-      <label for="unitSel">Unit</label>
+      <label class="sr-only" for="unitSel">Unit</label>
       <select id="unitSel" aria-label="Chọn unit"></select>
-      <button class="btn" id="prevBtn" title="Unit trước">‹</button>
-      <button class="btn" id="nextBtn" title="Unit sau">›</button>
+      <button class="btn nav" id="prevBtn" title="Unit trước" aria-label="Unit trước">‹</button>
+      <button class="btn nav" id="nextBtn" title="Unit sau" aria-label="Unit sau">›</button>
     </div>
-    <button class="btn" id="themeBtn" title="Đổi giao diện sáng / tối">◐</button>
+    <button class="btn icon" id="themeBtn" title="Đổi giao diện sáng / tối" aria-label="Đổi giao diện sáng / tối"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2v16a8 8 0 0 1 0-16z"/></svg></button>
     <button class="btn primary" id="guideBtn">Cách học</button>
   </div>
 </header>
@@ -341,6 +481,14 @@ const STEPS = [
   { name: "Substitution Drill", card: "drill", hint: "Thay phần gạch chân và luyện tập các cách nói khác nhau." },
 ];
 const LABELS = ["smooth", "linking", "change", "weak", "strong"];
+// inline icons: ▶ ⟲ ⟳ render as emoji or are missing on iOS
+const svg = d => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
+const ICON = {
+  play: svg("M8 5.1v13.8c0 .8.9 1.3 1.6.8l10.4-6.9a1 1 0 0 0 0-1.6L9.6 4.3C8.9 3.8 8 4.3 8 5.1z"),
+  pause: svg("M7 4.5h3.2a.8.8 0 0 1 .8.8v13.4a.8.8 0 0 1-.8.8H7a.8.8 0 0 1-.8-.8V5.3a.8.8 0 0 1 .8-.8zm6.8 0H17a.8.8 0 0 1 .8.8v13.4a.8.8 0 0 1-.8.8h-3.2a.8.8 0 0 1-.8-.8V5.3a.8.8 0 0 1 .8-.8z"),
+  back: svg("M12 5V2.2a.5.5 0 0 0-.8-.4L6.6 5.6a.5.5 0 0 0 0 .8l4.6 3.8a.5.5 0 0 0 .8-.4V7a6 6 0 1 1-6 6.1 1 1 0 0 0-2 0A8 8 0 1 0 12 5z"),
+  loop: svg("M17 17H7v-2.3a.5.5 0 0 0-.8-.4l-3.4 2.8a.5.5 0 0 0 0 .8l3.4 2.8a.5.5 0 0 0 .8-.4V19h11a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0zM7 7h10v2.3a.5.5 0 0 0 .8.4l3.4-2.8a.5.5 0 0 0 0-.8l-3.4-2.8a.5.5 0 0 0-.8.4V5H6a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0z"),
+};
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const app = $("#app");
@@ -495,7 +643,7 @@ async function loadMarkdown(unit) {
 /* ------------------------------------------------------------------ pickers */
 
 function fillLevels() {
-  levelSel.innerHTML = DATA.levels.map(l => `<option value="${esc(l.name)}">${esc(l.name.replace("Level ", ""))}</option>`).join("");
+  levelSel.innerHTML = DATA.levels.map(l => `<option value="${esc(l.name)}">${esc(l.name)}</option>`).join("");
 }
 function fillUnits() {
   const lv = currentLevel();
@@ -535,7 +683,7 @@ function shift(delta) {
 /* ------------------------------------------------------------------ render */
 
 function trackButton(label, step) {
-  return label ? `<button class="track" data-play="${step}" title="Phát track này">▶ ${esc(label)}</button>` : "";
+  return label ? `<button class="track" data-play="${step}" title="Phát track này">${ICON.play}${esc(label)}</button>` : "";
 }
 function card(id, title, trackLabel, step, body) {
   return `<section class="card" id="card-${id}">
@@ -645,17 +793,23 @@ async function render() {
         </button>`;
       }).join("")}</div>
       <div class="player-row">
-        <audio id="audio" controls preload="metadata"></audio>
+        <audio id="audio" preload="metadata" playsinline></audio>
+        <button class="play" id="playBtn" aria-label="Phát" title="Phát / dừng (Space)">${ICON.play}</button>
+        <div class="seek">
+          <span class="time cur" id="tCur">0:00</span>
+          <input type="range" id="seek" min="0" max="1" step="0.01" value="0" aria-label="Vị trí phát">
+          <span class="time dur" id="tDur">0:00</span>
+        </div>
         <div class="player-tools">
-          <button class="btn small" id="back3" title="Lùi 3 giây (←)">⟲ 3s</button>
-          <select id="rate" aria-label="Tốc độ phát">
+          <button class="btn" id="back3" title="Lùi 3 giây (←)" aria-label="Lùi 3 giây">${ICON.back}<span class="tool-txt">3s</span></button>
+          <select id="rate" aria-label="Tốc độ phát" title="Tốc độ phát">
             ${[0.75, 0.85, 1, 1.15, 1.25].map(r => `<option value="${r}" ${r === state.rate ? "selected" : ""}>${r}×</option>`).join("")}
           </select>
-          <button class="btn small ${state.loop ? "on" : ""}" id="loopBtn" title="Lặp lại track">⟳ Lặp</button>
+          <button class="btn ${state.loop ? "on" : ""}" id="loopBtn" title="Lặp lại track" aria-label="Lặp lại track" aria-pressed="${state.loop}">${ICON.loop}<span class="tool-txt opt-txt">Lặp</span></button>
         </div>
       </div>
-      <p class="hint" id="hint"></p>
     </section>
+    <p class="hint" id="hint"></p>
     ${d ? renderLesson(d) : `<div class="notice">Unit này chưa có file nội dung (markdown)${u.pdf ? ` — bạn có thể <a href="${encodeURI(u.pdf)}" target="_blank" rel="noopener">xem PDF gốc</a>` : ""}.
       Bạn vẫn có thể học bằng các track audio ở trên.</div>`}`;
 
@@ -663,9 +817,87 @@ async function render() {
   audio.playbackRate = state.rate;
   audio.loop = state.loop;
   audio.addEventListener("ended", () => markStep(state.step + 1, true));
+  bindTransport();
+  watchSticky();
   updateProgressText();
   selectStep(state.step, { play: false, scroll: false });
 }
+
+/* ------------------------------------------------------------------ transport */
+
+function fmtTime(t) {
+  if (!isFinite(t) || t < 0) t = 0;
+  return `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+}
+
+function togglePlay() {
+  if (!audio || !audio.getAttribute("src")) return;
+  audio.paused ? audio.play().catch(() => {}) : audio.pause();
+}
+
+/** custom controls for the hidden <audio>: same look on every browser, compact enough to pin on a phone */
+function bindTransport() {
+  const playBtn = $("#playBtn"), seek = $("#seek"), cur = $("#tCur"), dur = $("#tDur");
+  let dragging = false;
+
+  const paint = () => {
+    const d = isFinite(audio.duration) ? audio.duration : 0;
+    const t = dragging ? +seek.value : audio.currentTime;
+    seek.max = d || 1;
+    if (!dragging) seek.value = t;
+    seek.style.setProperty("--pct", (d ? Math.min(100, t / d * 100) : 0) + "%");
+    cur.textContent = fmtTime(t);
+    dur.textContent = fmtTime(d);
+  };
+  const paintButton = () => {
+    const paused = audio.paused;
+    playBtn.innerHTML = paused ? ICON.play : ICON.pause;
+    playBtn.classList.toggle("playing", !paused);
+    playBtn.setAttribute("aria-label", paused ? "Phát" : "Tạm dừng");
+  };
+
+  ["timeupdate", "durationchange", "loadedmetadata", "seeked", "emptied"].forEach(ev => audio.addEventListener(ev, paint));
+  ["play", "pause", "ended", "emptied"].forEach(ev => audio.addEventListener(ev, paintButton));
+  playBtn.addEventListener("click", togglePlay);
+
+  seek.addEventListener("input", () => { dragging = true; audio.currentTime = +seek.value; paint(); });
+  seek.addEventListener("change", () => { dragging = false; paint(); });
+  // iOS range inputs only move by dragging the thumb — let a tap on the bar jump there too
+  seek.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" || !isFinite(audio.duration)) return;
+    const r = seek.getBoundingClientRect();
+    audio.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * audio.duration;
+    paint();
+  });
+
+  paint(); paintButton();
+}
+
+/* ------------------------------------------------------------------ sticky bars */
+
+// The top bar wraps to 1–3 rows depending on width, so its height is measured
+// instead of hard-coded; the player sticks right under it and anchored cards
+// scroll clear of both.
+const topbar = $(".topbar");
+function syncSticky() {
+  const css = document.documentElement.style;
+  const topSticky = getComputedStyle(topbar).position === "sticky";
+  const player = $(".player");
+  css.setProperty("--topbar-h", (topSticky ? topbar.offsetHeight : 0) + "px");
+  css.setProperty("--player-h", (player ? player.offsetHeight : 0) + "px");
+}
+const stickyObserver = "ResizeObserver" in window ? new ResizeObserver(syncSticky) : null;
+function watchSticky() {
+  if (stickyObserver) {
+    stickyObserver.disconnect();
+    stickyObserver.observe(topbar);
+    const player = $(".player");
+    if (player) stickyObserver.observe(player);
+  }
+  syncSticky();
+}
+window.addEventListener("resize", syncSticky);
+window.addEventListener("orientationchange", syncSticky);
 
 function updateProgressText() {
   const lv = currentLevel(), u = currentUnit(), el = $("#progText");
@@ -679,7 +911,18 @@ function selectStep(i, { play = true, scroll = true } = {}) {
   const t = u.tracks.find(t => t.step === i + 1);
   if (!t) return;
   state.step = i;
-  document.querySelectorAll(".step").forEach(b => b.classList.toggle("active", +b.dataset.step === i));
+  document.querySelectorAll(".step").forEach(b => {
+    const on = +b.dataset.step === i;
+    b.classList.toggle("active", on);
+    if (on) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+  });
+  // when the chips scroll sideways (tablet / phone), bring the active one into view
+  // (scrollTo on the strip only — scrollIntoView would also move the page)
+  const strip = $(".steps"), chip = $(".step.active");
+  if (strip && chip && strip.scrollWidth > strip.clientWidth) {
+    const left = chip.offsetLeft - strip.offsetLeft - (strip.clientWidth - chip.offsetWidth) / 2;
+    strip.scrollTo({ left, behavior: scroll ? "smooth" : "auto" });
+  }
   const s = STEPS[i];
   $("#hint").innerHTML = `<b>Bước ${i + 1} · ${esc(s.name)}:</b> ${esc(s.hint)}<span class="file">${esc(t.file.split("/").pop())}</span>`;
 
@@ -768,7 +1011,9 @@ app.addEventListener("click", e => {
   if (e.target.closest("#back3")) { audio.currentTime = Math.max(0, audio.currentTime - 3); return; }
   if (e.target.closest("#loopBtn")) {
     state.loop = !state.loop; audio.loop = state.loop;
-    e.target.closest("#loopBtn").classList.toggle("on", state.loop);
+    const loopBtn = e.target.closest("#loopBtn");
+    loopBtn.classList.toggle("on", state.loop);
+    loopBtn.setAttribute("aria-pressed", state.loop);
   }
 });
 
@@ -785,7 +1030,7 @@ $("#nextBtn").addEventListener("click", () => shift(1));
 
 document.addEventListener("keydown", e => {
   if (e.target.closest("input, select, textarea") || e.ctrlKey || e.metaKey || e.altKey || $("#guide").open || !audio) return;
-  if (e.key === " " && !e.target.closest("button")) { e.preventDefault(); audio.paused ? audio.play().catch(() => {}) : audio.pause(); }
+  if (e.key === " " && !e.target.closest("button")) { e.preventDefault(); togglePlay(); }
   else if (e.key === "ArrowLeft") { audio.currentTime = Math.max(0, audio.currentTime - 3); }
   else if (e.key === "ArrowRight") { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 3); }
   else if (/^[1-7]$/.test(e.key)) { selectStep(+e.key - 1); }
