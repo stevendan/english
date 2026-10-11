@@ -25,6 +25,8 @@
   --kw: #2e5597;
   --green: #2f8a51;
   --done: #2f8a51;
+  --rec: #d23c3c;
+  --rec-soft: #fbe5e5;
   --shadow: 0 1px 2px rgba(20, 40, 45, .06), 0 4px 16px rgba(20, 40, 45, .06);
   --bar-shadow: 0 6px 16px -8px rgba(20, 40, 45, .25);
   /* side gutters, widened by the notch in landscape on iPhone */
@@ -56,6 +58,8 @@
     --kw: #8ab4f8;
     --green: #6fcf8f;
     --done: #6fcf8f;
+    --rec: #ff6b6b;
+    --rec-soft: #3d2629;
     --shadow: none;
     --bar-shadow: 0 6px 16px -8px rgba(0, 0, 0, .6);
     color-scheme: dark;
@@ -65,7 +69,7 @@
   --bg: #121719; --surface: #1b2225; --surface-2: #232c30; --text: #e3eaec; --muted: #93a3a7;
   --line: #2f3a3e; --accent: #6fb0bb; --accent-strong: #8fc7d0; --accent-soft: #24393d; --head: #2f6670; --head-strong: #3a7a85;
   --track: #e6c25a; --tip-bg: #1f2d3d; --smooth: #8ab4f8; --strong: #ffa94d; --weak: #7d8a8e;
-  --kw: #8ab4f8; --green: #6fcf8f; --done: #6fcf8f; --shadow: none; color-scheme: dark;
+  --kw: #8ab4f8; --green: #6fcf8f; --done: #6fcf8f; --rec: #ff6b6b; --rec-soft: #3d2629; --shadow: none; color-scheme: dark;
   --bar-shadow: 0 6px 16px -8px rgba(0, 0, 0, .6);
 }
 
@@ -288,6 +292,78 @@ u.sub { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
   padding: 18px; color: var(--muted);
 }
 .notice code { background: var(--surface-2); padding: 1px 6px; border-radius: 5px; color: var(--text); }
+[hidden] { display: none !important; }
+
+/* ---------- recording (steps 3–5) ---------- */
+.rec-btn {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+  display: none; place-items: center;
+  border: 2px solid var(--rec); background: var(--surface); color: var(--rec);
+}
+.player.can-rec .rec-btn { display: grid; }
+.rec-btn.on { background: var(--rec); color: #fff; }
+.rec-btn:disabled { opacity: .4; cursor: default; }
+.rec-row { display: none; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.player.can-rec .rec-row { display: flex; }
+.rec-mode { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.rec-mode b { color: var(--text); }
+.chip {
+  border: 1px solid var(--line); background: var(--surface-2); border-radius: 999px;
+  padding: 2px 11px; font-size: 12.5px; cursor: pointer;
+}
+.chip.on { background: var(--rec-soft); border-color: var(--rec); color: var(--rec); font-weight: 600; }
+.chip:disabled { opacity: .45; cursor: default; }
+.rec-tip { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; }
+.rec-tip svg.i { width: 15px; height: 15px; }
+.rec-status { display: none; align-items: center; gap: 8px; color: var(--rec); font-weight: 600; font-variant-numeric: tabular-nums; }
+.player.recording .rec-status { display: inline-flex; }
+.player.recording .rec-mode, .player.recording .rec-tip { display: none; }
+.rec-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--rec); flex: none; animation: rec-blink 1s steps(2) infinite; }
+@keyframes rec-blink { 50% { opacity: .25; } }
+.meter { width: 80px; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--rec); transform-origin: left; transform: scaleX(var(--lvl, 0)); transition: transform .08s; }
+.rec-msg { flex-basis: 100%; color: var(--rec); }
+.rec-msg:empty { display: none; }
+.player.recording { border-color: var(--rec); box-shadow: 0 0 0 3px var(--rec-soft), var(--shadow); }
+
+.rec-panel { margin-bottom: 16px; }
+.rec-panel .rec-sum { font-weight: 400; font-size: 13px; opacity: .9; }
+.sheet-toggle, .sheet-backdrop, .rec-bar { display: none; }
+.rec-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-bottom: 8px; font-size: 13px; color: var(--muted); }
+.bal { display: inline-flex; align-items: center; gap: 8px; }
+.bal input[type=range] { width: 150px; margin: 0; accent-color: var(--accent); }
+.off { display: inline-flex; align-items: center; gap: 6px; }
+.off output { min-width: 50px; text-align: center; color: var(--text); font-variant-numeric: tabular-nums; }
+.takes { list-style: none; margin: 0; padding: 0; }
+.take { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); }
+.take .n { font-weight: 700; min-width: 28px; }
+.take .meta { flex: 1; min-width: 0; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.take .btn, .line-rec .btn { display: inline-flex; align-items: center; gap: 5px; }
+.take .btn svg.i, .line-rec .btn svg.i { width: 14px; height: 14px; }
+.btn.mix.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 600; }
+.rec-panel .empty svg.i { display: inline-block; width: 15px; height: 15px; vertical-align: -2px; }
+
+.line-mic { display: none; }
+.dialogue.rec-lines { grid-template-columns: max-content minmax(0, 1fr) auto; }
+.dialogue.rec-lines .line-mic {
+  position: relative; display: grid; place-items: center; align-self: start; margin-top: -3px;
+  width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--muted);
+}
+.line-mic svg.i { width: 16px; height: 16px; }
+.line-mic.open { border-color: var(--rec); color: var(--rec); }
+.line-mic.has-take::after {
+  content: ""; position: absolute; top: 0; right: 0; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--done); box-shadow: 0 0 0 2px var(--surface);
+}
+.line-rec {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  margin: 0 0 4px; padding: 8px 10px; border-radius: 8px; background: var(--surface-2); font-size: 13px;
+}
+.line-rec .btn.rec { color: var(--rec); border-color: var(--rec); }
+.line-rec .btn.rec.on { background: var(--rec); color: #fff; }
+.line-rec .st { margin-left: auto; color: var(--muted); }
+.say.playing { background: var(--accent-soft); border-radius: 4px; box-shadow: 0 0 0 3px var(--accent-soft); }
 
 /* ---------- guide dialog ---------- */
 dialog {
@@ -327,6 +403,8 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
   .play:not(:disabled):hover { background: var(--head-strong); }
   .card-h .track:hover { background: rgba(255,255,255,.3); }
   .opt:hover { border-color: var(--green); }
+  .rec-btn:not(:disabled):not(.on):hover { background: var(--rec-soft); }
+  .chip:not(:disabled):hover, .dialogue.rec-lines .line-mic:hover { border-color: var(--rec); }
 }
 
 /* tablet: one column, step chips scroll sideways */
@@ -397,9 +475,71 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
   dialog { width: calc(100vw - 24px); max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
   .dlg-b { padding: 14px 16px 18px; }
 }
+/* phones: recording controls sit at the bottom, within thumb reach */
+@media (max-width: 640px) {
+  .player.recording { border-color: var(--rec); box-shadow: 0 2px 0 var(--rec), var(--bar-shadow); }
+  .player .rec-status { display: none !important; }
+  .rec-row { font-size: 12.5px; margin-top: 6px; }
+  .chip { padding: 5px 12px; }
+
+  body.recording .rec-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px var(--gr) calc(10px + env(safe-area-inset-bottom)) var(--gl);
+    background: var(--surface); border-top: 2px solid var(--rec); box-shadow: 0 -8px 20px -10px rgba(0, 0, 0, .35);
+  }
+  .rec-bar .rec-status { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .rec-bar .rb-top { display: inline-flex; align-items: center; gap: 8px; letter-spacing: .3px; }
+  .rec-bar .meter { width: 100%; max-width: 220px; }
+  .rec-bar .stop {
+    display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 22px;
+    border: 0; border-radius: 24px; background: var(--rec); color: #fff; font-weight: 700; cursor: pointer;
+  }
+  body.rec-steps main { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+
+  /* "my recordings" becomes a bottom sheet: a handle when closed, a list when open */
+  .rec-panel {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 26; margin: 0;
+    display: flex; flex-direction: column; max-height: 75vh; max-height: 75dvh;
+    border-radius: 14px 14px 0 0; border-width: 1px 0 0; box-shadow: 0 -8px 24px -10px rgba(0, 0, 0, .35);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  body.recording .rec-panel { display: none; }
+  .rec-panel .card-h { display: none; }
+  .sheet-toggle {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 8px; width: 100%;
+    padding: 8px var(--gr) 10px var(--gl); border: 0; background: none; cursor: pointer; text-align: left;
+    touch-action: none;
+  }
+  .sheet-toggle .grabber { grid-column: 1 / -1; justify-self: center; width: 38px; height: 4px; border-radius: 2px; background: var(--line); margin-bottom: 4px; }
+  .sheet-toggle .st-title { font-weight: 600; }
+  .sheet-toggle .st-sum { grid-column: 1; font-size: 12.5px; color: var(--muted); }
+  .sheet-toggle .st-sum:empty { display: none; }
+  .sheet-toggle .chev { grid-row: 2; grid-column: 2; color: var(--muted); transition: transform .2s; }
+  .rec-panel.open .chev { transform: rotate(180deg); }
+  .rec-panel .card-b { display: none; overflow: auto; overscroll-behavior: contain; padding-top: 4px; border-top: 1px solid var(--line); }
+  .rec-panel.open .card-b { display: block; }
+  .sheet-backdrop:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(10, 20, 22, .45); }
+
+  .bal { flex: 1 1 100%; }
+  .bal input[type=range] { flex: 1; width: auto; }
+  .off .btn.small { width: 40px; height: 36px; padding: 0; }
+  .take { flex-wrap: wrap; }
+  .take .btn { height: 40px; padding: 0 12px; }
+  .dialogue.rec-lines .line-mic { width: 36px; height: 36px; margin-top: -6px; }
+  .line-rec { padding: 8px; }
+  .line-rec .st { order: -1; flex-basis: 100%; margin: 0 0 2px; }
+  .line-rec .btn { flex: 1 1 0; justify-content: center; height: 40px; padding: 0 6px; gap: 4px; white-space: nowrap; }
+}
+
 @media (max-width: 400px) {
   .brand .brand-x { display: none; }
   .player-tools .tool-txt { display: none; }
+  .player.can-rec #back3 { display: none; } /* room for the seek bar next to ● */
+  .rec-tip .tool-txt { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot { animation: none; }
 }
 
 /* iOS zooms the page when a control under 16px gets focus — keep them at 16px on touch screens */
@@ -461,7 +601,8 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
       <li>Ở bước <b>Shadowing</b>, lời thoại được làm mờ để bạn không nhìn text; bấm vào dòng nào để xem riêng dòng đó.</li>
       <li>Ở <b>Role Play</b>, dùng nút “Che A / Che B” để luyện nhập vai. Ở <b>Substitution Drill</b>, bấm vào a / b / c để thay vào câu.</li>
       <li>Nghe hết một track thì bước đó được đánh dấu ✓ (bấm vào vòng tròn ở góc để tự đánh dấu hoặc bỏ đánh dấu).</li>
-      <li>Phím tắt: <kbd>Space</kbd> phát / dừng, <kbd>←</kbd> <kbd>→</kbd> lùi / tới 3 giây, <kbd>1</kbd>–<kbd>7</kbd> chọn bước.</li>
+      <li>Ở bước <b>3–5</b>, bấm nút <b>●</b> đỏ để ghi âm giọng bạn cùng audio, hoặc bấm nút micro cạnh từng dòng thoại để ghi riêng dòng đó. Sau đó bấm <b>Song song</b> để nghe giọng bạn chồng lên bản gốc. Nên đeo tai nghe khi ghi.</li>
+      <li>Phím tắt: <kbd>Space</kbd> phát / dừng, <kbd>←</kbd> <kbd>→</kbd> lùi / tới 3 giây, <kbd>1</kbd>–<kbd>7</kbd> chọn bước, <kbd>R</kbd> bắt đầu / dừng ghi âm.</li>
     </ul>
   </div>
 </dialog>
@@ -488,6 +629,11 @@ const ICON = {
   pause: svg("M7 4.5h3.2a.8.8 0 0 1 .8.8v13.4a.8.8 0 0 1-.8.8H7a.8.8 0 0 1-.8-.8V5.3a.8.8 0 0 1 .8-.8zm6.8 0H17a.8.8 0 0 1 .8.8v13.4a.8.8 0 0 1-.8.8h-3.2a.8.8 0 0 1-.8-.8V5.3a.8.8 0 0 1 .8-.8z"),
   back: svg("M12 5V2.2a.5.5 0 0 0-.8-.4L6.6 5.6a.5.5 0 0 0 0 .8l4.6 3.8a.5.5 0 0 0 .8-.4V7a6 6 0 1 1-6 6.1 1 1 0 0 0-2 0A8 8 0 1 0 12 5z"),
   loop: svg("M17 17H7v-2.3a.5.5 0 0 0-.8-.4l-3.4 2.8a.5.5 0 0 0 0 .8l3.4 2.8a.5.5 0 0 0 .8-.4V19h11a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0zM7 7h10v2.3a.5.5 0 0 0 .8.4l3.4-2.8a.5.5 0 0 0 0-.8l-3.4-2.8a.5.5 0 0 0-.8.4V5H6a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0z"),
+  rec: svg("M12 5.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13z"),
+  stop: svg("M7.5 6h9A1.5 1.5 0 0 1 18 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 16.5v-9A1.5 1.5 0 0 1 7.5 6z"),
+  mic: svg("M12 14.5a3.5 3.5 0 0 0 3.5-3.5V5.5a3.5 3.5 0 0 0-7 0V11a3.5 3.5 0 0 0 3.5 3.5zM18 11a1 1 0 0 0-2 0 4 4 0 0 1-8 0 1 1 0 0 0-2 0 6 6 0 0 0 5 5.9V20H8.5a1 1 0 0 0 0 2h7a1 1 0 0 0 0-2H13v-3.1a6 6 0 0 0 5-5.9z"),
+  trash: svg("M9.5 3h5a1 1 0 0 1 1 1v1H19a1 1 0 0 1 0 2h-.6l-.8 12.2A2 2 0 0 1 15.6 21H8.4a2 2 0 0 1-2-1.8L5.6 7H5a1 1 0 0 1 0-2h3.5V4a1 1 0 0 1 1-1zm-1.9 4 .8 12h7.2l.8-12z"),
+  phones: svg("M12 3a9 9 0 0 0-9 9v5.5A2.5 2.5 0 0 0 5.5 20H7a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.5a2.5 2.5 0 0 0 2.5-2.5V12a9 9 0 0 0-9-9z"),
 };
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -690,9 +836,11 @@ function card(id, title, trackLabel, step, body) {
     <div class="card-h"><span class="grow">${title}</span>${trackButton(trackLabel, step)}</div>
     <div class="card-b">${body}</div></section>`;
 }
-function dialogueHTML(lines, cls = "") {
-  return `<div class="dialogue ${cls}">` + lines.map(([who, say]) =>
-    `<div class="who" data-who="${esc(who)}">${esc(who)}:</div><div class="say" data-who="${esc(who)}">${md(say)}</div>`).join("") + `</div>`;
+function dialogueHTML(lines, cls = "", mic = false) {
+  return `<div class="dialogue ${cls}">` + lines.map(([who, say], i) =>
+    `<div class="who" data-who="${esc(who)}">${esc(who)}:</div><div class="say" data-who="${esc(who)}" data-line="${i}">${md(say)}</div>` +
+    (mic ? `<button class="line-mic" data-line-mic="${i}" title="Ghi âm dòng này" aria-label="Ghi âm dòng ${i + 1}">${ICON.mic}</button>` : "")
+  ).join("") + `</div>`;
 }
 
 function grammarLines(lines) {
@@ -715,7 +863,7 @@ function renderLesson(d) {
        <button class="btn small" id="toggleText">Ẩn lời thoại</button>
      </div>
      ${d.conv.context.map(c => `<p class="context">${md(c)}</p>`).join("")}
-     ${d.conv.lines.length ? dialogueHTML(d.conv.lines) : '<p class="empty">Chưa có hội thoại.</p>'}`);
+     ${d.conv.lines.length ? dialogueHTML(d.conv.lines, "", true) : '<p class="empty">Chưa có hội thoại.</p>'}`);
 
   const notes = card("notes", "Study Notes", "", 0, d.notes.length ? d.notes.map(n => {
     const pairs = n.explain.filter(l => l.includes(" | "));
@@ -770,6 +918,7 @@ function renderLesson(d) {
 async function render() {
   const lv = currentLevel(), u = currentUnit();
   const token = (render.token = (render.token || 0) + 1);
+  recTeardown();
   const text = await loadMarkdown(u);
   if (token !== render.token) return;
   const d = text ? parseUnit(text) : null;
@@ -795,6 +944,8 @@ async function render() {
       <div class="player-row">
         <audio id="audio" preload="metadata" playsinline></audio>
         <button class="play" id="playBtn" aria-label="Phát" title="Phát / dừng (Space)">${ICON.play}</button>
+        <button class="rec-btn" id="recBtn" aria-label="Ghi âm cùng audio"
+          title="${canRecord ? "Ghi âm giọng bạn cùng audio (R)" : esc(recUnsupported())}" ${canRecord ? "" : "disabled"}>${ICON.rec}</button>
         <div class="seek">
           <span class="time cur" id="tCur">0:00</span>
           <input type="range" id="seek" min="0" max="1" step="0.01" value="0" aria-label="Vị trí phát">
@@ -808,8 +959,27 @@ async function render() {
           <button class="btn ${state.loop ? "on" : ""}" id="loopBtn" title="Lặp lại track" aria-label="Lặp lại track" aria-pressed="${state.loop}">${ICON.loop}<span class="tool-txt opt-txt">Lặp</span></button>
         </div>
       </div>
+      <div class="rec-row">
+        <span class="rec-mode" id="recMode"></span>
+        <span class="rec-status"><span class="rec-dot"></span>Đang ghi <span class="rec-time">0:00</span><span class="meter"><i></i></span></span>
+        <span class="rec-tip" title="Nên dùng tai nghe để micro không thu cả tiếng loa">${ICON.phones}<span class="tool-txt">Nên dùng tai nghe</span></span>
+        <span class="rec-msg" id="recMsg" role="status"></span>
+      </div>
     </section>
     <p class="hint" id="hint"></p>
+    <section class="card rec-panel" id="rec-panel" hidden aria-label="Bản ghi của tôi">
+      <button class="sheet-toggle" id="sheetToggle" aria-expanded="false" aria-controls="recBody">
+        <span class="grabber"></span><span class="st-title">Bản ghi của tôi <span id="recCount"></span></span>
+        <span class="chev" aria-hidden="true">▲</span><span class="st-sum" id="recSumM"></span>
+      </button>
+      <div class="card-h"><span class="grow">Bản ghi của tôi</span><span class="rec-sum" id="recSum"></span></div>
+      <div class="card-b" id="recBody"></div>
+    </section>
+    <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+    <div class="rec-bar" role="status">
+      <div class="rec-status"><span class="rb-top"><span class="rec-dot"></span>ĐANG GHI <span class="rec-time">0:00</span></span><span class="meter"><i></i></span></div>
+      <button class="stop" id="recStop">${ICON.stop}Dừng</button>
+    </div>
     ${d ? renderLesson(d) : `<div class="notice">Unit này chưa có file nội dung (markdown)${u.pdf ? ` — bạn có thể <a href="${encodeURI(u.pdf)}" target="_blank" rel="noopener">xem PDF gốc</a>` : ""}.
       Bạn vẫn có thể học bằng các track audio ở trên.</div>`}`;
 
@@ -818,6 +988,7 @@ async function render() {
   audio.loop = state.loop;
   audio.addEventListener("ended", () => markStep(state.step + 1, true));
   bindTransport();
+  bindRecAudio();
   watchSticky();
   updateProgressText();
   selectStep(state.step, { play: false, scroll: false });
@@ -910,6 +1081,8 @@ function selectStep(i, { play = true, scroll = true } = {}) {
   const u = currentUnit();
   const t = u.tracks.find(t => t.step === i + 1);
   if (!t) return;
+  if (rec.active) stopRec();
+  stopMix(); stopRange();
   state.step = i;
   document.querySelectorAll(".step").forEach(b => {
     const on = +b.dataset.step === i;
@@ -936,6 +1109,7 @@ function selectStep(i, { play = true, scroll = true } = {}) {
   // Shadowing hides the text; the other steps show it.
   const dlg = $("#card-conv .dialogue");
   if (dlg) setConvHidden(i === 4);
+  recStepChanged();
 
   document.querySelectorAll(".card").forEach(c => c.classList.remove("focus"));
   const cardEl = $(`#card-${s.card}`);
@@ -965,9 +1139,577 @@ function markStep(step, value) {
   fillUnits();
 }
 
+/* ------------------------------------------------------------------ recording */
+
+// Steps 3–5 (Repetition, Overlapping, Shadowing) let the learner record their voice
+// along with the track — whole track or one dialogue line — and replay it mixed
+// over the original. A take remembers which stretches of the mp3 were heard when
+// (segs: [recording time, from, to, rate]), so the mix replays exactly what was heard,
+// pauses and seeks included.
+const REC_STEPS = [2, 3, 4];
+const MAX_TAKES = 5;
+const canRecord = !!(window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+const recPref = {
+  bal: store.get("sue-rec-bal", 0.5),        // 0 = only the original, 1 = only my voice
+  offset: store.get("sue-rec-offset", null), // seconds my voice lags behind in the recording
+  mode5: store.get("sue-rec-mode5", "with"), // Shadowing: speak along ("with") or right after ("after")
+};
+const rec = { stream: null, source: null, ctx: null, analyser: null, meterBuf: null, active: null, raf: 0,
+  timeEls: [], meterEls: [], trackTakes: [], lineTakes: new Map() };
+const mix = { take: null, node: null, orig: null, origGain: null, meGain: null, timer: 0, t0: 0, settle: 0 };
+const range = { stopAt: 0, raf: 0 };
+const bufCache = new Map();
+
+const isRecStep = i => REC_STEPS.includes(i);
+const recKey = () => unitKey(currentLevel(), currentUnit());
+const offsetVal = () => recPref.offset === null ? 0.2 : recPref.offset;
+function recUnsupported() {
+  return window.isSecureContext ? "Trình duyệt này không hỗ trợ ghi âm."
+    : "Ghi âm cần mở trang qua https:// hoặc http://localhost.";
+}
+/** [start, end, line, sentence, pass] for each dialogue sentence of a step's track (see tools/build_timeline.py) */
+function stepCues(step = state.step) {
+  const c = currentUnit().cues;
+  return (c && c[String(step + 1)]) || null;
+}
+function recMode(step = state.step) {
+  if (step === 2) return "after";
+  return step === 4 && stepCues(4) ? recPref.mode5 : "with";
+}
+function fmtClock(ts) {
+  const d = new Date(ts), hm = `${d.getHours()}:${String(d.getMinutes()).padStart(2, "0")}`;
+  return d.toDateString() === new Date().toDateString() ? hm : `${d.getDate()}/${d.getMonth() + 1} ${hm}`;
+}
+function setRecMsg(text) { const el = $("#recMsg"); if (el) el.textContent = text; }
+
+/** takes live in IndexedDB; if it is unavailable they last for this visit only */
+const takeDB = (() => {
+  let opening = null;
+  const mem = new Map();
+  const open = () => opening || (opening = new Promise(res => {
+    try {
+      const r = indexedDB.open("sue-rec", 1);
+      r.onupgradeneeded = () => r.result.createObjectStore("takes", { keyPath: "id" }).createIndex("ks", ["key", "step"]);
+      r.onsuccess = () => res(r.result);
+      r.onerror = r.onblocked = () => res(null);
+    } catch { res(null); }
+  }));
+  const done = r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+  const store_ = (db, mode) => db.transaction("takes", mode).objectStore("takes");
+  return {
+    async list(key, step) {
+      const db = await open();
+      let out = [];
+      if (db) try { out = await done(store_(db, "readonly").index("ks").getAll([key, step])); } catch { /* fall through */ }
+      return out.concat([...mem.values()].filter(t => t.key === key && t.step === step));
+    },
+    async put(take) {
+      const db = await open();
+      if (db) try { await done(store_(db, "readwrite").put(take)); return; } catch { /* keep it in memory */ }
+      mem.set(take.id, take);
+    },
+    async del(id) {
+      mem.delete(id); bufCache.delete(id);
+      const db = await open();
+      if (db) try { await done(store_(db, "readwrite").delete(id)); } catch { /* ignore */ }
+    },
+  };
+})();
+
+/* ---- microphone */
+
+function audioCtx() {
+  if (!rec.ctx) rec.ctx = new (window.AudioContext || window.webkitAudioContext)();
+  if (rec.ctx.state !== "running") rec.ctx.resume().catch(() => {});
+  return rec.ctx;
+}
+async function ensureMic() {
+  if (rec.stream && rec.stream.getAudioTracks().some(t => t.readyState === "live")) return;
+  rec.stream = await navigator.mediaDevices.getUserMedia({
+    audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+  });
+  const ctx = audioCtx(), mute = ctx.createGain();
+  mute.gain.value = 0; // some browsers only run an analyser that reaches the speakers
+  rec.analyser = ctx.createAnalyser();
+  rec.analyser.fftSize = 512;
+  rec.meterBuf = new Uint8Array(rec.analyser.fftSize);
+  rec.source = ctx.createMediaStreamSource(rec.stream);
+  rec.source.connect(rec.analyser);
+  rec.analyser.connect(mute);
+  mute.connect(ctx.destination);
+}
+function releaseMic() {
+  if (rec.active && rec.active.recorder.state === "recording") return;
+  if (rec.stream) rec.stream.getTracks().forEach(t => t.stop());
+  if (rec.source) rec.source.disconnect();
+  rec.stream = rec.source = rec.analyser = null;
+}
+function micErrorText(e) {
+  const name = e && e.name;
+  if (name === "NotAllowedError" || name === "SecurityError") return "Chưa được phép dùng micro. Hãy cho phép quyền micro cho trang này rồi thử lại.";
+  if (name === "NotFoundError" || name === "OverconstrainedError") return "Không tìm thấy micro trên thiết bị.";
+  return "Không mở được micro" + (e && e.message ? `: ${e.message}` : ".");
+}
+function recMime() {
+  if (!MediaRecorder.isTypeSupported) return "";
+  return ["audio/webm;codecs=opus", "audio/mp4", "audio/webm", "audio/ogg;codecs=opus"].find(m => MediaRecorder.isTypeSupported(m)) || "";
+}
+
+/* ---- recording */
+
+const recNow = a => (performance.now() - a.t0) / 1000;
+function recOpenSeg() {
+  const a = rec.active;
+  if (!a || !a.started || a.open || audio.paused || audio.seeking) return;
+  a.open = [recNow(a), audio.currentTime, audio.playbackRate];
+}
+function recCloseSeg(e) {
+  const a = rec.active;
+  if (!a || !a.open) return;
+  const [r, from, rate] = a.open;
+  // on "seeking" currentTime already shows the new spot, so work out where playback was
+  const to = e && e.type === "seeking" ? from + (recNow(a) - r) * rate : audio.currentTime;
+  if (to > from + 0.02) a.segs.push([+r.toFixed(3), +from.toFixed(3), +to.toFixed(3), rate]);
+  a.open = null;
+}
+function bindRecAudio() {
+  audio.addEventListener("playing", recOpenSeg);
+  audio.addEventListener("seeked", recOpenSeg);
+  ["pause", "seeking", "waiting", "ended"].forEach(ev => audio.addEventListener(ev, recCloseSeg));
+  audio.addEventListener("ratechange", () => { recCloseSeg(); recOpenSeg(); });
+  audio.addEventListener("ended", () => { if (rec.active && rec.active.scope === "track") stopRec(); });
+  audio.addEventListener("timeupdate", () => { if (!mix.take) highlightAt(audio.currentTime); });
+}
+
+/** start the mic and recorder; `begin` runs once it is really capturing and starts the audio */
+async function startRec(scope, line, begin) {
+  if (rec.active || !canRecord || !audio) return;
+  stopMix(); stopRange();
+  setRecMsg("");
+  try { await ensureMic(); } catch (e) { setRecMsg(micErrorText(e)); return; }
+  if (rec.active) return;
+  if (recPref.offset === null) {
+    // first take on this device: guess the round trip (speaker out + mic in); the learner can fine-tune it
+    const ctx = audioCtx(), tr = rec.stream.getAudioTracks()[0];
+    const inLat = (tr.getSettings && tr.getSettings().latency) || 0.02;
+    recPref.offset = Math.min(0.6, Math.round(((ctx.outputLatency || 0) + (ctx.baseLatency || 0) + inLat + 0.1) * 20) / 20);
+    store.set("sue-rec-offset", recPref.offset);
+  }
+  let recorder;
+  try { const mime = recMime(); recorder = new MediaRecorder(rec.stream, mime ? { mimeType: mime } : undefined); }
+  catch (e) { setRecMsg(micErrorText(e)); return; }
+  const t = currentUnit().tracks.find(t => t.step === state.step + 1);
+  const a = rec.active = {
+    recorder, scope, line, step: state.step, key: recKey(), file: t.file, mode: recMode(),
+    chunks: [], segs: [], open: null, t0: 0, started: false, timers: [],
+  };
+  recorder.ondataavailable = e => { if (e.data && e.data.size) a.chunks.push(e.data); };
+  recorder.onstop = () => finishRec(a);
+  recorder.onerror = () => { setRecMsg("Ghi âm bị lỗi, hãy thử lại."); stopRec(); };
+  recorder.onstart = () => { a.t0 = performance.now(); a.started = true; begin(a); };
+  recorder.start();
+  paintRecUI();
+}
+
+function startTrackRec() {
+  if (!isRecStep(state.step)) return;
+  audioCtx(); // unlock Web Audio inside the tap (iOS)
+  startRec("track", null, () => {
+    if (audio.ended || audio.currentTime >= (audio.duration || Infinity) - 0.3) audio.currentTime = 0;
+    if (audio.paused) audio.play().catch(() => {}); else recOpenSeg();
+  });
+}
+
+/** where a dialogue line sits in the current step's track (first read) */
+function lineRange(step, line) {
+  const cues = stepCues(step);
+  if (!cues) return null;
+  const idx = [];
+  cues.forEach((c, i) => { if (c[2] === line && c[4] === 0) idx.push(i); });
+  if (!idx.length) return null;
+  const first = cues[idx[0]], last = cues[idx[idx.length - 1]], next = cues[idx[idx.length - 1] + 1];
+  return { start: first[0], end: last[1], gapEnd: next ? next[0] : last[1] + 1.7 * (last[1] - last[0]) + 0.6 };
+}
+
+function startLineRec(line) {
+  const r = lineRange(state.step, line);
+  if (!r || !audio) return;
+  const rate = audio.playbackRate;
+  let from, stopAt, tail;
+  if (state.step === 2) {               // Repetition: the track already leaves a pause after each sentence
+    from = r.start - 0.15; stopAt = r.gapEnd - 0.1; tail = 0.3;
+  } else if (recMode() === "after") {   // Shadowing, right after: play the line, then hold the audio while you speak
+    from = r.start - 0.15; stopAt = r.end + 0.05; tail = (1.5 * (r.end - r.start) + 1) / rate;
+  } else {                              // along with the speaker, with a short lead-in
+    from = r.start - 0.4; stopAt = r.end + 0.1; tail = 0.5;
+  }
+  audio.pause();
+  audioCtx();
+  startRec("line", line, a => {
+    a.stopAt = stopAt; a.tail = tail;
+    audio.currentTime = Math.max(0, from);
+    if (Math.abs(audio.currentTime - Math.max(0, from)) > 1) {
+      // the server ignores byte ranges, so the browser cannot jump inside the mp3
+      setRecMsg("Không tua được audio tới dòng này (máy chủ không hỗ trợ tua). Hãy ghi cả bài bằng nút ●.");
+      stopRec();
+      return;
+    }
+    audio.play().catch(() => {});
+  });
+}
+
+function stopRec() {
+  const a = rec.active;
+  if (!a || a.stopping) return;
+  a.stopping = true;
+  a.timers.forEach(clearTimeout);
+  recCloseSeg();
+  if (audio && !audio.paused) audio.pause();
+  a.duration = a.started ? recNow(a) : 0;
+  try {
+    if (a.recorder.state !== "inactive") a.recorder.stop(); else finishRec(a);
+  } catch { finishRec(a); }
+}
+
+async function finishRec(a) {
+  if (a.finished) return;
+  a.finished = true;
+  if (rec.active === a) rec.active = null;
+  paintRecUI();
+  if (!isRecStep(state.step) || a.key !== recKey()) releaseMic();
+  if (!a.chunks.length || !a.segs.length) {
+    if (a.started) setRecMsg("Bản ghi trống, chưa phát audio nào. Hãy thử lại.");
+    return;
+  }
+  const take = {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    key: a.key, step: a.step, scope: a.scope, line: a.line, mode: a.mode, file: a.file,
+    segs: a.segs, created: Date.now(), duration: a.duration,
+    blob: new Blob(a.chunks, { type: a.recorder.mimeType || a.chunks[0].type || "audio/webm" }),
+  };
+  // keep the newest few whole-track takes and one take per line
+  const old = await takeDB.list(a.key, a.step);
+  const drop = a.scope === "line"
+    ? old.filter(t => t.scope === "line" && t.line === a.line)
+    : old.filter(t => t.scope === "track").sort((x, y) => y.created - x.created).slice(MAX_TAKES - 1);
+  await Promise.all(drop.map(t => takeDB.del(t.id)));
+  await takeDB.put(take);
+  if (a.key !== recKey() || a.step !== state.step) return;
+  await refreshRecPanel();
+  if (a.scope === "line") playMix(take);
+  else openSheet(true);
+}
+
+/** per frame while recording: timer, level meter, auto-stop for lines, pauses for "speak right after" */
+function recTick() {
+  const a = rec.active;
+  if (!a) { rec.raf = 0; return; }
+  rec.raf = requestAnimationFrame(recTick);
+  if (!a.started) return;
+  const time = fmtTime(recNow(a));
+  rec.timeEls.forEach(el => { if (el.textContent !== time) el.textContent = time; });
+  if (rec.analyser) {
+    rec.analyser.getByteTimeDomainData(rec.meterBuf);
+    let peak = 0;
+    for (const v of rec.meterBuf) peak = Math.max(peak, Math.abs(v - 128));
+    const lvl = Math.min(1, peak / 80).toFixed(2);
+    rec.meterEls.forEach(el => el.style.setProperty("--lvl", lvl));
+  }
+  if (a.stopping) return;
+  if (a.scope === "line" && !a.tailing && a.open && audio.currentTime >= a.stopAt) {
+    a.tailing = true;
+    audio.pause();
+    a.timers.push(setTimeout(stopRec, a.tail * 1000));
+  }
+  if (a.scope === "track" && a.step === 4 && a.mode === "after" && !a.holding && !audio.paused) {
+    const t = audio.currentTime;
+    const cue = (stepCues(a.step) || []).find(c => t >= c[1] && t < c[1] + 0.3);
+    if (cue && cue !== a.lastCue) {
+      a.lastCue = cue; a.holding = true;
+      audio.pause();
+      a.timers.push(setTimeout(() => {
+        a.holding = false;
+        if (rec.active === a && !a.stopping) audio.play().catch(() => {});
+      }, (1.5 * (cue[1] - cue[0]) + 1) / audio.playbackRate * 1000));
+    }
+  }
+}
+
+/* ---- playback: a stretch of the original, or a take mixed over the original */
+
+function playRange(from, to) {
+  stopMix(); stopRange();
+  audio.currentTime = Math.max(0, from);
+  audio.play().catch(() => {});
+  range.stopAt = to;
+  const tick = () => {
+    if (audio.paused) return stopRange();
+    if (audio.currentTime >= range.stopAt) { audio.pause(); return stopRange(); }
+    range.raf = requestAnimationFrame(tick);
+  };
+  range.raf = requestAnimationFrame(tick);
+}
+function stopRange() { cancelAnimationFrame(range.raf); range.raf = 0; }
+
+function applyBalance() {
+  const b = recPref.bal, orig = Math.min(1, 2 * (1 - b)), me = Math.min(1, 2 * b);
+  if (mix.meGain) mix.meGain.gain.value = me * 1.4; // phone mics record quieter than the mastered mp3
+  if (mix.origGain) mix.origGain.gain.value = orig;
+  else if (mix.orig) mix.orig.volume = orig;
+}
+
+async function playMix(take) {
+  stopMix(); stopRange();
+  if (rec.active || !take) return;
+  if (audio && !audio.paused) audio.pause();
+  const ctx = audioCtx();
+  let buf = bufCache.get(take.id);
+  if (!buf) {
+    try { buf = await ctx.decodeAudioData(await take.blob.arrayBuffer()); }
+    catch { setRecMsg("Không phát được bản ghi này."); return; }
+    bufCache.set(take.id, buf);
+  }
+  if (rec.active || mix.take) return;
+  if (!mix.orig) {
+    mix.orig = new Audio();
+    mix.orig.preload = "auto";
+    mix.orig.setAttribute("playsinline", "");
+    mix.meGain = ctx.createGain();
+    mix.meGain.connect(ctx.destination);
+    // a file:// mp3 counts as cross-origin to Web Audio and would come out silent: use .volume there
+    if (location.protocol !== "file:") {
+      mix.origGain = ctx.createGain();
+      mix.origGain.connect(ctx.destination);
+      ctx.createMediaElementSource(mix.orig).connect(mix.origGain);
+    }
+  }
+  const src = encodeURI(take.file);
+  if (mix.orig.getAttribute("src") !== src) mix.orig.setAttribute("src", src);
+  try { mix.orig.currentTime = take.segs[0][1]; } catch { /* before metadata: mixTick seeks again */ }
+  applyBalance();
+  const node = ctx.createBufferSource();
+  node.buffer = buf;
+  node.connect(mix.meGain);
+  node.onended = () => { if (mix.node === node) stopMix(); };
+  mix.take = take; mix.node = node; mix.t0 = ctx.currentTime + 0.15; mix.settle = 0;
+  node.start(mix.t0);
+  mix.timer = setInterval(mixTick, 40);
+  paintMixUI();
+}
+
+/** keep the original in step with the take: play the stretches that were heard, pause in between */
+function mixTick() {
+  const take = mix.take, orig = mix.orig, now = rec.ctx.currentTime;
+  if (!take) return;
+  const tt = now - mix.t0 - offsetVal();
+  const seg = take.segs.find(s => tt >= s[0] && tt < s[0] + (s[2] - s[1]) / s[3]);
+  if (seg) {
+    const target = seg[1] + (tt - seg[0]) * seg[3];
+    if (orig.playbackRate !== seg[3]) orig.playbackRate = seg[3];
+    if (orig.paused) {
+      if (Math.abs(orig.currentTime - target) > 0.05) orig.currentTime = target;
+      orig.play().catch(() => {});
+      mix.settle = now + 0.5; // give it time to start before correcting drift
+    } else if (now > mix.settle && Math.abs(orig.currentTime - target) > 0.15) {
+      orig.currentTime = target;
+      mix.settle = now + 0.5;
+    }
+    highlightAt(target);
+  } else {
+    if (!orig.paused) orig.pause();
+    const next = take.segs.find(s => s[0] > tt);
+    if (next && Math.abs(orig.currentTime - next[1]) > 0.05) orig.currentTime = next[1];
+  }
+}
+
+function stopMix() {
+  if (!mix.take) return;
+  clearInterval(mix.timer);
+  mix.timer = 0;
+  try { mix.node.onended = null; mix.node.stop(); } catch { /* already stopped */ }
+  mix.node = mix.take = null;
+  if (mix.orig) mix.orig.pause();
+  highlightAt(-1);
+  paintMixUI();
+}
+function toggleMix(take) {
+  if (mix.take && take && mix.take.id === take.id) stopMix(); else playMix(take);
+}
+
+/** mark the dialogue line being read at time t of the current step's track */
+function highlightAt(t) {
+  const dlg = $("#card-conv .dialogue");
+  if (!dlg) return;
+  const cues = isRecStep(state.step) ? stepCues() : null;
+  const c = cues && t >= 0 ? cues.find(c => t >= c[0] - 0.05 && t <= c[1] + 0.1) : null;
+  const line = c ? String(c[2]) : "";
+  if (dlg.dataset.playing === line) return;
+  dlg.dataset.playing = line;
+  dlg.querySelectorAll(".say.playing").forEach(s => s.classList.remove("playing"));
+  const say = line && dlg.querySelector(`.say[data-line="${line}"]`);
+  if (say) say.classList.add("playing");
+}
+
+/* ---- UI */
+
+function paintRecUI() {
+  const a = rec.active, on = !!a;
+  document.body.classList.toggle("recording", on);
+  const player = $(".player");
+  if (player) player.classList.toggle("recording", on);
+  const btn = $("#recBtn");
+  if (btn) {
+    btn.classList.toggle("on", on);
+    btn.innerHTML = on ? ICON.stop : ICON.rec;
+    btn.setAttribute("aria-label", on ? "Dừng ghi âm" : "Ghi âm cùng audio");
+  }
+  rec.timeEls = [...document.querySelectorAll(".rec-time")];
+  rec.meterEls = [...document.querySelectorAll(".meter i")];
+  rec.timeEls.forEach(el => { el.textContent = "0:00"; });
+  rec.meterEls.forEach(el => el.style.setProperty("--lvl", 0));
+  if (on && !rec.raf) rec.raf = requestAnimationFrame(recTick);
+  paintLineRec();
+}
+
+function paintMixUI() {
+  const id = mix.take && mix.take.id;
+  document.querySelectorAll("[data-mix]").forEach(b => {
+    const on = b.dataset.mix === id;
+    b.classList.toggle("on", on);
+    b.innerHTML = `${on ? ICON.stop : ICON.play}<span>${on ? "Dừng" : "Song song"}</span>`;
+  });
+  paintLineRec();
+}
+
+function paintRecRow() {
+  const player = $(".player"), on = isRecStep(state.step);
+  if (!player) return;
+  player.classList.toggle("can-rec", on);
+  if (!on) return;
+  const el = $("#recMode");
+  if (state.step === 4) {
+    const m = recMode(), cues = stepCues();
+    el.innerHTML = `<button class="chip ${m === "with" ? "on" : ""}" data-rec-mode="with" aria-pressed="${m === "with"}">Cùng lúc</button>
+      <button class="chip ${m === "after" ? "on" : ""}" data-rec-mode="after" aria-pressed="${m === "after"}"
+        ${cues ? 'title="Audio tự dừng sau mỗi lượt thoại để bạn nói lại"' : 'disabled title="Unit này chưa có mốc thời gian từng câu"'}>Ngay sau</button>`;
+  } else {
+    el.innerHTML = state.step === 2 ? "<b>Ngay sau</b> · nói trong khoảng lặng sau mỗi câu" : "<b>Cùng lúc</b> · đọc cùng người nói";
+  }
+  setRecMsg(canRecord ? "" : recUnsupported());
+}
+
+function recStepChanged() {
+  const on = isRecStep(state.step);
+  if (!on) releaseMic();
+  paintRecRow();
+  const dlg = $("#card-conv .dialogue");
+  if (dlg) {
+    dlg.classList.toggle("rec-lines", on && !!stepCues());
+    closeLineRec();
+  }
+  highlightAt(-1);
+  refreshRecPanel();
+}
+
+async function refreshRecPanel() {
+  const panel = $("#rec-panel");
+  if (!panel) return;
+  const on = isRecStep(state.step);
+  panel.hidden = !on;
+  document.body.classList.toggle("rec-steps", on);
+  if (!on) { openSheet(false); return; }
+  const key = recKey(), step = state.step;
+  const takes = await takeDB.list(key, step);
+  if (key !== recKey() || step !== state.step) return;
+  rec.trackTakes = takes.filter(t => t.scope === "track").sort((x, y) => y.created - x.created);
+  rec.lineTakes = new Map(takes.filter(t => t.scope === "line").map(t => [t.line, t]));
+  const cues = stepCues(), nLines = cues ? new Set(cues.map(c => c[2])).size : 0;
+  document.querySelectorAll("#card-conv .line-mic").forEach(b => b.classList.toggle("has-take", rec.lineTakes.has(+b.dataset.lineMic)));
+  const sum = nLines ? `Đã ghi ${rec.lineTakes.size}/${nLines} dòng` : "";
+  $("#recSum").textContent = sum;
+  $("#recSumM").textContent = [rec.trackTakes.length ? `${rec.trackTakes.length} bản cả bài` : "", sum].filter(Boolean).join(" · ");
+  $("#recCount").textContent = rec.trackTakes.length ? `(${rec.trackTakes.length})` : "";
+  const n = rec.trackTakes.length;
+  $("#recBody").innerHTML = `
+    <div class="rec-ctrl">
+      <label class="bal">Gốc <input type="range" id="recBal" min="0" max="1" step="0.05" value="${recPref.bal}"
+        aria-label="Cân bằng âm lượng: bản gốc ↔ giọng tôi"> Tôi</label>
+      <span class="off" title="Bù độ trễ của micro: tăng lên nếu giọng bạn nghe chậm hơn bản gốc">Lệch
+        <button class="btn small" data-off="-1" aria-label="Giảm độ lệch">−</button><output id="recOff">${offsetVal().toFixed(2)}s</output><button class="btn small" data-off="1" aria-label="Tăng độ lệch">+</button></span>
+    </div>
+    ${n ? `<ol class="takes">${rec.trackTakes.map((t, i) => `<li class="take">
+        <span class="n">#${n - i}</span>
+        <span class="meta">${fmtClock(t.created)} · ${fmtTime(t.duration)}${t.step === 4 && t.mode === "after" ? " · ngay sau" : ""}</span>
+        <button class="btn small mix" data-mix="${t.id}"></button>
+        <button class="btn small icon" data-del="${t.id}" title="Xoá bản ghi" aria-label="Xoá bản ghi #${n - i}">${ICON.trash}</button>
+      </li>`).join("")}</ol>`
+      : `<p class="empty">Chưa có bản ghi cả bài. Bấm nút ● đỏ trên thanh phát để ghi cùng audio${nLines ? `, hoặc bấm ${ICON.mic} cạnh từng dòng thoại để ghi riêng dòng đó` : ""}.</p>`}`;
+  paintMixUI();
+}
+
+function openSheet(on) {
+  const panel = $("#rec-panel"), backdrop = $("#sheetBackdrop");
+  if (!panel) return;
+  on = !!on && !panel.hidden && matchMedia("(max-width: 640px)").matches;
+  panel.classList.toggle("open", on);
+  backdrop.hidden = !on;
+  $("#sheetToggle").setAttribute("aria-expanded", on);
+}
+
+function closeLineRec() {
+  const dlg = $("#card-conv .dialogue");
+  if (!dlg) return;
+  dlg.querySelectorAll(".line-rec").forEach(r => r.remove());
+  dlg.querySelectorAll(".line-mic.open").forEach(b => b.classList.remove("open"));
+}
+function toggleLineRec(line) {
+  const dlg = $("#card-conv .dialogue"), btn = dlg && dlg.querySelector(`[data-line-mic="${line}"]`);
+  const open = dlg && dlg.querySelector(".line-rec");
+  const same = open && +open.dataset.line === line;
+  if (rec.active && open) return; // keep the row while it is recording
+  closeLineRec();
+  if (same || !btn) return;
+  btn.classList.add("open");
+  btn.insertAdjacentHTML("afterend", `<div class="line-rec" data-line="${line}"></div>`);
+  paintLineRec();
+}
+function paintLineRec() {
+  const row = $("#card-conv .line-rec");
+  if (!row) return;
+  const line = +row.dataset.line, take = rec.lineTakes.get(line), a = rec.active;
+  const recThis = a && a.scope === "line" && a.line === line;
+  const mixThis = mix.take && take && mix.take.id === take.id;
+  row.innerHTML = `
+    <span class="st">${recThis ? "Đang ghi… nói theo audio" : take ? `Đã ghi lúc ${fmtClock(take.created)}` : "Chưa ghi dòng này"}</span>
+    <button class="btn small" data-line-play="${line}" ${a ? "disabled" : ""}>${ICON.play}Gốc</button>
+    <button class="btn small rec ${recThis ? "on" : ""}" data-line-rec="${line}" ${(a && !recThis) || !canRecord ? "disabled" : ""}
+      ${canRecord ? "" : `title="${esc(recUnsupported())}"`}>${recThis ? `${ICON.stop}Dừng` : `${ICON.rec}Nói`}</button>
+    <button class="btn small mix ${mixThis ? "on" : ""}" data-line-mix="${line}" ${!take || a ? "disabled" : ""}>${mixThis ? `${ICON.stop}Dừng` : `${ICON.play}Song song`}</button>`;
+}
+function playLine(line) {
+  const r = lineRange(state.step, line);
+  if (r) playRange(r.start - 0.1, r.end + 0.15);
+}
+
+/** stop recording and playback and let go of the mic (leaving the unit, or the page going to the background) */
+function recStopAll() {
+  if (rec.active) stopRec();
+  stopMix(); stopRange();
+  releaseMic();
+}
+function recTeardown() {
+  recStopAll();
+  openSheet(false);
+  document.body.classList.remove("rec-steps");
+}
+document.addEventListener("visibilitychange", () => { if (document.hidden) recStopAll(); });
+
 /* ------------------------------------------------------------------ events */
 
+let sheetDrag = null, sheetDragged = false;
+
 app.addEventListener("click", e => {
+  if (onRecClick(e)) return;
   const check = e.target.closest("[data-check]");
   if (check) {
     e.stopPropagation();
@@ -1017,6 +1759,62 @@ app.addEventListener("click", e => {
   }
 });
 
+/** clicks on the recording controls; true when handled */
+function onRecClick(e) {
+  const on = sel => e.target.closest(sel);
+  let el;
+  if (on("#recBtn")) { rec.active ? stopRec() : startTrackRec(); return true; }
+  if (on("#recStop")) { stopRec(); return true; }
+  if ((el = on("[data-rec-mode]"))) {
+    if (!rec.active) { recPref.mode5 = el.dataset.recMode; store.set("sue-rec-mode5", recPref.mode5); paintRecRow(); }
+    return true;
+  }
+  if ((el = on("[data-line-mic]"))) { toggleLineRec(+el.dataset.lineMic); return true; }
+  if ((el = on("[data-line-play]"))) { playLine(+el.dataset.linePlay); return true; }
+  if ((el = on("[data-line-rec]"))) { rec.active ? stopRec() : startLineRec(+el.dataset.lineRec); return true; }
+  if ((el = on("[data-line-mix]"))) { toggleMix(rec.lineTakes.get(+el.dataset.lineMix)); return true; }
+  if ((el = on("[data-mix]"))) { toggleMix(rec.trackTakes.find(t => t.id === el.dataset.mix)); return true; }
+  if ((el = on("[data-del]"))) {
+    const id = el.dataset.del;
+    if (confirm("Xoá bản ghi này?")) {
+      if (mix.take && mix.take.id === id) stopMix();
+      takeDB.del(id).then(refreshRecPanel);
+    }
+    return true;
+  }
+  if ((el = on("[data-off]"))) {
+    recPref.offset = Math.max(-0.3, Math.min(0.8, Math.round((offsetVal() + 0.05 * +el.dataset.off) * 100) / 100));
+    store.set("sue-rec-offset", recPref.offset);
+    $("#recOff").textContent = `${recPref.offset.toFixed(2)}s`;
+    return true;
+  }
+  if (on("#sheetToggle")) {
+    if (!sheetDragged) openSheet(!$("#rec-panel").classList.contains("open"));
+    sheetDragged = false;
+    return true;
+  }
+  if (on("#sheetBackdrop")) { openSheet(false); return true; }
+  return false;
+}
+
+// drag the sheet handle up or down to open or close it
+app.addEventListener("pointerdown", e => { if (e.target.closest("#sheetToggle")) { sheetDrag = e.clientY; sheetDragged = false; } });
+app.addEventListener("pointerup", e => {
+  if (sheetDrag === null) return;
+  const dy = e.clientY - sheetDrag;
+  sheetDrag = null;
+  if (Math.abs(dy) > 30) { sheetDragged = true; openSheet(dy < 0); }
+});
+app.addEventListener("pointercancel", () => { sheetDrag = null; });
+
+app.addEventListener("input", e => {
+  if (e.target.id === "recBal") {
+    recPref.bal = +e.target.value;
+    applyBalance();
+    store.set("sue-rec-bal", recPref.bal);
+  }
+});
+
 app.addEventListener("change", e => {
   if (e.target.id === "rate") {
     state.rate = +e.target.value; audio.playbackRate = state.rate; store.set("sue-rate", state.rate);
@@ -1034,6 +1832,7 @@ document.addEventListener("keydown", e => {
   else if (e.key === "ArrowLeft") { audio.currentTime = Math.max(0, audio.currentTime - 3); }
   else if (e.key === "ArrowRight") { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 3); }
   else if (/^[1-7]$/.test(e.key)) { selectStep(+e.key - 1); }
+  else if ((e.key === "r" || e.key === "R") && isRecStep(state.step) && canRecord) { rec.active ? stopRec() : startTrackRec(); }
 });
 
 // theme toggle

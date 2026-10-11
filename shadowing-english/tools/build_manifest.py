@@ -6,7 +6,9 @@ Usage:
 Browsers cannot list folders, so index.html reads this manifest to know which
 levels, units, mp3 tracks, markdown and PDF files exist. The markdown text is
 embedded too, so the page also works when opened straight from disk (file://),
-where fetch() of local files is blocked. Re-run after adding or editing units.
+where fetch() of local files is blocked. So are the sentence timelines from
+tools/build_timeline.py, used for line-by-line recording. Re-run after adding
+or editing units.
 """
 import json
 import re
@@ -39,6 +41,7 @@ def scan_unit(folder):
     mds = sorted(folder.glob("*.md"))
     pdfs = sorted(folder.glob("*.pdf"))
     tracks = sorted(filter(None, (track_info(p) for p in folder.glob("*.mp3"))), key=lambda t: t["step"])
+    timeline = folder / "timeline.json"  # written by tools/build_timeline.py
     return {
         "name": folder.name,
         "number": num(folder),
@@ -47,6 +50,7 @@ def scan_unit(folder):
         "mdText": mds[0].read_text(encoding="utf-8") if mds else None,
         "pdf": rel(pdfs[0]) if pdfs else None,
         "tracks": tracks,
+        "cues": json.loads(timeline.read_text(encoding="utf-8")) if timeline.exists() else None,
     }
 
 
@@ -58,8 +62,10 @@ def main():
             levels.append({"name": level_dir.name, "number": num(level_dir), "units": units})
 
     data = {"generated": datetime.now().isoformat(timespec="seconds"), "levels": levels}
-    OUT.write_text("window.SPEAKUP_CONTENT = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n",
-                   encoding="utf-8")
+    text = json.dumps(data, ensure_ascii=False, indent=1)
+    # one line per cue instead of one line per number
+    text = re.sub(r"\[\s+([-\d.,\s]+?)\s+\]", lambda m: "[" + re.sub(r"\s+", "", m.group(1)) + "]", text)
+    OUT.write_text("window.SPEAKUP_CONTENT = " + text + ";\n", encoding="utf-8")
     for lv in levels:
         with_md = sum(1 for u in lv["units"] if u["md"])
         print(f"{lv['name']}: {len(lv['units'])} units, {with_md} with markdown")
