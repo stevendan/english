@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speak Up English</title>
+<style>
+:root {
+  --bg: #f4f6f6;
+  --surface: #ffffff;
+  --surface-2: #eef3f4;
+  --text: #1f2a2d;
+  --muted: #66767a;
+  --line: #dbe3e5;
+  --accent: #4f8a94;
+  --accent-strong: #356b74;
+  --accent-soft: #dcebee;
+  --head: #4f8a94;
+  --head-strong: #3f7680;
+  --track: #b7860b;
+  --tip-bg: #e3eefa;
+  --smooth: #2e5597;
+  --strong: #d26f00;
+  --weak: #9a9a9a;
+  --kw: #2e5597;
+  --green: #2f8a51;
+  --done: #2f8a51;
+  --shadow: 0 1px 2px rgba(20, 40, 45, .06), 0 4px 16px rgba(20, 40, 45, .06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121719;
+    --surface: #1b2225;
+    --surface-2: #232c30;
+    --text: #e3eaec;
+    --muted: #93a3a7;
+    --line: #2f3a3e;
+    --accent: #6fb0bb;
+    --accent-strong: #8fc7d0;
+    --accent-soft: #24393d;
+    --head: #2f6670;
+    --head-strong: #3a7a85;
+    --track: #e6c25a;
+    --tip-bg: #1f2d3d;
+    --smooth: #8ab4f8;
+    --strong: #ffa94d;
+    --weak: #7d8a8e;
+    --kw: #8ab4f8;
+    --green: #6fcf8f;
+    --done: #6fcf8f;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121719; --surface: #1b2225; --surface-2: #232c30; --text: #e3eaec; --muted: #93a3a7;
+  --line: #2f3a3e; --accent: #6fb0bb; --accent-strong: #8fc7d0; --accent-soft: #24393d; --head: #2f6670; --head-strong: #3a7a85;
+  --track: #e6c25a; --tip-bg: #1f2d3d; --smooth: #8ab4f8; --strong: #ffa94d; --weak: #7d8a8e;
+  --kw: #8ab4f8; --green: #6fcf8f; --done: #6fcf8f; --shadow: none; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 230px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+button, select { font: inherit; color: inherit; }
+a { color: var(--accent-strong); }
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 1180px; margin: 0 auto; padding: 10px 16px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+}
+.brand { font-weight: 700; font-size: 17px; letter-spacing: .2px; margin-right: auto; white-space: nowrap; }
+.brand span { color: var(--accent); }
+.picker { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.picker label { font-size: 13px; color: var(--muted); }
+select {
+  appearance: none; -webkit-appearance: none;
+  background: var(--surface-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2366767a'/%3E%3C/svg%3E") no-repeat right 10px center;
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 6px 28px 6px 10px; min-width: 104px; cursor: pointer;
+}
+.btn {
+  border: 1px solid var(--line); background: var(--surface-2);
+  border-radius: 8px; padding: 6px 11px; cursor: pointer; line-height: 1.3;
+}
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: .4; cursor: default; border-color: var(--line); }
+.btn.primary { background: var(--head); border-color: var(--head); color: #fff; font-weight: 600; }
+.btn.primary:hover { background: var(--head-strong); border-color: var(--head-strong); }
+:root[data-theme="dark"] .btn.primary, :root:not([data-theme="light"]) .btn.primary { color: #fff; }
+.btn.small { padding: 3px 9px; font-size: 13px; }
+.btn.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 600; }
+
+/* ---------- layout ---------- */
+main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
+.unit-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 12px; }
+.unit-head h1 { margin: 0; font-size: 24px; line-height: 1.2; }
+.unit-head .meta { color: var(--muted); font-size: 14px; }
+.unit-head .meta a { margin-left: 4px; }
+.unit-head .progress-text { margin-left: auto; font-size: 13px; color: var(--muted); }
+
+/* ---------- player ---------- */
+.player {
+  position: sticky; top: 57px; z-index: 10;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: var(--shadow); padding: 12px; margin-bottom: 18px;
+}
+.steps { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.step {
+  position: relative; text-align: left;
+  border: 1px solid var(--line); background: var(--surface-2); border-radius: 9px;
+  padding: 6px 8px 7px; cursor: pointer; min-width: 0;
+}
+.step:hover { border-color: var(--accent); }
+.step .n { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.step .t { display: block; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.step.active { background: var(--head); border-color: var(--head); color: #fff; }
+.step.active .check { background: transparent; border-color: rgba(255,255,255,.6); }
+.step.active .n { color: rgba(255,255,255,.8); }
+.step .check {
+  position: absolute; top: 5px; right: 6px; width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid var(--line); background: var(--surface); display: grid; place-items: center;
+  font-size: 10px; line-height: 1; color: transparent;
+}
+.step.done .check { background: var(--done); border-color: var(--done); color: #fff; }
+.step.missing { opacity: .45; cursor: not-allowed; }
+.player-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 10px; }
+.player-row audio { flex: 1 1 320px; min-width: 0; height: 40px; }
+.player-tools { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.player-tools select { min-width: 0; padding: 4px 24px 4px 8px; font-size: 13px; }
+.hint {
+  margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
+  background: var(--accent-soft); font-size: 14px;
+}
+.hint b { color: var(--accent-strong); }
+.hint .file { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; word-break: break-all; }
+
+/* ---------- lesson cards ---------- */
+.lesson { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .2s, border-color .2s;
+}
+.card.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow); }
+.card-h {
+  display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+  background: var(--head); color: #fff; font-weight: 600;
+}
+.card-h .grow { flex: 1; }
+.card-h .track {
+  border: 0; background: rgba(255,255,255,.18); color: #fff; border-radius: 6px;
+  padding: 2px 8px; font-size: 12.5px; cursor: pointer; white-space: nowrap;
+}
+.card-h .track:hover { background: rgba(255,255,255,.3); }
+.card-b { padding: 12px 14px 14px; }
+.card-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.context { font-style: italic; color: var(--muted); margin: 0 0 8px; }
+.empty { color: var(--muted); font-style: italic; margin: 0; }
+
+.dialogue { display: grid; grid-template-columns: max-content 1fr; gap: 5px 12px; }
+.dialogue .who { font-weight: 600; color: var(--accent-strong); }
+.dialogue .say { transition: filter .25s; }
+.blurred .say, .say.blurred { filter: blur(6px); user-select: none; cursor: pointer; }
+.blank { display: inline-block; min-width: 64px; border-bottom: 2px solid var(--green); transform: translateY(-3px); }
+
+.kw { color: var(--kw); font-weight: 700; background: none; }
+.lk { font-family: Tahoma, "Segoe UI Symbol", "DejaVu Sans", sans-serif; }
+u.sub { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
+
+.sln-item + .sln-item { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.sln-sentence { font-weight: 700; font-size: 16px; margin: 0 0 4px; }
+.sln-labels { margin: 0 0 4px; padding: 0; list-style: none; font-size: 13.5px; }
+.sln-labels li { margin: 1px 0; }
+.lbl { font-style: italic; font-weight: 600; margin-right: 4px; }
+.c-smooth, .c-linking, .c-change { color: var(--smooth); }
+.c-strong { color: var(--strong); }
+.c-weak { color: var(--weak); }
+.sln-note { margin: 4px 0 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+.legend b { font-weight: 600; }
+.tip { margin-top: 14px; padding: 10px 12px 10px 28px; background: var(--tip-bg); border-radius: 8px; font-size: 14px; }
+.tip-title { margin: 0 0 4px -16px; font-weight: 700; font-size: 13px; letter-spacing: .3px; }
+.tip ul { margin: 0; padding: 0; }
+.tip li { margin: 2px 0; }
+
+.note + .note { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.note-en { font-weight: 700; margin: 0; }
+.note-vi { color: var(--smooth); margin: 0 0 4px; }
+.note-ex { font-style: italic; margin: 3px 0; color: var(--text); }
+.pairs { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 14px; }
+.pairs td { padding: 3px 8px 3px 0; vertical-align: top; border-top: 1px solid var(--line); }
+.pairs td:first-child { font-style: italic; width: 48%; }
+
+.gram + .gram { margin-top: 16px; }
+.gram-title { color: var(--green); font-weight: 700; margin: 0 0 3px; }
+.gram-ex-text { font-style: italic; color: var(--muted); margin: 0 0 6px; font-size: 14px; }
+.gram-examples { margin: 0; padding-left: 18px; }
+.gram-examples li { margin: 3px 0; }
+.gram-examples + .gram-ex-text { margin-top: 8px; }
+.gram-examples li.dlg { list-style: none; margin-left: -18px; padding-left: 18px; }
+
+.drill + .drill { margin-top: 14px; }
+.drill-sentence { margin: 0 0 6px; font-size: 15.5px; }
+.drill-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.opt {
+  border: 1px solid var(--line); background: var(--surface-2); border-radius: 999px;
+  padding: 3px 11px; cursor: pointer; font-size: 14px;
+}
+.opt:hover { border-color: var(--green); }
+.opt.on { border-color: var(--green); background: var(--green); color: #fff; }
+.opt b { margin-right: 3px; }
+
+.notice {
+  background: var(--surface); border: 1px dashed var(--line); border-radius: 12px;
+  padding: 18px; color: var(--muted);
+}
+.notice code { background: var(--surface-2); padding: 1px 6px; border-radius: 5px; color: var(--text); }
+
+/* ---------- guide dialog ---------- */
+dialog {
+  border: 0; border-radius: 14px; padding: 0; width: min(680px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px); background: var(--surface); color: var(--text);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+dialog::backdrop { background: rgba(10, 20, 22, .55); }
+.dlg-h { display: flex; align-items: center; padding: 14px 18px; background: var(--head); color: #fff; position: sticky; top: 0; }
+.dlg-h h2 { margin: 0; font-size: 18px; flex: 1; }
+.dlg-h .close { border: 0; background: rgba(255,255,255,.18); color: #fff; width: 32px; height: 32px; border-radius: 8px; font-size: 18px; cursor: pointer; }
+.dlg-b { padding: 16px 18px 20px; }
+.dlg-b .intro { margin: 0 0 14px; padding: 10px 12px; background: var(--accent-soft); border-radius: 8px; }
+.guide-steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.guide-steps li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
+.guide-steps li:first-child { border-top: 0; }
+.guide-steps .num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--head); color: #fff;
+  display: grid; place-items: center; font-weight: 700;
+}
+.guide-steps h3 { margin: 3px 0 2px; font-size: 15.5px; }
+.guide-steps p { margin: 0; color: var(--muted); }
+.guide-steps .tag { font-size: 12px; color: var(--accent-strong); background: var(--accent-soft); border-radius: 5px; padding: 1px 6px; margin-left: 6px; font-weight: 600; }
+.dlg-b h4 { margin: 18px 0 6px; font-size: 14px; }
+.dlg-b .tips { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font: 12px/1.6 ui-monospace, Consolas, monospace; background: var(--surface-2); color: var(--text); }
+
+@media (max-width: 900px) {
+  .lesson { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: repeat(7, minmax(92px, 1fr)); overflow-x: auto; padding-bottom: 2px; }
+  html { scroll-padding-top: 250px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 14.5px; }
+  .brand { width: 100%; }
+  .player { top: 0; position: relative; }
+  html { scroll-padding-top: 120px; }
+  .unit-head h1 { font-size: 20px; }
+  .unit-head .progress-text { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Speak Up <span>English Enhanced</span></div>
+    <div class="picker">
+      <label for="levelSel">Level</label>
+      <select id="levelSel" aria-label="Chọn level"></select>
+      <label for="unitSel">Unit</label>
+      <select id="unitSel" aria-label="Chọn unit"></select>
+      <button class="btn" id="prevBtn" title="Unit trước">‹</button>
+      <button class="btn" id="nextBtn" title="Unit sau">›</button>
+    </div>
+    <button class="btn" id="themeBtn" title="Đổi giao diện sáng / tối">◐</button>
+    <button class="btn primary" id="guideBtn">Cách học</button>
+  </div>
+</header>
+
+<main id="app">
+  <div class="notice">Đang tải nội dung…</div>
+</main>
+
+<dialog id="guide" aria-labelledby="guideTitle">
+  <div class="dlg-h">
+    <h2 id="guideTitle">Cách học</h2>
+    <button class="close" id="guideClose" aria-label="Đóng">×</button>
+  </div>
+  <div class="dlg-b">
+    <p class="intro">Các unit được tạo cùng với file mp3. Hãy sử dụng file mp3 để cùng học.<br>
+      Mỗi unit có 7 track — học lần lượt từ bước 1 đến bước 7.</p>
+    <ol class="guide-steps">
+      <li><span class="num">1</span><div><h3>Conversation</h3>
+        <p>Ban đầu, nghe đoạn hội thoại. Chú ý đến phát âm và ngữ điệu của đoạn hội thoại.</p></div></li>
+      <li><span class="num">2</span><div><h3>Speak Like a Native</h3>
+        <p>Luyện tập 3 câu được trích ra từ đoạn hội thoại. Bắt chước cách nối từ và cách biến âm, đọc ra thành tiếng các câu đó.</p></div></li>
+      <li><span class="num">3</span><div><h3>Repetition</h3>
+        <p>Luyện tập phát âm từng câu một của đoạn hội thoại. Cố gắng bắt chước lại phát âm của người trong file mp3.</p></div></li>
+      <li><span class="num">4</span><div><h3>Overlapping <span class="tag">nhìn text</span></h3>
+        <p>Vừa nhìn text vừa đọc trùng khớp cùng lúc với người trong file mp3.</p></div></li>
+      <li><span class="num">5</span><div><h3>Shadowing <span class="tag">không nhìn text</span></h3>
+        <p>Không nhìn text, cố gắng đọc trùng khớp với người trong file mp3.</p></div></li>
+      <li><span class="num">6</span><div><h3>Role Play</h3>
+        <p>Theo hướng dẫn trong file mp3, đọc phần B và phần A.</p></div></li>
+      <li><span class="num">7</span><div><h3>Substitution Drill</h3>
+        <p>Thay phần gạch chân và luyện tập các cách nói khác nhau.</p></div></li>
+    </ol>
+    <h4>Dùng trang này thế nào</h4>
+    <ul class="tips">
+      <li>Chọn Level và Unit ở thanh trên cùng, rồi bấm vào từng bước (1–7) để phát track tương ứng.</li>
+      <li>Ở bước <b>Shadowing</b>, lời thoại được làm mờ để bạn không nhìn text; bấm vào dòng nào để xem riêng dòng đó.</li>
+      <li>Ở <b>Role Play</b>, dùng nút “Che A / Che B” để luyện nhập vai. Ở <b>Substitution Drill</b>, bấm vào a / b / c để thay vào câu.</li>
+      <li>Nghe hết một track thì bước đó được đánh dấu ✓ (bấm vào vòng tròn ở góc để tự đánh dấu hoặc bỏ đánh dấu).</li>
+      <li>Phím tắt: <kbd>Space</kbd> phát / dừng, <kbd>←</kbd> <kbd>→</kbd> lùi / tới 3 giây, <kbd>1</kbd>–<kbd>7</kbd> chọn bước.</li>
+    </ul>
+  </div>
+</dialog>
+
+<script src="content.js"></script>
+<script>
+(() => {
+"use strict";
+
+const STEPS = [
+  { name: "Conversation",       card: "conv",  hint: "Nghe đoạn hội thoại. Chú ý đến phát âm và ngữ điệu." },
+  { name: "Speak Like a Native", card: "speak", hint: "Luyện 3 câu trích từ hội thoại. Bắt chước cách nối từ, biến âm và đọc thành tiếng." },
+  { name: "Repetition",         card: "conv",  hint: "Luyện phát âm từng câu một. Bắt chước lại phát âm của người trong file mp3." },
+  { name: "Overlapping",        card: "conv",  hint: "Vừa nhìn text vừa đọc trùng khớp cùng lúc với người trong file mp3." },
+  { name: "Shadowing",          card: "conv",  hint: "Không nhìn text, cố gắng đọc trùng khớp với người trong file mp3. Lời thoại đã được làm mờ." },
+  { name: "Role Play",          card: "role",  hint: "Theo hướng dẫn trong file mp3, đọc phần B và phần A." },
+  { name: "Substitution Drill", card: "drill", hint: "Thay phần gạch chân và luyện tập các cách nói khác nhau." },
+];
+const LABELS = ["smooth", "linking", "change", "weak", "strong"];
+
+const $ = (sel, root = document) => root.querySelector(sel);
+const app = $("#app");
+const levelSel = $("#levelSel"), unitSel = $("#unitSel");
+const DATA = window.SPEAKUP_CONTENT;
+
+const store = {
+  get(key, fallback) {
+    try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); }
+    catch { return fallback; }
+  },
+  set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* ignore */ } },
+};
+
+let progress = store.get("sue-progress", {});
+let state = { level: null, unit: null, step: 0, rate: store.get("sue-rate", 1), loop: false };
+let audio = null;
+
+/* ------------------------------------------------------------------ parsing */
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function stripMarkup(s) { return s.replace(/\*\*|\[\[|\]\]|(?<!_)__(?!_)/g, "").replace(/(?<!\*)\*(?!\*)/g, ""); }
+
+/** inline markup → HTML */
+function md(text) {
+  let t = esc(text);
+  t = t.replace(/_{4,}/g, "\u0000");
+  t = t.replace(/\[\[(.+?)\]\]/g, '<mark class="kw">$1</mark>');
+  t = t.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  t = t.replace(/(?<![\w*])\*(?!\s)(.+?)\*(?!\w)/g, "<i>$1</i>");
+  t = t.replace(/__(.+?)__/g, '<u class="sub">$1</u>');
+  t = t.replace(/‿/g, '<span class="lk">‿</span>');
+  return t.replace(/\u0000/g, '<span class="blank"></span>');
+}
+
+function groups(lines) {
+  const out = []; let cur = [];
+  for (const l of lines) {
+    if (l.trim()) cur.push(l.trim());
+    else if (cur.length) { out.push(cur); cur = []; }
+  }
+  if (cur.length) out.push(cur);
+  return out;
+}
+const trackOf = head => head.includes("—") ? head.split("—").pop().trim() : "";
+const SPEAKER = /^([\p{L}][\p{L}\d.' -]{0,24}):\s+(.*)$/u;
+
+function parseUnit(text) {
+  const blocks = {}; let cur = null;
+  for (const raw of text.split(/\r?\n/)) {
+    const m = raw.trim().match(/^\[(HEADER|[1-6])\]\s*(.*)$/);
+    if (m) { cur = m[1]; blocks[cur] = { head: m[2], lines: [] }; }
+    else if (cur) blocks[cur].lines.push(raw);
+  }
+  const b = k => blocks[k] || { head: "", lines: [] };
+  const nonEmpty = k => b(k).lines.map(l => l.trim()).filter(Boolean);
+  const d = {};
+
+  const [unitLabel, cdLabel] = (b("HEADER").head || "").split("—").map(s => s.trim());
+  d.unitLabel = unitLabel || ""; d.cdLabel = cdLabel || "";
+
+  d.conv = { track: trackOf(b("1").head), context: [], lines: [] };
+  for (const l of nonEmpty("1")) {
+    const m = l.match(SPEAKER);
+    if (m) d.conv.lines.push([m[1], m[2]]); else d.conv.context.push(l);
+  }
+
+  const items = [], tip = []; let inTip = false;
+  for (const s of nonEmpty("2")) {
+    if (s === "[MẸO PHÁT ÂM]") { inTip = true; continue; }
+    if (inTip) { tip.push(s); continue; }
+    const num = s.match(/^\d+\.\s+(.*)$/);
+    const lab = s.match(/^(\w+):\s*(.*)$/);
+    if (num) items.push({ sentence: num[1], labels: [], note: [] });
+    else if (!items.length) continue;
+    else if (lab && LABELS.includes(lab[1])) items[items.length - 1].labels.push([lab[1], lab[2]]);
+    else items[items.length - 1].note.push(s);
+  }
+  d.speak = { track: trackOf(b("2").head), items, tip };
+
+  d.notes = groups(b("3").lines).map(g => ({ en: stripMarkup(g[0]), vi: g[1] || "", explain: g.slice(2) }));
+
+  d.grammar = groups(b("4").lines).map(g => {
+    // keep the original order: sub-headings may sit between examples
+    const isExample = l => l.includes("[[") || /^[AB]:\s/.test(l);
+    return { title: g[0], lines: g.slice(1).map(l => ({ example: isExample(l), text: l })) };
+  });
+
+  d.role = { track: trackOf(b("5").head), lines: [] };
+  for (const l of nonEmpty("5")) {
+    const m = l.match(SPEAKER);
+    if (m) d.role.lines.push([m[1], m[2]]);
+  }
+
+  const drill = [];
+  for (const s of nonEmpty("6")) {
+    const num = s.match(/^\d+\.\s+(.*)$/), opt = s.match(/^[a-e]\.\s+(.*)$/);
+    if (num) drill.push({ sentence: num[1], options: [] });
+    else if (opt && drill.length) drill[drill.length - 1].options.push(opt[1]);
+  }
+  d.drill = { track: trackOf(b("6").head), items: drill };
+  return d;
+}
+
+/** colour the phrases quoted in the labels (like the printed sheets) */
+function highlight(sentence, labels) {
+  const plain = stripMarkup(sentence);
+  const kind = new Array(plain.length).fill(null), prio = new Array(plain.length).fill(0);
+  for (const [k, v] of labels) {
+    const rank = (k === "weak" || k === "strong") ? 2 : 1;
+    for (const m of v.matchAll(/“([^”]+)”/g)) {
+      const phrase = m[1].replace(/‿/g, " ").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const re = new RegExp("(?<![\\p{L}\\d])" + phrase + "(?![\\p{L}\\d])", "giu");
+      for (const hit of plain.matchAll(re)) {
+        for (let i = hit.index; i < hit.index + hit[0].length; i++) {
+          if (rank >= prio[i]) { kind[i] = k; prio[i] = rank; }
+        }
+      }
+    }
+  }
+  let out = "", i = 0;
+  while (i < plain.length) {
+    let j = i;
+    while (j < plain.length && kind[j] === kind[i]) j++;
+    const chunk = esc(plain.slice(i, j));
+    out += kind[i] ? `<span class="c-${kind[i]}">${chunk}</span>` : chunk;
+    i = j;
+  }
+  return out;
+}
+
+/* ------------------------------------------------------------------ data */
+
+function unitKey(lv, u) { return `${lv.name}/${u.name}`; }
+function currentLevel() { return DATA.levels.find(l => l.name === state.level) || DATA.levels[0]; }
+function currentUnit() { const lv = currentLevel(); return lv.units.find(u => u.name === state.unit) || lv.units[0]; }
+function stepsDone(lv, u) { return new Set(progress[unitKey(lv, u)] || []); }
+
+async function loadMarkdown(unit) {
+  if (!unit.md) return null;
+  if (location.protocol !== "file:") {
+    try {
+      const res = await fetch(unit.md.split("/").map(encodeURIComponent).join("/"), { cache: "no-cache" });
+      if (res.ok) return await res.text();
+    } catch { /* fall back to the embedded copy */ }
+  }
+  return unit.mdText;
+}
+
+/* ------------------------------------------------------------------ pickers */
+
+function fillLevels() {
+  levelSel.innerHTML = DATA.levels.map(l => `<option value="${esc(l.name)}">${esc(l.name.replace("Level ", ""))}</option>`).join("");
+}
+function fillUnits() {
+  const lv = currentLevel();
+  unitSel.innerHTML = lv.units.map(u => {
+    const n = stepsDone(lv, u).size, total = u.tracks.length || 7;
+    const mark = n >= total ? " ✓" : n ? ` (${n}/${total})` : "";
+    return `<option value="${esc(u.name)}">Unit ${u.number}${mark}</option>`;
+  }).join("");
+  levelSel.value = lv.name;
+  unitSel.value = currentUnit().name;
+  const idx = lv.units.indexOf(currentUnit());
+  $("#prevBtn").disabled = idx <= 0 && DATA.levels.indexOf(lv) <= 0;
+  $("#nextBtn").disabled = idx >= lv.units.length - 1 && DATA.levels.indexOf(lv) >= DATA.levels.length - 1;
+}
+
+function go(levelName, unitName, step = 0) {
+  state.level = levelName; state.unit = unitName; state.step = step;
+  const lv = currentLevel(), u = currentUnit();
+  state.level = lv.name; state.unit = u.name;
+  store.set("sue-last", { level: lv.name, unit: u.name });
+  const hash = `#L${lv.number}-U${u.number}`;
+  if (location.hash !== hash) history.replaceState(null, "", hash);
+  fillUnits();
+  render();
+}
+
+function shift(delta) {
+  const lv = currentLevel(), u = currentUnit();
+  let li = DATA.levels.indexOf(lv), ui = lv.units.indexOf(u) + delta;
+  if (ui < 0 && li > 0) { li--; ui = DATA.levels[li].units.length - 1; }
+  else if (ui >= lv.units.length && li < DATA.levels.length - 1) { li++; ui = 0; }
+  const nl = DATA.levels[li], nu = nl.units[Math.max(0, Math.min(ui, nl.units.length - 1))];
+  go(nl.name, nu.name);
+  window.scrollTo({ top: 0 });
+}
+
+/* ------------------------------------------------------------------ render */
+
+function trackButton(label, step) {
+  return label ? `<button class="track" data-play="${step}" title="Phát track này">▶ ${esc(label)}</button>` : "";
+}
+function card(id, title, trackLabel, step, body) {
+  return `<section class="card" id="card-${id}">
+    <div class="card-h"><span class="grow">${title}</span>${trackButton(trackLabel, step)}</div>
+    <div class="card-b">${body}</div></section>`;
+}
+function dialogueHTML(lines, cls = "") {
+  return `<div class="dialogue ${cls}">` + lines.map(([who, say]) =>
+    `<div class="who" data-who="${esc(who)}">${esc(who)}:</div><div class="say" data-who="${esc(who)}">${md(say)}</div>`).join("") + `</div>`;
+}
+
+function grammarLines(lines) {
+  let html = "", list = [];
+  const flush = () => {
+    if (list.length) html += `<ul class="gram-examples">${list.join("")}</ul>`;
+    list = [];
+  };
+  for (const l of lines) {
+    if (l.example) list.push(`<li class="${/^[AB]:\s/.test(l.text) ? "dlg" : ""}">${md(l.text)}</li>`);
+    else { flush(); html += `<p class="gram-ex-text">${md(l.text)}</p>`; }
+  }
+  flush();
+  return html;
+}
+
+function renderLesson(d) {
+  const conv = card("conv", "Conversation", d.conv.track, 0,
+    `<div class="card-tools">
+       <button class="btn small" id="toggleText">Ẩn lời thoại</button>
+     </div>
+     ${d.conv.context.map(c => `<p class="context">${md(c)}</p>`).join("")}
+     ${d.conv.lines.length ? dialogueHTML(d.conv.lines) : '<p class="empty">Chưa có hội thoại.</p>'}`);
+
+  const notes = card("notes", "Study Notes", "", 0, d.notes.length ? d.notes.map(n => {
+    const pairs = n.explain.filter(l => l.includes(" | "));
+    const text = n.explain.filter(l => !l.includes(" | "));
+    return `<div class="note">
+      <p class="note-en">${esc(n.en)}</p>
+      ${n.vi ? `<p class="note-vi">${md(n.vi)}</p>` : ""}
+      ${text.map(l => `<p class="note-ex">${md(l)}</p>`).join("")}
+      ${pairs.length ? `<table class="pairs">${pairs.map(p => {
+        const [a, b] = p.split(" | ");
+        return `<tr><td>${md(a)}</td><td>${md(b || "")}</td></tr>`;
+      }).join("")}</table>` : ""}
+    </div>`;
+  }).join("") : '<p class="empty">Unit này không có Study Notes.</p>');
+
+  const speak = card("speak", "Speak Like a Native", d.speak.track, 1,
+    `<div class="legend">
+       <span><b class="c-smooth">smooth / linking / change</b>: đọc liền, nối âm, biến âm</span>
+       <span><b class="c-strong">strong</b>: nhấn mạnh</span>
+       <span><b class="c-weak">weak</b>: đọc nhẹ</span>
+     </div>` +
+    (d.speak.items.map((it, i) => `<div class="sln-item">
+      <p class="sln-sentence">${i + 1}. ${highlight(it.sentence, it.labels)}</p>
+      ${it.labels.length ? `<ul class="sln-labels">${it.labels.map(([k, v]) =>
+        `<li><span class="lbl c-${k}">${k}:</span>${md(v)}</li>`).join("")}</ul>` : ""}
+      ${it.note.map(n => `<p class="sln-note">${md(n)}</p>`).join("")}
+    </div>`).join("") || '<p class="empty">Chưa có nội dung.</p>') +
+    (d.speak.tip.length ? `<div class="tip"><p class="tip-title">MẸO PHÁT ÂM</p><ul>${
+      d.speak.tip.map(t => `<li>${md(t)}</li>`).join("")}</ul></div>` : ""));
+
+  const grammar = card("grammar", "Grammar Focus", "", 0, d.grammar.length ? d.grammar.map(g => `<div class="gram">
+      <p class="gram-title">${md(g.title)}</p>
+      ${grammarLines(g.lines)}
+    </div>`).join("") : '<p class="empty">Chưa có nội dung.</p>');
+
+  const role = card("role", "Role Play", d.role.track, 5,
+    `<div class="card-tools">
+       <button class="btn small" data-hide="A">Che A</button>
+       <button class="btn small" data-hide="B">Che B</button>
+     </div>` + (d.role.lines.length ? dialogueHTML(d.role.lines, "role-dlg") : '<p class="empty">Chưa có nội dung.</p>'));
+
+  const drill = card("drill", "Substitution Drill", d.drill.track, 6,
+    d.drill.items.map((it, i) => `<div class="drill" data-orig="${esc(it.sentence)}">
+      <p class="drill-sentence">${i + 1}. <span class="ds">${md(it.sentence)}</span></p>
+      <div class="drill-opts">${it.options.map((o, j) =>
+        `<button class="opt" data-opt="${esc(o)}"><b>${"abcde"[j]}.</b>${esc(o)}</button>`).join("")}</div>
+    </div>`).join("") || '<p class="empty">Chưa có nội dung.</p>');
+
+  return `<div class="lesson">${conv}${notes}${speak}${grammar}${role}${drill}</div>`;
+}
+
+async function render() {
+  const lv = currentLevel(), u = currentUnit();
+  const token = (render.token = (render.token || 0) + 1);
+  const text = await loadMarkdown(u);
+  if (token !== render.token) return;
+  const d = text ? parseUnit(text) : null;
+
+  const done = stepsDone(lv, u);
+  const total = u.tracks.length;
+  app.innerHTML = `
+    <div class="unit-head">
+      <h1>${esc(lv.name)} · Unit ${u.number}</h1>
+      <span class="meta">${d && d.cdLabel ? esc(d.cdLabel) : ""}${u.pdf ? ` · <a href="${encodeURI(u.pdf)}" target="_blank" rel="noopener">Xem PDF gốc</a>` : ""}</span>
+      <span class="progress-text" id="progText"></span>
+    </div>
+    <section class="player" aria-label="Trình phát audio">
+      <div class="steps">${STEPS.map((s, i) => {
+        const t = u.tracks.find(t => t.step === i + 1);
+        return `<button class="step ${t ? "" : "missing"} ${done.has(i + 1) ? "done" : ""}" data-step="${i}" ${t ? "" : "disabled"}
+            title="${t ? `Track ${t.track} — ${esc(s.name)}` : "Không có file mp3"}">
+          <span class="n">${i + 1}${t ? ` · track ${t.track}` : ""}</span>
+          <span class="t">${esc(s.name)}</span>
+          <span class="check" data-check="${i + 1}" title="Đánh dấu đã học">✓</span>
+        </button>`;
+      }).join("")}</div>
+      <div class="player-row">
+        <audio id="audio" controls preload="metadata"></audio>
+        <div class="player-tools">
+          <button class="btn small" id="back3" title="Lùi 3 giây (←)">⟲ 3s</button>
+          <select id="rate" aria-label="Tốc độ phát">
+            ${[0.75, 0.85, 1, 1.15, 1.25].map(r => `<option value="${r}" ${r === state.rate ? "selected" : ""}>${r}×</option>`).join("")}
+          </select>
+          <button class="btn small ${state.loop ? "on" : ""}" id="loopBtn" title="Lặp lại track">⟳ Lặp</button>
+        </div>
+      </div>
+      <p class="hint" id="hint"></p>
+    </section>
+    ${d ? renderLesson(d) : `<div class="notice">Unit này chưa có file nội dung (markdown)${u.pdf ? ` — bạn có thể <a href="${encodeURI(u.pdf)}" target="_blank" rel="noopener">xem PDF gốc</a>` : ""}.
+      Bạn vẫn có thể học bằng các track audio ở trên.</div>`}`;
+
+  audio = $("#audio");
+  audio.playbackRate = state.rate;
+  audio.loop = state.loop;
+  audio.addEventListener("ended", () => markStep(state.step + 1, true));
+  updateProgressText();
+  selectStep(state.step, { play: false, scroll: false });
+}
+
+function updateProgressText() {
+  const lv = currentLevel(), u = currentUnit(), el = $("#progText");
+  if (!el) return;
+  const n = stepsDone(lv, u).size, total = u.tracks.length;
+  el.textContent = total ? `Đã học ${n}/${total} bước` : "";
+}
+
+function selectStep(i, { play = true, scroll = true } = {}) {
+  const u = currentUnit();
+  const t = u.tracks.find(t => t.step === i + 1);
+  if (!t) return;
+  state.step = i;
+  document.querySelectorAll(".step").forEach(b => b.classList.toggle("active", +b.dataset.step === i));
+  const s = STEPS[i];
+  $("#hint").innerHTML = `<b>Bước ${i + 1} · ${esc(s.name)}:</b> ${esc(s.hint)}<span class="file">${esc(t.file.split("/").pop())}</span>`;
+
+  const src = encodeURI(t.file);
+  if (audio.getAttribute("src") !== src) {
+    audio.setAttribute("src", src);
+    audio.playbackRate = state.rate;
+  }
+  if (play) { audio.currentTime = 0; audio.play().catch(() => {}); }
+
+  // Shadowing hides the text; the other steps show it.
+  const dlg = $("#card-conv .dialogue");
+  if (dlg) setConvHidden(i === 4);
+
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("focus"));
+  const cardEl = $(`#card-${s.card}`);
+  if (cardEl) {
+    cardEl.classList.add("focus");
+    if (scroll) cardEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function setConvHidden(hidden) {
+  const dlg = $("#card-conv .dialogue"), btn = $("#toggleText");
+  if (!dlg) return;
+  dlg.classList.toggle("blurred", hidden);
+  dlg.querySelectorAll(".say").forEach(s => s.classList.remove("peek"));
+  if (btn) btn.textContent = hidden ? "Hiện lời thoại" : "Ẩn lời thoại";
+}
+
+function markStep(step, value) {
+  const lv = currentLevel(), u = currentUnit(), key = unitKey(lv, u);
+  const set = new Set(progress[key] || []);
+  value ? set.add(step) : set.delete(step);
+  progress[key] = [...set].sort();
+  store.set("sue-progress", progress);
+  const btn = document.querySelector(`.step[data-step="${step - 1}"]`);
+  if (btn) btn.classList.toggle("done", value);
+  updateProgressText();
+  fillUnits();
+}
+
+/* ------------------------------------------------------------------ events */
+
+app.addEventListener("click", e => {
+  const check = e.target.closest("[data-check]");
+  if (check) {
+    e.stopPropagation();
+    const step = +check.dataset.check;
+    markStep(step, !stepsDone(currentLevel(), currentUnit()).has(step));
+    return;
+  }
+  const stepBtn = e.target.closest(".step");
+  if (stepBtn && !stepBtn.disabled) return selectStep(+stepBtn.dataset.step);
+
+  const play = e.target.closest("[data-play]");
+  if (play) return selectStep(+play.dataset.play, { scroll: false });
+
+  if (e.target.closest("#toggleText")) {
+    return setConvHidden(!$("#card-conv .dialogue").classList.contains("blurred"));
+  }
+  const say = e.target.closest("#card-conv .blurred .say");
+  if (say) { say.classList.toggle("peek"); say.style.filter = say.classList.contains("peek") ? "none" : ""; return; }
+
+  const hide = e.target.closest("[data-hide]");
+  if (hide) {
+    const who = hide.dataset.hide, on = !hide.classList.contains("on");
+    hide.classList.toggle("on", on);
+    document.querySelectorAll(`.role-dlg .say[data-who="${who}"]`).forEach(s => s.classList.toggle("blurred", on));
+    return;
+  }
+  const roleSay = e.target.closest(".role-dlg .say.blurred");
+  if (roleSay) { roleSay.style.filter = roleSay.style.filter ? "" : "none"; return; }
+
+  const opt = e.target.closest(".opt");
+  if (opt) {
+    const box = opt.closest(".drill"), target = $(".ds", box);
+    const wasOn = opt.classList.contains("on");
+    box.querySelectorAll(".opt").forEach(o => o.classList.remove("on"));
+    const orig = box.dataset.orig;
+    if (wasOn) { target.innerHTML = md(orig); return; }
+    opt.classList.add("on");
+    target.innerHTML = md(orig.replace(/__(.+?)__/, () => `__${opt.dataset.opt}__`));
+    return;
+  }
+  if (e.target.closest("#back3")) { audio.currentTime = Math.max(0, audio.currentTime - 3); return; }
+  if (e.target.closest("#loopBtn")) {
+    state.loop = !state.loop; audio.loop = state.loop;
+    e.target.closest("#loopBtn").classList.toggle("on", state.loop);
+  }
+});
+
+app.addEventListener("change", e => {
+  if (e.target.id === "rate") {
+    state.rate = +e.target.value; audio.playbackRate = state.rate; store.set("sue-rate", state.rate);
+  }
+});
+
+levelSel.addEventListener("change", () => { state.level = levelSel.value; state.unit = null; go(state.level, null); });
+unitSel.addEventListener("change", () => go(state.level, unitSel.value));
+$("#prevBtn").addEventListener("click", () => shift(-1));
+$("#nextBtn").addEventListener("click", () => shift(1));
+
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input, select, textarea") || e.ctrlKey || e.metaKey || e.altKey || $("#guide").open || !audio) return;
+  if (e.key === " " && !e.target.closest("button")) { e.preventDefault(); audio.paused ? audio.play().catch(() => {}) : audio.pause(); }
+  else if (e.key === "ArrowLeft") { audio.currentTime = Math.max(0, audio.currentTime - 3); }
+  else if (e.key === "ArrowRight") { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 3); }
+  else if (/^[1-7]$/.test(e.key)) { selectStep(+e.key - 1); }
+});
+
+// theme toggle
+const themeBtn = $("#themeBtn");
+function applyTheme(t) { if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme; }
+applyTheme(store.get("sue-theme", null));
+themeBtn.addEventListener("click", () => {
+  const dark = document.documentElement.dataset.theme
+    ? document.documentElement.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  const next = dark ? "light" : "dark";
+  applyTheme(next); store.set("sue-theme", next);
+});
+
+// guide popup
+const guide = $("#guide");
+$("#guideBtn").addEventListener("click", () => guide.showModal());
+$("#guideClose").addEventListener("click", () => guide.close());
+guide.addEventListener("click", e => { if (e.target === guide) guide.close(); });
+
+/* ------------------------------------------------------------------ start */
+
+if (!DATA || !DATA.levels || !DATA.levels.length) {
+  app.innerHTML = `<div class="notice">Không tìm thấy <code>content.js</code>. Hãy chạy lệnh sau trong thư mục dự án để tạo danh sách bài học:<br><br>
+    <code>python tools/build_manifest.py</code></div>`;
+  levelSel.disabled = unitSel.disabled = true;
+  return;
+}
+
+fillLevels();
+const fromHash = location.hash.match(/^#L(\d+)-U(\d+)$/);
+const last = store.get("sue-last", null);
+if (fromHash) {
+  const lv = DATA.levels.find(l => l.number === +fromHash[1]);
+  const u = lv && lv.units.find(u => u.number === +fromHash[2]);
+  go(lv ? lv.name : null, u ? u.name : null);
+} else if (last) {
+  go(last.level, last.unit);
+} else {
+  go(DATA.levels[0].name, null);
+}
+window.addEventListener("hashchange", () => {
+  const m = location.hash.match(/^#L(\d+)-U(\d+)$/);
+  const lv = m && DATA.levels.find(l => l.number === +m[1]);
+  const u = lv && lv.units.find(u => u.number === +m[2]);
+  if (u && (lv.name !== state.level || u.name !== state.unit)) go(lv.name, u.name);
+});
+
+if (!store.get("sue-guide-seen", false)) { guide.showModal(); store.set("sue-guide-seen", true); }
+})();
+</script>
+</body>
+</html>
