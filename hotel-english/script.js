@@ -297,15 +297,28 @@ function restoreState() {
   }
 }
 
+async function loadMarkdown(unitNum) {
+  const embedded = window.HOTEL_CONTENT && window.HOTEL_CONTENT[String(unitNum)];
+  if (location.protocol !== 'file:') {
+    try {
+      const res = await fetch('md/Unit' + unitNum + '.md', { cache: 'no-cache' });
+      if (res.ok) return await res.text();
+      if (!embedded) throw new Error('HTTP ' + res.status);
+    } catch (err) {
+      if (!embedded) throw err;
+    }
+  }
+  if (!embedded) throw new Error('chưa có nội dung nhúng, hãy chạy: python tools/build_content.py');
+  return embedded;
+}
+
 async function loadUnit(unitNum) {
   const loadingMsg = document.getElementById('loadingMsg');
   const contentEl = document.getElementById('content');
   if (loadingMsg) loadingMsg.textContent = 'Đang tải...';
   contentEl.innerHTML = '';
   try {
-    const res = await fetch('md/Unit' + unitNum + '.md');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const md = await res.text();
+    const md = await loadMarkdown(unitNum);
     contentEl.innerHTML = injectTrackButtons(renderMarkdown(md));
     buildNavigation();
     buildPartSelect(contentEl);
