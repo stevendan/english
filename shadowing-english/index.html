@@ -313,11 +313,9 @@ u.sub { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
 }
 .chip.on { background: var(--rec-soft); border-color: var(--rec); color: var(--rec); font-weight: 600; }
 .chip:disabled { opacity: .45; cursor: default; }
-.rec-tip { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; }
-.rec-tip svg.i { width: 15px; height: 15px; }
 .rec-status { display: none; align-items: center; gap: 8px; color: var(--rec); font-weight: 600; font-variant-numeric: tabular-nums; }
 .player.recording .rec-status { display: inline-flex; }
-.player.recording .rec-mode, .player.recording .rec-tip { display: none; }
+.player.recording .rec-mode { display: none; }
 .rec-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--rec); flex: none; animation: rec-blink 1s steps(2) infinite; }
 @keyframes rec-blink { 50% { opacity: .25; } }
 .meter { width: 80px; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
@@ -329,18 +327,14 @@ u.sub { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
 .rec-panel { margin-bottom: 16px; }
 .rec-panel .rec-sum { font-weight: 400; font-size: 13px; opacity: .9; }
 .sheet-toggle, .sheet-backdrop, .rec-bar { display: none; }
-.rec-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-bottom: 8px; font-size: 13px; color: var(--muted); }
-.bal { display: inline-flex; align-items: center; gap: 8px; }
-.bal input[type=range] { width: 150px; margin: 0; accent-color: var(--accent); }
-.off { display: inline-flex; align-items: center; gap: 6px; }
-.off output { min-width: 50px; text-align: center; color: var(--text); font-variant-numeric: tabular-nums; }
 .takes { list-style: none; margin: 0; padding: 0; }
 .take { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); }
+.take:first-child { border-top: 0; }
 .take .n { font-weight: 700; min-width: 28px; }
 .take .meta { flex: 1; min-width: 0; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
 .take .btn, .line-rec .btn { display: inline-flex; align-items: center; gap: 5px; }
 .take .btn svg.i, .line-rec .btn svg.i { width: 14px; height: 14px; }
-.btn.mix.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 600; }
+.btn.listen.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 600; }
 .rec-panel .empty svg.i { display: inline-block; width: 15px; height: 15px; vertical-align: -2px; }
 
 .line-mic { display: none; }
@@ -521,9 +515,6 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
   .rec-panel.open .card-b { display: block; }
   .sheet-backdrop:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(10, 20, 22, .45); }
 
-  .bal { flex: 1 1 100%; }
-  .bal input[type=range] { flex: 1; width: auto; }
-  .off .btn.small { width: 40px; height: 36px; padding: 0; }
   .take { flex-wrap: wrap; }
   .take .btn { height: 40px; padding: 0 12px; }
   .dialogue.rec-lines .line-mic { width: 36px; height: 36px; margin-top: -6px; }
@@ -536,7 +527,6 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
   .brand .brand-x { display: none; }
   .player-tools .tool-txt { display: none; }
   .player.can-rec #back3 { display: none; } /* room for the seek bar next to ● */
-  .rec-tip .tool-txt { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rec-dot { animation: none; }
@@ -601,7 +591,7 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4p
       <li>Ở bước <b>Shadowing</b>, lời thoại được làm mờ để bạn không nhìn text; bấm vào dòng nào để xem riêng dòng đó.</li>
       <li>Ở <b>Role Play</b>, dùng nút “Che A / Che B” để luyện nhập vai. Ở <b>Substitution Drill</b>, bấm vào a / b / c để thay vào câu.</li>
       <li>Nghe hết một track thì bước đó được đánh dấu ✓ (bấm vào vòng tròn ở góc để tự đánh dấu hoặc bỏ đánh dấu).</li>
-      <li>Ở bước <b>3–5</b>, bấm nút <b>●</b> đỏ để ghi âm giọng bạn cùng audio, hoặc bấm nút micro cạnh từng dòng thoại để ghi riêng dòng đó. Sau đó bấm <b>Song song</b> để nghe giọng bạn chồng lên bản gốc. Nên đeo tai nghe khi ghi.</li>
+      <li>Ở bước <b>3–5</b>, bấm nút <b>●</b> đỏ để ghi âm giọng bạn cùng audio, hoặc bấm nút micro cạnh từng dòng thoại để ghi riêng dòng đó. Micro thu cả tiếng audio từ loa lẫn giọng bạn; bấm <b>Nghe lại</b> để nghe bản ghi.</li>
       <li>Phím tắt: <kbd>Space</kbd> phát / dừng, <kbd>←</kbd> <kbd>→</kbd> lùi / tới 3 giây, <kbd>1</kbd>–<kbd>7</kbd> chọn bước, <kbd>R</kbd> bắt đầu / dừng ghi âm.</li>
     </ul>
   </div>
@@ -633,7 +623,6 @@ const ICON = {
   stop: svg("M7.5 6h9A1.5 1.5 0 0 1 18 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 16.5v-9A1.5 1.5 0 0 1 7.5 6z"),
   mic: svg("M12 14.5a3.5 3.5 0 0 0 3.5-3.5V5.5a3.5 3.5 0 0 0-7 0V11a3.5 3.5 0 0 0 3.5 3.5zM18 11a1 1 0 0 0-2 0 4 4 0 0 1-8 0 1 1 0 0 0-2 0 6 6 0 0 0 5 5.9V20H8.5a1 1 0 0 0 0 2h7a1 1 0 0 0 0-2H13v-3.1a6 6 0 0 0 5-5.9z"),
   trash: svg("M9.5 3h5a1 1 0 0 1 1 1v1H19a1 1 0 0 1 0 2h-.6l-.8 12.2A2 2 0 0 1 15.6 21H8.4a2 2 0 0 1-2-1.8L5.6 7H5a1 1 0 0 1 0-2h3.5V4a1 1 0 0 1 1-1zm-1.9 4 .8 12h7.2l.8-12z"),
-  phones: svg("M12 3a9 9 0 0 0-9 9v5.5A2.5 2.5 0 0 0 5.5 20H7a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5v-1a7 7 0 0 1 14 0v1h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.5a2.5 2.5 0 0 0 2.5-2.5V12a9 9 0 0 0-9-9z"),
 };
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -962,7 +951,6 @@ async function render() {
       <div class="rec-row">
         <span class="rec-mode" id="recMode"></span>
         <span class="rec-status"><span class="rec-dot"></span>Đang ghi <span class="rec-time">0:00</span><span class="meter"><i></i></span></span>
-        <span class="rec-tip" title="Nên dùng tai nghe để micro không thu cả tiếng loa">${ICON.phones}<span class="tool-txt">Nên dùng tai nghe</span></span>
         <span class="rec-msg" id="recMsg" role="status"></span>
       </div>
     </section>
@@ -1082,7 +1070,7 @@ function selectStep(i, { play = true, scroll = true } = {}) {
   const t = u.tracks.find(t => t.step === i + 1);
   if (!t) return;
   if (rec.active) stopRec();
-  stopMix(); stopRange();
+  stopTake(); stopRange();
   state.step = i;
   document.querySelectorAll(".step").forEach(b => {
     const on = +b.dataset.step === i;
@@ -1142,27 +1130,23 @@ function markStep(step, value) {
 /* ------------------------------------------------------------------ recording */
 
 // Steps 3–5 (Repetition, Overlapping, Shadowing) let the learner record their voice
-// along with the track — whole track or one dialogue line — and replay it mixed
-// over the original. A take remembers which stretches of the mp3 were heard when
-// (segs: [recording time, from, to, rate]), so the mix replays exactly what was heard,
-// pauses and seeks included.
+// along with the track — whole track or one dialogue line. The mic hears the room, so
+// a take holds the track from the speaker and the learner's voice, and is replayed as is.
+// A take also remembers which stretches of the mp3 were playing when
+// (segs: [recording time, from, to, rate]), to light up the line being read on replay.
 const REC_STEPS = [2, 3, 4];
 const MAX_TAKES = 5;
 const canRecord = !!(window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
 const recPref = {
-  bal: store.get("sue-rec-bal", 0.5),        // 0 = only the original, 1 = only my voice
-  offset: store.get("sue-rec-offset", null), // seconds my voice lags behind in the recording
   mode5: store.get("sue-rec-mode5", "with"), // Shadowing: speak along ("with") or right after ("after")
 };
-const rec = { stream: null, source: null, ctx: null, analyser: null, meterBuf: null, active: null, raf: 0,
+const rec = { stream: null, source: null, mute: null, ctx: null, analyser: null, meterBuf: null, active: null, raf: 0,
   timeEls: [], meterEls: [], trackTakes: [], lineTakes: new Map() };
-const mix = { take: null, node: null, orig: null, origGain: null, meGain: null, timer: 0, t0: 0, settle: 0 };
+const pb = { take: null, el: null, url: "", unlocked: false };
 const range = { stopAt: 0, raf: 0 };
-const bufCache = new Map();
 
 const isRecStep = i => REC_STEPS.includes(i);
 const recKey = () => unitKey(currentLevel(), currentUnit());
-const offsetVal = () => recPref.offset === null ? 0.2 : recPref.offset;
 function recUnsupported() {
   return window.isSecureContext ? "Trình duyệt này không hỗ trợ ghi âm."
     : "Ghi âm cần mở trang qua https:// hoặc http://localhost.";
@@ -1209,7 +1193,7 @@ const takeDB = (() => {
       mem.set(take.id, take);
     },
     async del(id) {
-      mem.delete(id); bufCache.delete(id);
+      mem.delete(id);
       const db = await open();
       if (db) try { await done(store_(db, "readwrite").delete(id)); } catch { /* ignore */ }
     },
@@ -1225,24 +1209,29 @@ function audioCtx() {
 }
 async function ensureMic() {
   if (rec.stream && rec.stream.getAudioTracks().some(t => t.readyState === "live")) return;
+  // Record the room as it sounds — the track from the speaker plus the learner's voice.
+  // Echo cancellation would strip the speaker out of the take, and on phones any voice
+  // processing switches the device into "call" mode, which ducks or reroutes the track.
   rec.stream = await navigator.mediaDevices.getUserMedia({
-    audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+    audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
   });
-  const ctx = audioCtx(), mute = ctx.createGain();
-  mute.gain.value = 0; // some browsers only run an analyser that reaches the speakers
+  const ctx = audioCtx();
+  rec.mute = ctx.createGain();
+  rec.mute.gain.value = 0; // some browsers only run an analyser that reaches the speakers
   rec.analyser = ctx.createAnalyser();
   rec.analyser.fftSize = 512;
   rec.meterBuf = new Uint8Array(rec.analyser.fftSize);
   rec.source = ctx.createMediaStreamSource(rec.stream);
   rec.source.connect(rec.analyser);
-  rec.analyser.connect(mute);
-  mute.connect(ctx.destination);
+  rec.analyser.connect(rec.mute);
+  rec.mute.connect(ctx.destination);
 }
+/** let go of the mic as soon as a take ends, so the phone leaves recording mode before playback */
 function releaseMic() {
   if (rec.active && rec.active.recorder.state === "recording") return;
   if (rec.stream) rec.stream.getTracks().forEach(t => t.stop());
-  if (rec.source) rec.source.disconnect();
-  rec.stream = rec.source = rec.analyser = null;
+  [rec.source, rec.analyser, rec.mute].forEach(n => n && n.disconnect());
+  rec.stream = rec.source = rec.analyser = rec.mute = null;
 }
 function micErrorText(e) {
   const name = e && e.name;
@@ -1278,29 +1267,24 @@ function bindRecAudio() {
   ["pause", "seeking", "waiting", "ended"].forEach(ev => audio.addEventListener(ev, recCloseSeg));
   audio.addEventListener("ratechange", () => { recCloseSeg(); recOpenSeg(); });
   audio.addEventListener("ended", () => { if (rec.active && rec.active.scope === "track") stopRec(); });
-  audio.addEventListener("timeupdate", () => { if (!mix.take) highlightAt(audio.currentTime); });
+  audio.addEventListener("timeupdate", () => { if (!pb.take) highlightAt(audio.currentTime); });
 }
 
 /** start the mic and recorder; `begin` runs once it is really capturing and starts the audio */
 async function startRec(scope, line, begin) {
-  if (rec.active || !canRecord || !audio) return;
-  stopMix(); stopRange();
+  if (rec.active || rec.starting || !canRecord || !audio) return;
+  stopTake(); stopRange();
+  const step = state.step, key = recKey();
+  rec.starting = true; // a second tap while the mic opens would open a second stream that never gets closed
+  setRecMsg("Đang mở micro…");
+  try { await ensureMic(); } catch (e) { setRecMsg(micErrorText(e)); return; } finally { rec.starting = false; }
   setRecMsg("");
-  try { await ensureMic(); } catch (e) { setRecMsg(micErrorText(e)); return; }
-  if (rec.active) return;
-  if (recPref.offset === null) {
-    // first take on this device: guess the round trip (speaker out + mic in); the learner can fine-tune it
-    const ctx = audioCtx(), tr = rec.stream.getAudioTracks()[0];
-    const inLat = (tr.getSettings && tr.getSettings().latency) || 0.02;
-    recPref.offset = Math.min(0.6, Math.round(((ctx.outputLatency || 0) + (ctx.baseLatency || 0) + inLat + 0.1) * 20) / 20);
-    store.set("sue-rec-offset", recPref.offset);
-  }
+  if (rec.active || step !== state.step || key !== recKey()) { releaseMic(); return; } // moved on meanwhile
   let recorder;
   try { const mime = recMime(); recorder = new MediaRecorder(rec.stream, mime ? { mimeType: mime } : undefined); }
-  catch (e) { setRecMsg(micErrorText(e)); return; }
-  const t = currentUnit().tracks.find(t => t.step === state.step + 1);
+  catch (e) { setRecMsg(micErrorText(e)); releaseMic(); return; }
   const a = rec.active = {
-    recorder, scope, line, step: state.step, key: recKey(), file: t.file, mode: recMode(),
+    recorder, scope, line, step: state.step, key: recKey(), mode: recMode(),
     chunks: [], segs: [], open: null, t0: 0, started: false, timers: [],
   };
   recorder.ondataavailable = e => { if (e.data && e.data.size) a.chunks.push(e.data); };
@@ -1313,7 +1297,8 @@ async function startRec(scope, line, begin) {
 
 function startTrackRec() {
   if (!isRecStep(state.step)) return;
-  audioCtx(); // unlock Web Audio inside the tap (iOS)
+  audioCtx(); // unlock Web Audio and the take player inside the tap (iOS)
+  unlockTakePlayer();
   startRec("track", null, () => {
     if (audio.ended || audio.currentTime >= (audio.duration || Infinity) - 0.3) audio.currentTime = 0;
     if (audio.paused) audio.play().catch(() => {}); else recOpenSeg();
@@ -1345,6 +1330,7 @@ function startLineRec(line) {
   }
   audio.pause();
   audioCtx();
+  unlockTakePlayer();
   startRec("line", line, a => {
     a.stopAt = stopAt; a.tail = tail;
     audio.currentTime = Math.max(0, from);
@@ -1376,14 +1362,14 @@ async function finishRec(a) {
   a.finished = true;
   if (rec.active === a) rec.active = null;
   paintRecUI();
-  if (!isRecStep(state.step) || a.key !== recKey()) releaseMic();
+  releaseMic();
   if (!a.chunks.length || !a.segs.length) {
     if (a.started) setRecMsg("Bản ghi trống, chưa phát audio nào. Hãy thử lại.");
     return;
   }
   const take = {
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
-    key: a.key, step: a.step, scope: a.scope, line: a.line, mode: a.mode, file: a.file,
+    key: a.key, step: a.step, scope: a.scope, line: a.line, mode: a.mode,
     segs: a.segs, created: Date.now(), duration: a.duration,
     blob: new Blob(a.chunks, { type: a.recorder.mimeType || a.chunks[0].type || "audio/webm" }),
   };
@@ -1396,7 +1382,8 @@ async function finishRec(a) {
   await takeDB.put(take);
   if (a.key !== recKey() || a.step !== state.step) return;
   await refreshRecPanel();
-  if (a.scope === "line") playMix(take);
+  // a beat for the phone to switch back from recording to normal playback
+  if (a.scope === "line") setTimeout(() => { if (!rec.active && !pb.take && state.step === a.step) playTake(take); }, 250);
   else openSheet(true);
 }
 
@@ -1435,10 +1422,10 @@ function recTick() {
   }
 }
 
-/* ---- playback: a stretch of the original, or a take mixed over the original */
+/* ---- playback: a stretch of the original, or a take */
 
 function playRange(from, to) {
-  stopMix(); stopRange();
+  stopTake(); stopRange();
   audio.currentTime = Math.max(0, from);
   audio.play().catch(() => {});
   range.stopAt = to;
@@ -1451,89 +1438,61 @@ function playRange(from, to) {
 }
 function stopRange() { cancelAnimationFrame(range.raf); range.raf = 0; }
 
-function applyBalance() {
-  const b = recPref.bal, orig = Math.min(1, 2 * (1 - b)), me = Math.min(1, 2 * b);
-  if (mix.meGain) mix.meGain.gain.value = me * 1.4; // phone mics record quieter than the mastered mp3
-  if (mix.origGain) mix.origGain.gain.value = orig;
-  else if (mix.orig) mix.orig.volume = orig;
+/** a tenth of a second of silence: played inside a tap so iOS lets the take player start on its own later */
+function silentWav() {
+  const n = 800, v = new DataView(new ArrayBuffer(44 + n * 2));
+  const str = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, "RIFF"); v.setUint32(4, 36 + n * 2, true); str(8, "WAVEfmt ");
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, 8000, true); v.setUint32(28, 16000, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  str(36, "data"); v.setUint32(40, n * 2, true);
+  return URL.createObjectURL(new Blob([v], { type: "audio/wav" }));
+}
+function takePlayer() {
+  if (!pb.el) {
+    pb.el = new Audio();
+    pb.el.setAttribute("playsinline", "");
+    pb.el.addEventListener("ended", () => { if (pb.take) stopTake(); });
+    pb.el.addEventListener("error", () => { if (pb.take) { stopTake(); setRecMsg("Không phát được bản ghi này."); } });
+    pb.el.addEventListener("timeupdate", () => { if (pb.take) highlightAt(origTimeAt(pb.take, pb.el.currentTime)); });
+  }
+  return pb.el;
+}
+function unlockTakePlayer() {
+  if (pb.unlocked) return;
+  pb.unlocked = true;
+  const el = takePlayer();
+  el.src = silentWav();
+  el.play().catch(() => {});
 }
 
-async function playMix(take) {
-  stopMix(); stopRange();
+/** the take as recorded: the track from the speaker and the learner's voice together */
+function playTake(take) {
+  stopTake(); stopRange();
   if (rec.active || !take) return;
   if (audio && !audio.paused) audio.pause();
-  const ctx = audioCtx();
-  let buf = bufCache.get(take.id);
-  if (!buf) {
-    try { buf = await ctx.decodeAudioData(await take.blob.arrayBuffer()); }
-    catch { setRecMsg("Không phát được bản ghi này."); return; }
-    bufCache.set(take.id, buf);
-  }
-  if (rec.active || mix.take) return;
-  if (!mix.orig) {
-    mix.orig = new Audio();
-    mix.orig.preload = "auto";
-    mix.orig.setAttribute("playsinline", "");
-    mix.meGain = ctx.createGain();
-    mix.meGain.connect(ctx.destination);
-    // a file:// mp3 counts as cross-origin to Web Audio and would come out silent: use .volume there
-    if (location.protocol !== "file:") {
-      mix.origGain = ctx.createGain();
-      mix.origGain.connect(ctx.destination);
-      ctx.createMediaElementSource(mix.orig).connect(mix.origGain);
-    }
-  }
-  const src = encodeURI(take.file);
-  if (mix.orig.getAttribute("src") !== src) mix.orig.setAttribute("src", src);
-  try { mix.orig.currentTime = take.segs[0][1]; } catch { /* before metadata: mixTick seeks again */ }
-  applyBalance();
-  const node = ctx.createBufferSource();
-  node.buffer = buf;
-  node.connect(mix.meGain);
-  node.onended = () => { if (mix.node === node) stopMix(); };
-  mix.take = take; mix.node = node; mix.t0 = ctx.currentTime + 0.15; mix.settle = 0;
-  node.start(mix.t0);
-  mix.timer = setInterval(mixTick, 40);
-  paintMixUI();
+  const el = takePlayer();
+  pb.take = take;
+  pb.url = URL.createObjectURL(take.blob);
+  el.src = pb.url;
+  el.play().catch(() => { if (pb.take === take) stopTake(); });
+  paintTakeUI();
 }
-
-/** keep the original in step with the take: play the stretches that were heard, pause in between */
-function mixTick() {
-  const take = mix.take, orig = mix.orig, now = rec.ctx.currentTime;
-  if (!take) return;
-  const tt = now - mix.t0 - offsetVal();
-  const seg = take.segs.find(s => tt >= s[0] && tt < s[0] + (s[2] - s[1]) / s[3]);
-  if (seg) {
-    const target = seg[1] + (tt - seg[0]) * seg[3];
-    if (orig.playbackRate !== seg[3]) orig.playbackRate = seg[3];
-    if (orig.paused) {
-      if (Math.abs(orig.currentTime - target) > 0.05) orig.currentTime = target;
-      orig.play().catch(() => {});
-      mix.settle = now + 0.5; // give it time to start before correcting drift
-    } else if (now > mix.settle && Math.abs(orig.currentTime - target) > 0.15) {
-      orig.currentTime = target;
-      mix.settle = now + 0.5;
-    }
-    highlightAt(target);
-  } else {
-    if (!orig.paused) orig.pause();
-    const next = take.segs.find(s => s[0] > tt);
-    if (next && Math.abs(orig.currentTime - next[1]) > 0.05) orig.currentTime = next[1];
-  }
-}
-
-function stopMix() {
-  if (!mix.take) return;
-  clearInterval(mix.timer);
-  mix.timer = 0;
-  try { mix.node.onended = null; mix.node.stop(); } catch { /* already stopped */ }
-  mix.node = mix.take = null;
-  if (mix.orig) mix.orig.pause();
+function stopTake() {
+  if (!pb.take) return;
+  pb.el.pause();
+  URL.revokeObjectURL(pb.url);
+  pb.take = null; pb.url = "";
   highlightAt(-1);
-  paintMixUI();
+  paintTakeUI();
 }
-function toggleMix(take) {
-  if (mix.take && take && mix.take.id === take.id) stopMix(); else playMix(take);
+function toggleTake(take) {
+  if (pb.take && take && pb.take.id === take.id) stopTake(); else playTake(take);
+}
+/** where in the mp3 the learner was at time t of the take (-1 while the track was paused) */
+function origTimeAt(take, t) {
+  const s = take.segs.find(s => t >= s[0] && t < s[0] + (s[2] - s[1]) / s[3]);
+  return s ? s[1] + (t - s[0]) * s[3] : -1;
 }
 
 /** mark the dialogue line being read at time t of the current step's track */
@@ -1571,12 +1530,12 @@ function paintRecUI() {
   paintLineRec();
 }
 
-function paintMixUI() {
-  const id = mix.take && mix.take.id;
-  document.querySelectorAll("[data-mix]").forEach(b => {
-    const on = b.dataset.mix === id;
+function paintTakeUI() {
+  const id = pb.take && pb.take.id;
+  document.querySelectorAll("[data-take]").forEach(b => {
+    const on = b.dataset.take === id;
     b.classList.toggle("on", on);
-    b.innerHTML = `${on ? ICON.stop : ICON.play}<span>${on ? "Dừng" : "Song song"}</span>`;
+    b.innerHTML = `${on ? ICON.stop : ICON.play}<span>${on ? "Dừng" : "Nghe lại"}</span>`;
   });
   paintLineRec();
 }
@@ -1631,20 +1590,14 @@ async function refreshRecPanel() {
   $("#recCount").textContent = rec.trackTakes.length ? `(${rec.trackTakes.length})` : "";
   const n = rec.trackTakes.length;
   $("#recBody").innerHTML = `
-    <div class="rec-ctrl">
-      <label class="bal">Gốc <input type="range" id="recBal" min="0" max="1" step="0.05" value="${recPref.bal}"
-        aria-label="Cân bằng âm lượng: bản gốc ↔ giọng tôi"> Tôi</label>
-      <span class="off" title="Bù độ trễ của micro: tăng lên nếu giọng bạn nghe chậm hơn bản gốc">Lệch
-        <button class="btn small" data-off="-1" aria-label="Giảm độ lệch">−</button><output id="recOff">${offsetVal().toFixed(2)}s</output><button class="btn small" data-off="1" aria-label="Tăng độ lệch">+</button></span>
-    </div>
     ${n ? `<ol class="takes">${rec.trackTakes.map((t, i) => `<li class="take">
         <span class="n">#${n - i}</span>
         <span class="meta">${fmtClock(t.created)} · ${fmtTime(t.duration)}${t.step === 4 && t.mode === "after" ? " · ngay sau" : ""}</span>
-        <button class="btn small mix" data-mix="${t.id}"></button>
+        <button class="btn small listen" data-take="${t.id}"></button>
         <button class="btn small icon" data-del="${t.id}" title="Xoá bản ghi" aria-label="Xoá bản ghi #${n - i}">${ICON.trash}</button>
       </li>`).join("")}</ol>`
       : `<p class="empty">Chưa có bản ghi cả bài. Bấm nút ● đỏ trên thanh phát để ghi cùng audio${nLines ? `, hoặc bấm ${ICON.mic} cạnh từng dòng thoại để ghi riêng dòng đó` : ""}.</p>`}`;
-  paintMixUI();
+  paintTakeUI();
 }
 
 function openSheet(on) {
@@ -1678,13 +1631,13 @@ function paintLineRec() {
   if (!row) return;
   const line = +row.dataset.line, take = rec.lineTakes.get(line), a = rec.active;
   const recThis = a && a.scope === "line" && a.line === line;
-  const mixThis = mix.take && take && mix.take.id === take.id;
+  const playThis = pb.take && take && pb.take.id === take.id;
   row.innerHTML = `
     <span class="st">${recThis ? "Đang ghi… nói theo audio" : take ? `Đã ghi lúc ${fmtClock(take.created)}` : "Chưa ghi dòng này"}</span>
     <button class="btn small" data-line-play="${line}" ${a ? "disabled" : ""}>${ICON.play}Gốc</button>
     <button class="btn small rec ${recThis ? "on" : ""}" data-line-rec="${line}" ${(a && !recThis) || !canRecord ? "disabled" : ""}
       ${canRecord ? "" : `title="${esc(recUnsupported())}"`}>${recThis ? `${ICON.stop}Dừng` : `${ICON.rec}Nói`}</button>
-    <button class="btn small mix ${mixThis ? "on" : ""}" data-line-mix="${line}" ${!take || a ? "disabled" : ""}>${mixThis ? `${ICON.stop}Dừng` : `${ICON.play}Song song`}</button>`;
+    <button class="btn small listen ${playThis ? "on" : ""}" data-line-take="${line}" ${!take || a ? "disabled" : ""}>${playThis ? `${ICON.stop}Dừng` : `${ICON.play}Nghe lại`}</button>`;
 }
 function playLine(line) {
   const r = lineRange(state.step, line);
@@ -1694,7 +1647,7 @@ function playLine(line) {
 /** stop recording and playback and let go of the mic (leaving the unit, or the page going to the background) */
 function recStopAll() {
   if (rec.active) stopRec();
-  stopMix(); stopRange();
+  stopTake(); stopRange();
   releaseMic();
 }
 function recTeardown() {
@@ -1772,20 +1725,14 @@ function onRecClick(e) {
   if ((el = on("[data-line-mic]"))) { toggleLineRec(+el.dataset.lineMic); return true; }
   if ((el = on("[data-line-play]"))) { playLine(+el.dataset.linePlay); return true; }
   if ((el = on("[data-line-rec]"))) { rec.active ? stopRec() : startLineRec(+el.dataset.lineRec); return true; }
-  if ((el = on("[data-line-mix]"))) { toggleMix(rec.lineTakes.get(+el.dataset.lineMix)); return true; }
-  if ((el = on("[data-mix]"))) { toggleMix(rec.trackTakes.find(t => t.id === el.dataset.mix)); return true; }
+  if ((el = on("[data-line-take]"))) { toggleTake(rec.lineTakes.get(+el.dataset.lineTake)); return true; }
+  if ((el = on("[data-take]"))) { toggleTake(rec.trackTakes.find(t => t.id === el.dataset.take)); return true; }
   if ((el = on("[data-del]"))) {
     const id = el.dataset.del;
     if (confirm("Xoá bản ghi này?")) {
-      if (mix.take && mix.take.id === id) stopMix();
+      if (pb.take && pb.take.id === id) stopTake();
       takeDB.del(id).then(refreshRecPanel);
     }
-    return true;
-  }
-  if ((el = on("[data-off]"))) {
-    recPref.offset = Math.max(-0.3, Math.min(0.8, Math.round((offsetVal() + 0.05 * +el.dataset.off) * 100) / 100));
-    store.set("sue-rec-offset", recPref.offset);
-    $("#recOff").textContent = `${recPref.offset.toFixed(2)}s`;
     return true;
   }
   if (on("#sheetToggle")) {
@@ -1806,14 +1753,6 @@ app.addEventListener("pointerup", e => {
   if (Math.abs(dy) > 30) { sheetDragged = true; openSheet(dy < 0); }
 });
 app.addEventListener("pointercancel", () => { sheetDrag = null; });
-
-app.addEventListener("input", e => {
-  if (e.target.id === "recBal") {
-    recPref.bal = +e.target.value;
-    applyBalance();
-    store.set("sue-rec-bal", recPref.bal);
-  }
-});
 
 app.addEventListener("change", e => {
   if (e.target.id === "rate") {
