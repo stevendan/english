@@ -38,7 +38,11 @@ FEMALE_VOICES = ["en-US-AvaNeural", "en-US-EmmaNeural", "en-US-AriaNeural", "en-
 MALE_VOICES = ["en-US-AndrewNeural", "en-US-BrianNeural", "en-US-GuyNeural", "en-US-EricNeural",
                "en-US-RogerNeural", "en-US-SteffanNeural"]
 FEMALE_NAMES = {"Emma", "Sarah", "Linh", "Anna", "Mai", "Yuki", "Phuong", "Hoa", "Olivia", "Ana", "Jisoo", "Lan",
-                "Amy", "Kathy", "Tara", "Naomi"}
+                "Amy", "Kathy", "Tara", "Naomi",
+                "Grace", "Trang", "Sophie", "Hannah", "Lily", "Julia", "Rachel", "Maria", "Lucy", "Nina", "Ella",
+                "Zoe",  # Level 2
+                "Kate", "Hien", "Fiona", "Lien", "Clara", "Kim", "Alice", "Ruby", "Diana", "Hanh", "Isabel",
+                "Laura"}  # Level 3
 
 SECTIONS = ["Conversation", "Speak Like a Native", "Repetition", "Overlapping", "Shadowing",
             "Role Play", "Substitution Drill"]

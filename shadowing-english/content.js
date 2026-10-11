@@ -1,5 +1,5 @@
 window.SPEAKUP_CONTENT = {
- "generated": "2026-10-11T11:37:33",
+ "generated": "2026-10-11T14:49:27",
  "levels": [
   {
    "name": "Level 1",
@@ -626,6 +626,1266 @@ window.SPEAKUP_CONTENT = {
        "step": 7,
        "name": "Substitution Drill",
        "file": "Level 1/unit 12/3-28_U12-7_Substitution_Drill.mp3"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Level 2",
+   "number": 2,
+   "units": [
+    {
+     "name": "unit 1",
+     "number": 1,
+     "folder": "Level 2/unit 1",
+     "md": "Level 2/unit 1/unit 1.md",
+     "mdText": "[HEADER] unit 1 — CD1\n\n[1] Conversation — track 1, 3, 4\nQuang is at the lost and found office at the airport.\nGrace: Hi. Can I help you? Is this **your** suitcase?\nQuang: No. **My** suitcase is blue. **My** name's on the tag.\nGrace: Let me check. Is this it?\nQuang: Yes, that's it! And that's **my son's** jacket!\n\n[2] Speak Like a Native — track 2\n1. Is this your suitcase?\nchange: “this‿your” (s + y → “sh”)\nweak: “your”\nstrong: “suitcase”\nÂm /s/ cuối của “this” gặp âm /j/ đầu của “your” nên biến thành âm “sh”: “đi-shơ”. “your” đọc nhẹ /jər/; nhấn vào “suitcase” và lên giọng ở cuối câu hỏi.\n\n2. My name's on the tag.\nlinking: “name's‿on”\nweak: “My”, “the”\nstrong: “name's”, “tag”\n“name's” là dạng rút gọn của “name is”. Âm /z/ cuối nối thẳng vào “on”: “nây-mzon”. “My” và “the” đọc nhẹ, lướt qua.\n\n3. And that's my son's jacket!\nweak: “And”, “my”\nstrong: “son's jacket”\n“And that's” đọc nhanh và nhẹ: “ơn-đéts”. Đuôi 's của “son's” đọc /z/ vì “son” kết thúc bằng âm hữu thanh /n/. Nhấn vào “son's jacket” vì đây là thông tin mới.\n\n[MẸO PHÁT ÂM]\nTính từ sở hữu my, your, his, her đọc nhẹ; dồn lực nhấn vào danh từ phía sau: my SUITcase, your BAG.\nĐuôi 's đọc /s/ sau âm vô thanh (Mark's), /z/ sau âm hữu thanh (son's, Lan's), /ɪz/ sau s, sh, ch (Rose's).\nÂm /s/ đứng trước “your, you” thường biến thành “sh”: this your → “đi-shơ”.\n's có hai nghĩa: “is” (My name's…) hoặc “của” (my son's jacket); nghe ngữ cảnh để hiểu.\n\n[3] Study Notes\n**Can I help you?**\nTôi có thể giúp gì cho anh?\nCâu mở đầu quen thuộc của nhân viên ở quầy dịch vụ, cửa hàng.\nCách nói tương đương: How can I help you?\n\n**Yes, that's it!**\nĐúng rồi, chính nó!\nDùng khi tìm thấy đúng món đồ mình đang tìm, hoặc khi người kia nói trúng ý mình.\nCách nói tương đương: That's the one!\n\n[4] Grammar Focus\nTính từ sở hữu: my / your / his / her / our / their\nTính từ sở hữu đứng trước danh từ để nói vật đó là của ai: I → my, you → your, he → his, she → her, we → our, they → their.\n[[His]] car is really old.\nIs that [[her]] phone?\n[[Our]] teacher is from London.\n\nSở hữu cách 's và câu hỏi Whose…?\nThêm 's sau tên người hoặc danh từ chỉ người để nói “của ai”. Hỏi chủ sở hữu bằng “Whose + danh từ…?”.\nThis is [[Tom's]] bike.\nMy [[sister's]] room is small.\n[[Whose]] umbrella is this? – It's [[Lan's]].\n\n[5] Role Play — track 6\nA: Hi. Can I help you? Is this your suitcase?\nB: No. My suitcase is ________. My name's on ________.\nA: Let me check. Is this it?\nB: Yes, that's it! And that's ________!\n\n[6] Substitution Drill — track 7\n1. My suitcase is __blue__.\na. red\nb. dark green\nc. black and white\n\n2. My name's on __the tag__.\na. the handle\nb. the front\nc. the back\n\n3. And that's __my son's jacket__!\na. my wife's hat\nb. my daughter's bag\nc. my brother's coat\n",
+     "pdf": "Level 2/unit 1/unit 1.pdf",
+     "tracks": [
+      {
+       "track": 1,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 1/1-01_U01-1_Conversation.mp3"
+      },
+      {
+       "track": 2,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 1/1-02_U01-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 3,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 1/1-03_U01-3_Repetition.mp3"
+      },
+      {
+       "track": 4,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 1/1-04_U01-4_Overlapping.mp3"
+      },
+      {
+       "track": 5,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 1/1-05_U01-5_Shadowing.mp3"
+      },
+      {
+       "track": 6,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 1/1-06_U01-6_Role_Play.mp3"
+      },
+      {
+       "track": 7,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 1/1-07_U01-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 2",
+     "number": 2,
+     "folder": "Level 2/unit 2",
+     "md": "Level 2/unit 2/unit 2.md",
+     "mdText": "[HEADER] unit 2 — CD1\n\n[1] Conversation — track 8, 10, 11\nLeo and Trang are choosing a goodbye gift for their coworker, Mia.\nLeo: It's Mia's last day tomorrow. Let's get **her** something.\nTrang: Good idea! How about these cookies? She loves **them**!\nLeo: Great. Can you ask Jack and Kim, too?\nTrang: Sure. I can call **them** tonight. Leave it to **me**!\n\n[2] Speak Like a Native — track 9\n1. Let's get her something.\nlinking: “get‿her”\nweak: “her”\nstrong: “something”\nKhi “her” đọc nhẹ ở giữa câu, âm /h/ thường bị nuốt và âm “t” của “get” nối sang, nghe như “ghe-đơ”. Nhấn vào “something”.\n\n2. She loves them!\nlinking: “loves‿them”\nweak: “them”\nstrong: “loves”\n“them” đọc rất nhẹ /ðəm/, khi nói nhanh nghe gần như “ơm”: “lơv-zơm”. Dồn lực nhấn vào “loves”.\n\n3. Leave it to me!\nlinking: “Leave‿it”\nchange: “it‿to” (t + t → một âm “t”)\nstrong: “me”\n“Leave it” nối thành “li-vit”. Hai âm “t” đứng cạnh nhau (it‿to) chỉ đọc một lần. Nhấn vào “me” và hạ giọng dứt khoát ở cuối.\n\n[MẸO PHÁT ÂM]\nĐại từ tân ngữ me, him, her, us, them thường đọc nhẹ, trừ khi muốn nhấn mạnh.\nKhi đọc nhẹ, âm /h/ của “him, her” và âm /ð/ của “them” thường bị nuốt: get her → “ghe-đơ”, call them → “co-lơm”.\nHai âm giống nhau đứng cạnh nhau (it‿to) chỉ đọc một lần.\nCâu cảm thán như “Leave it to me!” hạ giọng dứt khoát ở cuối.\n\n[3] Study Notes\n**Let's get her something.**\nMình mua gì đó tặng cô ấy đi.\n“get + người + vật” nghĩa là “mua cho ai cái gì”; “something” là “một món gì đó”.\nCách nói tương đương: Let's buy her a gift.\n\n**Leave it to me!**\nCứ để mình lo!\nCâu nhận làm một việc gì đó để người kia yên tâm.\nCách nói tương đương: No problem!\n\n[4] Grammar Focus\nĐại từ tân ngữ: me / you / him / her / it / us / them\nĐại từ tân ngữ đứng sau động từ hoặc giới từ (to, for, with…): I → me, he → him, she → her, we → us, they → them; you và it giữ nguyên.\nCan you help [[me]]?\nI see [[him]] every day.\nThis cake is for [[us]].\n\n[5] Role Play — track 13\nA: It's Mia's last day tomorrow. Let's get her something.\nB: Good idea! How about ________? She ________ them!\nA: Great. Can you ask Jack and Kim, too?\nB: Sure. I can call them ________. Leave it to me!\n\n[6] Substitution Drill — track 14\n1. How about __these cookies__?\na. these candles\nb. these socks\nc. these chocolates\n\n2. She __loves__ them!\na. really likes\nb. always eats\nc. can't stop eating\n\n3. I can call them __tonight__.\na. after work\nb. at lunch\nc. in ten minutes\n",
+     "pdf": "Level 2/unit 2/unit 2.pdf",
+     "tracks": [
+      {
+       "track": 8,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 2/1-08_U02-1_Conversation.mp3"
+      },
+      {
+       "track": 9,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 2/1-09_U02-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 10,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 2/1-10_U02-3_Repetition.mp3"
+      },
+      {
+       "track": 11,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 2/1-11_U02-4_Overlapping.mp3"
+      },
+      {
+       "track": 12,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 2/1-12_U02-5_Shadowing.mp3"
+      },
+      {
+       "track": 13,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 2/1-13_U02-6_Role_Play.mp3"
+      },
+      {
+       "track": 14,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 2/1-14_U02-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 3",
+     "number": 3,
+     "folder": "Level 2/unit 3",
+     "md": "Level 2/unit 3/unit 3.md",
+     "mdText": "[HEADER] unit 3 — CD1\n\n[1] Conversation — track 15, 17, 18\nSophie is looking for the train station. She asks Khoa for help.\nSophie: Excuse me. How do I get to the train station?\nKhoa: **Go** straight and **turn** left at the bank.\nSophie: Is it far? Can I walk there?\nKhoa: It's quite far. **Don't walk**. **Take** bus number 9.\n\n[2] Speak Like a Native — track 16\n1. How do I get to the train station?\nsmooth: “How do I”\nchange: “get‿to” (t + t → một âm “t”)\nweak: “to the”\nstrong: “train station”\n“How do I” đọc liền thành “hao-đu-ai”. Hai âm “t” của “get to” chỉ đọc một lần. Câu hỏi Wh- nên xuống giọng ở cuối.\n\n2. Go straight and turn left at the bank.\nchange: “straight‿and” (t → d nhẹ)\nlinking: “left‿at”\nweak: “and”, “at the”\nstrong: “straight”, “left”, “bank”\n“straight and” nối thành “strây-đơn”. “left at” nối thành “lef-tát”. Nhấn vào các từ chỉ hướng và địa điểm.\n\n3. Don't walk.\nstrong: “Don't”, “walk”\nCả hai từ đều đọc mạnh. Âm “t” của “Don't” gần như mất trước “walk”: “đôn-wok”. Chữ “l” trong “walk” là âm câm /wɔːk/.\n\n[MẸO PHÁT ÂM]\nCâu mệnh lệnh bắt đầu bằng động từ, và động từ đó được nhấn rõ: GO straight, TAKE a bus.\n“Don't” luôn đọc mạnh; âm “t” cuối thường mất trước phụ âm: don't walk → “đôn-wok”.\nChữ “l” trong walk, talk là âm câm: /wɔːk/, /tɔːk/.\nÂm “t” đứng giữa hai nguyên âm (straight and) thường đọc thành “d” nhẹ.\n\n[3] Study Notes\n**How do I get to the train station?**\nLàm sao để đến ga tàu vậy?\nCâu hỏi đường lịch sự, thường mở đầu bằng “Excuse me.”\nCách nói tương đương: Where's the train station?\n\n**It's quite far.**\nKhá xa đấy.\n“quite” đứng trước tính từ, nghĩa là “khá”.\nCách nói tương đương: It's a long way.\n\n[4] Grammar Focus\nCâu mệnh lệnh: động từ nguyên mẫu đứng đầu câu\nDùng để chỉ đường, hướng dẫn hoặc yêu cầu. Câu không có chủ ngữ; thêm “please” để lịch sự hơn.\n[[Open]] the window, please.\n[[Turn right]] at the hospital.\n[[Sit]] down here.\n\nCâu mệnh lệnh phủ định: Don't + động từ\nDùng để bảo ai đó đừng làm việc gì.\n[[Don't run]] in the hall.\n[[Don't forget]] your umbrella!\n\n[5] Role Play — track 20\nA: Excuse me. How do I get to the train station?\nB: Go straight and turn left at ________.\nA: Is it far? Can I walk there?\nB: It's quite far. Don't ________. Take ________.\n\n[6] Substitution Drill — track 21\n1. Go straight and turn left at __the bank__.\na. the hospital\nb. the next corner\nc. the traffic lights\n\n2. Don't __walk__.\na. go on foot\nb. drive\nc. ride a bike\n\n3. Take __bus number 9__.\na. a taxi\nb. the subway\nc. a motorbike taxi\n",
+     "pdf": "Level 2/unit 3/unit 3.pdf",
+     "tracks": [
+      {
+       "track": 15,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 3/1-15_U03-1_Conversation.mp3"
+      },
+      {
+       "track": 16,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 3/1-16_U03-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 17,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 3/1-17_U03-3_Repetition.mp3"
+      },
+      {
+       "track": 18,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 3/1-18_U03-4_Overlapping.mp3"
+      },
+      {
+       "track": 19,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 3/1-19_U03-5_Shadowing.mp3"
+      },
+      {
+       "track": 20,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 3/1-20_U03-6_Role_Play.mp3"
+      },
+      {
+       "track": 21,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 3/1-21_U03-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 4",
+     "number": 4,
+     "folder": "Level 2/unit 4",
+     "md": "Level 2/unit 4/unit 4.md",
+     "mdText": "[HEADER] unit 4 — CD1\n\n[1] Conversation — track 22, 24, 25\nBao just moved into a new apartment. His roommate Hannah is helping him unpack.\nBao: Hannah, where's my laptop? I can't find it.\nHannah: It's **on** the sofa, **next to** your backpack.\nBao: Thanks! And my keys? Are they **in** the kitchen?\nHannah: No, they're **under** the table. Look **between** the boxes!\n\n[2] Speak Like a Native — track 23\n1. I can't find it.\nlinking: “find‿it”\nstrong: “can't”, “find”\n“can't” đọc mạnh với nguyên âm /æ/ mở rộng. Âm /d/ cuối của “find” nối vào “it”: “fain-đit”.\n\n2. It's on the sofa, next to your backpack.\nlinking: “It's‿on”\nchange: “next to” (âm t cuối gần như mất)\nweak: “on the”, “your”\nstrong: “sofa”, “backpack”\n“It's on” nối thành “it-son”. “next to” đọc thành “neks-tơ”. Nhấn vào đồ vật: “sofa”, “backpack”.\n\n3. No, they're under the table.\nlinking: “they're‿under”\nweak: “the”\nstrong: “under”, “table”\nÂm /r/ cuối của “they're” nối vào “under”: “đe-rơn-đơ”. “under” có hai âm tiết nên được nhấn rõ hơn on, in.\n\n[MẸO PHÁT ÂM]\nGiới từ ngắn (in, on, at) thường đọc nhẹ; giới từ dài như under, between, behind được nhấn rõ hơn.\nÂm cuối của từ trước nối vào giới từ bắt đầu bằng nguyên âm: It's‿on → “it-son”, they're‿under → “đe-rơn-đơ”.\nTrong “next to”, âm “t” của “next” gần như mất: “neks-tơ”.\nNhấn vào danh từ chỉ đồ vật và nơi chốn, vì đó là thông tin người nghe cần.\n\n[3] Study Notes\n**I can't find it.**\nMình không tìm thấy nó.\n“find” là “tìm thấy”, còn “look for” là “tìm kiếm”: I'm looking for my keys, but I can't find them.\nCách nói tương đương: Where is it?\n\n**Thanks! And my keys?**\nCảm ơn nhé! Còn chìa khóa của mình thì sao?\n“And + danh từ?” là cách hỏi tiếp rất gọn về một thứ khác, nghĩa là “Còn… thì sao?”.\nCách nói tương đương: What about my keys?\n\n[4] Grammar Focus\nGiới từ chỉ nơi chốn: in / on / under\nin = ở trong, on = ở trên (chạm vào bề mặt), under = ở dưới.\nThe milk is [[in]] the fridge.\nYour phone is [[on]] the bed.\nThe cat is [[under]] the chair.\n\nnext to / between / across from / behind\nnext to = bên cạnh, between A and B = ở giữa A và B, across from = đối diện, behind = phía sau.\nThe bank is [[next to]] the park.\nIt's [[between]] the bank [[and]] the school.\nThe bus stop is [[across from]] my house.\n\n[5] Role Play — track 27\nA: Hannah, where's my laptop? I can't find it.\nB: It's on ________, next to your backpack.\nA: Thanks! And my keys? Are they in the kitchen?\nB: No, they're ________ the table. Look ________!\n\n[6] Substitution Drill — track 28\n1. It's on __the sofa__, next to your backpack.\na. the bed\nb. the desk\nc. the shelf\n\n2. No, they're __under__ the table.\na. on\nb. next to\nc. behind\n\n3. Look __between the boxes__!\na. behind the door\nb. in the bathroom\nc. next to the TV\n",
+     "pdf": "Level 2/unit 4/unit 4.pdf",
+     "tracks": [
+      {
+       "track": 22,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 4/1-22_U04-1_Conversation.mp3"
+      },
+      {
+       "track": 23,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 4/1-23_U04-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 24,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 4/1-24_U04-3_Repetition.mp3"
+      },
+      {
+       "track": 25,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 4/1-25_U04-4_Overlapping.mp3"
+      },
+      {
+       "track": 26,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 4/1-26_U04-5_Shadowing.mp3"
+      },
+      {
+       "track": 27,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 4/1-27_U04-6_Role_Play.mp3"
+      },
+      {
+       "track": 28,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 4/1-28_U04-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 5",
+     "number": 5,
+     "folder": "Level 2/unit 5",
+     "md": "Level 2/unit 5/unit 5.md",
+     "mdText": "[HEADER] unit 5 — CD2\n\n[1] Conversation — track 1, 3, 4\nLily is ordering at a coffee shop. Viet works there.\nViet: Hi there! What **would** you **like** today?\nLily: **I'd like** an iced latte, please. And a croissant.\nViet: Sure. **Would** you **like** your croissant warm?\nLily: Yes, please. And **I'd like** a glass of water.\n\n[2] Speak Like a Native — track 2\n1. What would you like today?\nsmooth: “What would you like”\nchange: “would‿you” (d + y → “j”)\nweak: “would”\nstrong: “like”, “today”\nCả cụm “What would you like” đọc liền. Âm /d/ của “would” gặp âm /j/ của “you” biến thành “j”: “wu-jơ”. Câu hỏi Wh- xuống giọng ở cuối.\n\n2. I'd like an iced latte, please.\nlinking: “like‿an”\nweak: “an”\nstrong: “iced latte”\nÂm /d/ của “I'd” rất nhẹ: “ai(d)-laik”. “like an” nối thành “lai-kơn”. Nhấn vào món mình gọi: “iced latte”.\n\n3. And I'd like a glass of water.\nlinking: “glass‿of”\nchange: “water” (t → d nhẹ)\nweak: “a”, “of”\nstrong: “water”\n“glass of” nối thành “gla-sơv”. Trong giọng Mỹ, âm “t” của “water” đọc thành “d” nhẹ: “wa-đơ”.\n\n[MẸO PHÁT ÂM]\n“I'd like” đọc liền, âm /d/ rất nhẹ; nhưng đừng bỏ hẳn, vì “I like” có nghĩa khác (tôi thích).\n“would you” đọc thành “wu-jơ” (d + y → “j”).\nMạo từ a, an và giới từ of đọc rất nhẹ: “ơ”, “ơn”, “ơv”.\nTrong giọng Mỹ, âm “t” giữa hai nguyên âm đọc thành “d” nhẹ: water → “wa-đơ”, latte → “la-đây”.\n\n[3] Study Notes\n**What would you like today?**\nHôm nay anh chị dùng gì ạ?\nCâu hỏi lịch sự của nhân viên khi khách gọi món, lịch sự hơn “What do you want?”.\nCách nói tương đương: What can I get you?\n\n**Yes, please.**\nVâng, cho tôi nhé.\nCâu đồng ý lịch sự khi được mời hoặc gợi ý. Khi từ chối: “No, thank you.”\nCách nói tương đương: That sounds good.\n\n[4] Grammar Focus\nwould like: muốn (cách nói lịch sự)\n“would like” lịch sự hơn “want”. Sau “would like” là danh từ hoặc “to + động từ”; “I would like” rút gọn thành “I'd like”.\n[[I'd like]] a cup of tea.\n[[I'd like to]] see the menu.\nWhat [[would]] you [[like]] to drink?\n\nWould you like…? và Do you like…?\n“Would you like…?” dùng để mời ngay lúc nói; “Do you like…?” hỏi về sở thích nói chung.\n[[Would you like]] some coffee? – Yes, please.\n[[Do you like]] coffee? – Yes, I do.\n\n[5] Role Play — track 6\nA: Hi there! What would you like today?\nB: I'd like ________, please. And ________.\nA: Sure. Would you like your croissant warm?\nB: Yes, please. And I'd like ________.\n\n[6] Substitution Drill — track 7\n1. I'd like __an iced latte__, please.\na. a hot tea\nb. an orange juice\nc. a small cappuccino\n\n2. And __a croissant__.\na. a muffin\nb. a piece of cake\nc. two cookies\n\n3. And I'd like __a glass of water__.\na. some napkins\nb. a paper straw\nc. the Wi-Fi password\n",
+     "pdf": "Level 2/unit 5/unit 5.pdf",
+     "tracks": [
+      {
+       "track": 1,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 5/2-01_U05-1_Conversation.mp3"
+      },
+      {
+       "track": 2,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 5/2-02_U05-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 3,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 5/2-03_U05-3_Repetition.mp3"
+      },
+      {
+       "track": 4,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 5/2-04_U05-4_Overlapping.mp3"
+      },
+      {
+       "track": 5,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 5/2-05_U05-5_Shadowing.mp3"
+      },
+      {
+       "track": 6,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 5/2-06_U05-6_Role_Play.mp3"
+      },
+      {
+       "track": 7,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 5/2-07_U05-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 6",
+     "number": 6,
+     "folder": "Level 2/unit 6",
+     "md": "Level 2/unit 6/unit 6.md",
+     "mdText": "[HEADER] unit 6 — CD2\n\n[1] Conversation — track 8, 10, 11\nJulia and Tuan are planning a camping trip.\nJulia: What do we need for the camping trip?\nTuan: We need **a** tent. And **some** water, of course.\nJulia: OK. What about food? Let's take **some** eggs.\nTuan: Great idea. And **an** apple for each of us!\n\n[2] Speak Like a Native — track 9\n1. What do we need for the camping trip?\nsmooth: “What do we”\nweak: “do”, “for the”\nstrong: “need”, “camping trip”\n“What do we” đọc liền và nhanh, âm “t” của “What” gần như mất: “wa-đu-wi”. Câu hỏi Wh- xuống giọng ở cuối.\n\n2. And some water, of course.\nsmooth: “of course”\nweak: “some”\nchange: “water” (t → d nhẹ)\nstrong: “water”, “course”\n“some” đọc nhẹ /səm/. “water” nghe như “wa-đơ”. “of course” đọc liền thành “ơv-cors”, nhấn vào “course”.\n\n3. And an apple for each of us!\nlinking: “And‿an‿apple”, “each‿of‿us”\nweak: “an”, “for”\nstrong: “apple”, “each”\n“And an apple” nối thành “ơ-nơ-náp-pồ”. “each of us” đọc liền thành một khối: “i-chơ-vớts”.\n\n[MẸO PHÁT ÂM]\n“a, an, some” đứng trước danh từ đều đọc nhẹ: /ə/, /ən/, /səm/.\nÂm /n/ cuối của “an” nối vào nguyên âm phía sau: an‿apple → “ơ-náp-pồ”.\nCụm “each of us” đọc liền thành một khối: “i-chơ-vớts”.\nNhấn vào danh từ (tent, water, apple), không nhấn vào a, an, some.\n\n[3] Study Notes\n**What do we need for the camping trip?**\nMình cần mang gì cho chuyến cắm trại?\n“What do we need for + sự kiện?” dùng khi cùng nhau chuẩn bị cho một việc gì đó.\nCách nói tương đương: What do we bring?\n\n**What about food?**\nCòn đồ ăn thì sao?\n“What about + danh từ?” dùng để hỏi thêm về một thứ khác hoặc để gợi ý.\nCách nói tương đương: And food? (giống “And my keys?” ở Unit 4)\n\n[4] Grammar Focus\na / an + danh từ đếm được số ít\nDùng “a” trước phụ âm, “an” trước nguyên âm. Tính theo âm đọc, không theo chữ viết: a pan, an egg, an hour.\nI need [[a]] towel.\nShe has [[an]] old car.\nThe class is [[an]] hour long.\n\nsome + danh từ số nhiều / không đếm được\n“some” nghĩa là “một ít, vài”. Danh từ không đếm được (bread, water, rice) không đi với a / an và không thêm -s.\nLet's buy [[some]] apples.\nWe need [[some]] rice.\n\n[5] Role Play — track 13\nA: What do we need for the camping trip?\nB: We need ________. And ________, of course.\nA: OK. What about food? Let's take some eggs.\nB: Great idea. And ________ for each of us!\n\n[6] Substitution Drill — track 14\n1. We need __a tent__.\na. a flashlight\nb. an extra blanket\nc. a big umbrella\n\n2. And __some water__, of course.\na. some snacks\nb. some warm clothes\nc. some bread\n\n3. And __an apple__ for each of us!\na. a banana\nb. an orange\nc. a sandwich\n",
+     "pdf": "Level 2/unit 6/unit 6.pdf",
+     "tracks": [
+      {
+       "track": 8,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 6/2-08_U06-1_Conversation.mp3"
+      },
+      {
+       "track": 9,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 6/2-09_U06-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 10,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 6/2-10_U06-3_Repetition.mp3"
+      },
+      {
+       "track": 11,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 6/2-11_U06-4_Overlapping.mp3"
+      },
+      {
+       "track": 12,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 6/2-12_U06-5_Shadowing.mp3"
+      },
+      {
+       "track": 13,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 6/2-13_U06-6_Role_Play.mp3"
+      },
+      {
+       "track": 14,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 6/2-14_U06-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 7",
+     "number": 7,
+     "folder": "Level 2/unit 7",
+     "md": "Level 2/unit 7/unit 7.md",
+     "mdText": "[HEADER] unit 7 — CD2\n\n[1] Conversation — track 15, 17, 18\nRachel and Phong are new neighbors. They're chatting about their hobbies.\nRachel: What do you do in your free time, Phong?\nPhong: I **love cooking**. And I **like playing** tennis.\nRachel: Really? I **enjoy playing** tennis, too. Are you good?\nPhong: Not really. But I **hate playing** alone. Let's play together!\n\n[2] Speak Like a Native — track 16\n1. What do you do in your free time, Phong?\nsmooth: “What do you do”\nweak: “do you”, “in your”\nstrong: “free time”\n“What do you do” đọc liền thành “wa-đơ-yơ-đu”: chữ “do” thứ nhất đọc nhẹ, chữ thứ hai đọc rõ. Câu hỏi Wh- xuống giọng ở cuối.\n\n2. I love cooking.\nstrong: “love”, “cooking”\nÂm /v/ cuối của “love” phải rung môi dưới chạm răng trên, đừng đọc thành “lớp”. Đuôi “-ing” của “cooking” đọc nhẹ: “cúc-kin”.\n\n3. But I hate playing alone.\nchange: “But‿I” (t → d nhẹ)\nlinking: “playing‿alone”\nstrong: “hate”, “alone”\n“But I” nối thành “bơ-đai”. Âm /ŋ/ cuối của “playing” nối vào “alone”: “plây-in-gơ-lôn”.\n\n[MẸO PHÁT ÂM]\nSau like, love, enjoy, hate là động từ đuôi -ing; đuôi -ing đọc nhẹ, khi nói nhanh nghe như “-in”.\nÂm /v/ cuối của “love” phải rung môi; đừng đọc thành “lớp”.\nÂm “t” cuối của “But, What” đứng trước nguyên âm đọc thành “d” nhẹ: But‿I → “bơ-đai”.\nNhấn vào động từ chỉ cảm xúc (love, hate) và hoạt động (cooking, tennis).\n\n[3] Study Notes\n**What do you do in your free time?**\nLúc rảnh bạn hay làm gì?\nCâu hỏi phổ biến để tìm hiểu sở thích của người khác; “free time” là thời gian rảnh.\nCách nói tương đương: What are your hobbies?\n\n**Not really.**\nCũng không hẳn.\nCâu trả lời phủ định nhẹ nhàng, lịch sự hơn “No.”\nCách nói tương đương: Not very.\n\n[4] Grammar Focus\nlike / love / enjoy / hate + V-ing\nSau các động từ chỉ sở thích như like (thích), love (rất thích), enjoy (thích thú), hate (ghét), động từ theo sau thêm -ing.\nI [[like reading]] comics.\nShe [[loves dancing]].\nThey [[hate waiting]] in line.\n\nPhủ định và câu hỏi\nPhủ định: don't / doesn't like + V-ing. Câu hỏi: Do / Does + chủ ngữ + like + V-ing?\nI [[don't like driving]] at night.\n[[Does]] he [[like swimming]]? – Yes, he does.\n\n[5] Role Play — track 20\nA: What do you do in your free time, Phong?\nB: I love ________. And I like ________.\nA: Really? I enjoy playing tennis, too. Are you good?\nB: Not really. But I hate ________. Let's play together!\n\n[6] Substitution Drill — track 21\n1. I love __cooking__.\na. baking cakes\nb. taking photos\nc. reading comics\n\n2. And I like __playing tennis__.\na. going hiking\nb. watching football\nc. swimming\n\n3. But I hate __playing alone__.\na. losing\nb. getting up early\nc. practicing alone\n",
+     "pdf": "Level 2/unit 7/unit 7.pdf",
+     "tracks": [
+      {
+       "track": 15,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 7/2-15_U07-1_Conversation.mp3"
+      },
+      {
+       "track": 16,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 7/2-16_U07-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 17,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 7/2-17_U07-3_Repetition.mp3"
+      },
+      {
+       "track": 18,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 7/2-18_U07-4_Overlapping.mp3"
+      },
+      {
+       "track": 19,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 7/2-19_U07-5_Shadowing.mp3"
+      },
+      {
+       "track": 20,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 7/2-20_U07-6_Role_Play.mp3"
+      },
+      {
+       "track": 21,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 7/2-21_U07-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 8",
+     "number": 8,
+     "folder": "Level 2/unit 8",
+     "md": "Level 2/unit 8/unit 8.md",
+     "mdText": "[HEADER] unit 8 — CD2\n\n[1] Conversation — track 22, 24, 25\nMaria is shopping at a clothing store. Kiet works there.\nKiet: Hi there! All these T-shirts are on sale today.\nMaria: Oh, nice! **How much are** these blue ones?\nKiet: **They're** ten dollars each, or two for fifteen.\nMaria: Great! I'd like two. **How much is** this cap?\n\n[2] Speak Like a Native — track 23\n1. How much are these blue ones?\nsmooth: “How much are”\nlinking: “much‿are”\nweak: “are”\nstrong: “blue ones”\n“much are” nối thành “mơ-chơ”: “hao-mơ-chơ”. “are” đọc rất nhẹ /ər/. Câu hỏi Wh- xuống giọng ở cuối.\n\n2. They're ten dollars each, or two for fifteen.\nlinking: “dollars‿each”\nweak: “or”, “for”\nstrong: “ten”, “two”, “fifteen”\nSố tiền là thông tin chính nên luôn được nhấn. “fifteen” nhấn vào âm tiết sau: “fif-TEEN”, khác với “FIF-ty” (50).\n\n3. How much is this cap?\nlinking: “much‿is”\nweak: “is”\nstrong: “cap”\n“much is” nối thành “mơ-chiz”. Âm /z/ của “is” lướt nhẹ sang “this”. Nhấn vào món đồ đang hỏi: “cap”.\n\n[MẸO PHÁT ÂM]\n“How much is / are” đọc liền: “hao-mơ-chiz”, “hao-mơ-chơ”.\nSố tiền là thông tin quan trọng nên luôn được nhấn mạnh.\nPhân biệt -teen và -ty: fifTEEN nhấn âm cuối, âm “t” rõ; FIFty nhấn âm đầu, âm “t” nhẹ như “d”.\nCâu hỏi Wh- (How much…?) xuống giọng ở cuối.\n\n[3] Study Notes\n**All these T-shirts are on sale today.**\nHôm nay tất cả áo thun này đang giảm giá.\n“on sale” nghĩa là “đang giảm giá”, còn “for sale” chỉ có nghĩa là “được bán”.\nCách nói tương đương: These T-shirts are cheaper today.\n\n**Two for fifteen.**\nHai cái mười lăm đô.\nCách nói giá khi mua nhiều: số lượng + for + giá tiền.\nCách nói tương đương: Fifteen dollars for two.\n\n[4] Grammar Focus\nHow much is / are…?: hỏi giá\n“How much is” đi với danh từ số ít hoặc không đếm được, “How much are” đi với danh từ số nhiều. Trả lời: It's… / They're…\n[[How much is]] this bag? – [[It's]] twenty dollars.\n[[How much are]] the apples? – [[They're]] two dollars a kilo.\n\nCách đọc giá tiền\nGiá tiền thường được đọc gọn: $4.50 = “four fifty”, $12.99 = “twelve ninety-nine”. Đọc đầy đủ: “four dollars and fifty cents”.\nIt's [[four fifty]].\nThey're [[twelve ninety-nine]].\n\n[5] Role Play — track 27\nA: Hi there! All these T-shirts are on sale today.\nB: Oh, nice! How much are ________?\nA: They're ten dollars each, or two for fifteen.\nB: Great! I'd like ________. How much is ________?\n\n[6] Substitution Drill — track 28\n1. How much are __these blue ones__?\na. those shorts\nb. these socks\nc. the white ones\n\n2. I'd like __two__.\na. three\nb. a large one\nc. one in black\n\n3. How much is __this cap__?\na. that jacket\nb. this belt\nc. the red dress\n",
+     "pdf": "Level 2/unit 8/unit 8.pdf",
+     "tracks": [
+      {
+       "track": 22,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 8/2-22_U08-1_Conversation.mp3"
+      },
+      {
+       "track": 23,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 8/2-23_U08-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 24,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 8/2-24_U08-3_Repetition.mp3"
+      },
+      {
+       "track": 25,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 8/2-25_U08-4_Overlapping.mp3"
+      },
+      {
+       "track": 26,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 8/2-26_U08-5_Shadowing.mp3"
+      },
+      {
+       "track": 27,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 8/2-27_U08-6_Role_Play.mp3"
+      },
+      {
+       "track": 28,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 8/2-28_U08-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 9",
+     "number": 9,
+     "folder": "Level 2/unit 9",
+     "md": "Level 2/unit 9/unit 9.md",
+     "mdText": "[HEADER] unit 9 — CD3\n\n[1] Conversation — track 1, 3, 4\nIt's Monday morning. Lucy and Vinh are talking about their weekend.\nLucy: Hi, Vinh! How was your weekend?\nVinh: Great! I **visited** my grandparents. I **cooked** dinner for them.\nLucy: That's so nice! I **stayed** home and **watched** movies.\nVinh: That sounds relaxing. I **needed** a rest, too!\n\n[2] Speak Like a Native — track 2\n1. I visited my grandparents.\nweak: “my”\nstrong: “visited”, “grandparents”\nĐuôi -ed của “visited” đọc /ɪd/ vì “visit” tận cùng bằng âm /t/: “vi-zi-tịd”. Chữ “d” trong “grandparents” gần như câm: “gran-pe-rơnts”.\n\n2. I cooked dinner for them.\nweak: “for them”\nstrong: “cooked”, “dinner”\nSau âm vô thanh /k/, đuôi -ed đọc /t/: “cúkt”, chỉ một âm tiết. Âm /t/ này rất nhẹ trước “dinner”: “cúk-đi-nơ”.\n\n3. I stayed home and watched movies.\nweak: “and”\nstrong: “stayed home”, “watched movies”\n“stayed” tận cùng bằng nguyên âm nên -ed đọc /d/: “stây-d”. “watched” tận cùng bằng âm “ch” nên -ed đọc /t/: “wotcht”.\n\n[MẸO PHÁT ÂM]\nĐuôi -ed có 3 cách đọc: /t/ sau âm vô thanh (cooked, watched), /d/ sau âm hữu thanh và nguyên âm (stayed, rained), /ɪd/ sau /t/ và /d/ (visited, needed).\nChỉ khi đọc /ɪd/ thì -ed mới thêm một âm tiết; “cooked” chỉ có một âm tiết, đừng đọc thành “cúc-kệt”.\nÂm /t/, /d/ của đuôi -ed rất nhẹ khi đứng trước phụ âm: cooked dinner → “cúk-đi-nơ”.\n\n[3] Study Notes\n**How was your weekend?**\nCuối tuần của bạn thế nào?\nCâu hỏi thăm quen thuộc vào sáng thứ Hai. Có thể trả lời: Great! / Not bad. / Pretty boring.\nCách nói tương đương: Did you have a nice weekend?\n\n**That sounds relaxing.**\nNghe thư giãn quá.\n“That sounds + tính từ” dùng để phản hồi khi nghe người khác kể chuyện.\nCách nói tương đương: That sounds nice.\n\n[4] Grammar Focus\nQuá khứ đơn: động từ có quy tắc thêm -ed\nDùng để kể việc đã xảy ra và kết thúc trong quá khứ (yesterday, last week…). Động từ tận cùng bằng -e chỉ thêm -d: like → liked.\nI [[played]] soccer yesterday.\nShe [[called]] me last night.\nWe [[liked]] the movie a lot.\n\nCách đọc đuôi -ed: /t/, /d/, /ɪd/\n/t/ sau p, k, s, sh, ch, f; /ɪd/ sau t, d; /d/ sau các âm còn lại.\n/t/: help[[ed]], wash[[ed]], ask[[ed]]\n/d/: play[[ed]], open[[ed]], live[[d]]\n/ɪd/: want[[ed]], need[[ed]], visit[[ed]]\n\n[5] Role Play — track 6\nA: Hi, Vinh! How was your weekend?\nB: Great! I visited ________. I cooked ________ for them.\nA: That's so nice! I stayed home and watched movies.\nB: That sounds relaxing. I needed ________, too!\n\n[6] Substitution Drill — track 7\n1. I visited __my grandparents__.\na. my uncle\nb. an old friend\nc. the new museum\n\n2. I cooked __dinner__ for them.\na. lunch\nb. a big meal\nc. chicken soup\n\n3. I needed __a rest__, too!\na. a break\nb. some sleep\nc. a quiet day\n",
+     "pdf": "Level 2/unit 9/unit 9.pdf",
+     "tracks": [
+      {
+       "track": 1,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 9/3-01_U09-1_Conversation.mp3"
+      },
+      {
+       "track": 2,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 9/3-02_U09-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 3,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 9/3-03_U09-3_Repetition.mp3"
+      },
+      {
+       "track": 4,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 9/3-04_U09-4_Overlapping.mp3"
+      },
+      {
+       "track": 5,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 9/3-05_U09-5_Shadowing.mp3"
+      },
+      {
+       "track": 6,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 9/3-06_U09-6_Role_Play.mp3"
+      },
+      {
+       "track": 7,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 9/3-07_U09-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 10",
+     "number": 10,
+     "folder": "Level 2/unit 10",
+     "md": "Level 2/unit 10/unit 10.md",
+     "mdText": "[HEADER] unit 10 — CD3\n\n[1] Conversation — track 8, 10, 11\nNina just got back from a trip to Sapa. Her friend Khang meets her at a café.\nKhang: Welcome back, Nina! How was your trip to Sapa?\nNina: Amazing! We **went** hiking. We **saw** beautiful rice fields.\nKhang: Wow! What about the food?\nNina: I **ate** grilled corn. And I **bought** you some tea!\n\n[2] Speak Like a Native — track 9\n1. How was your trip to Sapa?\nchange: “was‿your” (z + y → “zh”)\nweak: “was your”, “to”\nstrong: “trip”, “Sapa”\nÂm /z/ của “was” gặp âm /j/ của “your” biến thành âm “zh”: “wơ-zhơ”. Nhấn vào “trip” và “Sapa”, xuống giọng ở cuối câu.\n\n2. We went hiking.\nstrong: “went”, “hiking”\nÂm “t” cuối của “went” gần như mất trước âm /h/: “wen-hai-kin”. Cả hai từ đều mang thông tin nên đọc rõ.\n\n3. And I bought you some tea!\nchange: “bought‿you” (t + y → “ch”)\nweak: “some”\nstrong: “tea”\nÂm /t/ của “bought” gặp âm /j/ của “you” biến thành “ch”: “bo-chu”, giống “meet you” ở Level 1. Nhấn vào “tea”.\n\n[MẸO PHÁT ÂM]\n“bought” và “saw” có nguyên âm /ɔː/ dài: “bót”, “so”.\n“ate” đọc /eɪt/, giống hệt số “eight”.\nÂm /t/ hoặc /z/ đứng trước “you, your” biến thành “ch” hoặc “zh”: bought you → “bo-chu”, was your → “wơ-zhơ”.\nÂm “t” cuối của “went” thường mất trước phụ âm: went hiking → “wen-hai-kin”.\n\n[3] Study Notes\n**Welcome back!**\nChào mừng bạn trở về!\nCâu chào khi gặp lại ai đó sau một chuyến đi xa hoặc kỳ nghỉ.\nCách nói tương đương: Good to see you again!\n\n**I bought you some tea!**\nMình có mua trà cho bạn này!\n“buy + người + vật” nghĩa là “mua cái gì cho ai”, giống “get her something” ở Unit 2.\nCách nói tương đương: I got you some tea!\n\n[4] Grammar Focus\nQuá khứ đơn: động từ bất quy tắc\nNhiều động từ thông dụng không thêm -ed mà có dạng quá khứ riêng, cần học thuộc: go → went, see → saw, eat → ate, buy → bought, have → had, take → took.\nI [[went]] to the beach last summer.\nShe [[had]] a big breakfast.\nWe [[took]] a lot of photos.\n\nMốc thời gian trong quá khứ\nyesterday (hôm qua), last night / week / year (tối qua / tuần trước / năm ngoái), two days ago (hai ngày trước).\nHe came home [[late last night]].\nI saw her [[two days ago]].\n\n[5] Role Play — track 13\nA: Welcome back, Nina! How was your trip to Sapa?\nB: Amazing! We went ________. We saw ________.\nA: Wow! What about the food?\nB: I ate grilled corn. And I bought you ________!\n\n[6] Substitution Drill — track 14\n1. We went __hiking__.\na. camping\nb. kayaking\nc. to a local market\n\n2. We saw __beautiful rice fields__.\na. tall mountains\nb. a big waterfall\nc. lots of clouds\n\n3. And I bought you __some tea__!\na. a scarf\nb. some honey\nc. a postcard\n",
+     "pdf": "Level 2/unit 10/unit 10.pdf",
+     "tracks": [
+      {
+       "track": 8,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 10/3-08_U10-1_Conversation.mp3"
+      },
+      {
+       "track": 9,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 10/3-09_U10-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 10,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 10/3-10_U10-3_Repetition.mp3"
+      },
+      {
+       "track": 11,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 10/3-11_U10-4_Overlapping.mp3"
+      },
+      {
+       "track": 12,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 10/3-12_U10-5_Shadowing.mp3"
+      },
+      {
+       "track": 13,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 10/3-13_U10-6_Role_Play.mp3"
+      },
+      {
+       "track": 14,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 10/3-14_U10-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 11",
+     "number": 11,
+     "folder": "Level 2/unit 11",
+     "md": "Level 2/unit 11/unit 11.md",
+     "mdText": "[HEADER] unit 11 — CD3\n\n[1] Conversation — track 15, 17, 18\nElla and Dat are chatting on the bus.\nElla: **Did** you **watch** the new superhero movie?\nDat: Yes, I **did**, on Friday. But I **didn't like** it.\nElla: Oh, really? Why? **Did** you **fall** asleep?\nDat: No, I **didn't**! But it was really long.\n\n[2] Speak Like a Native — track 16\n1. Did you watch the new superhero movie?\nchange: “Did‿you” (d + y → “j”)\nweak: “the”\nstrong: “new superhero movie”\nÂm /d/ của “Did” gặp âm /j/ của “you” biến thành “j”: “đi-jơ”. Câu hỏi Yes/No nên lên giọng ở cuối.\n\n2. But I didn't like it.\nchange: “But‿I” (t → d nhẹ)\nlinking: “like‿it”\nstrong: “didn't”\n“But I” nối thành “bơ-đai”. “didn't” được nhấn mạnh vì đây là ý phủ định. “like it” nối thành “lai-kit”.\n\n3. No, I didn't!\nstrong: “No”, “didn't”\nTrong câu trả lời ngắn, “didn't” đứng cuối nên đọc mạnh. Âm “t” cuối gần như không bật ra: “đi-đn”.\n\n[MẸO PHÁT ÂM]\n“Did you” đọc liền thành “đi-jơ” (d + y → “j”).\n“didn't” luôn được nhấn mạnh; âm “t” cuối thường không bật ra: “đi-đn”.\nCâu hỏi Yes/No (Did you…?) lên giọng ở cuối; câu hỏi Wh- (Why?) xuống giọng.\nTrong câu trả lời ngắn (Yes, I did. / No, I didn't.), “did / didn't” đứng cuối câu nên đọc mạnh.\n\n[3] Study Notes\n**Did you watch the new superhero movie?**\nBạn đã xem bộ phim siêu anh hùng mới chưa?\nDùng “Did you…?” để hỏi người kia có làm một việc gì đó trong quá khứ không.\nCách nói tương đương: Did you see the new superhero movie?\n\n**Oh, really? Why?**\nỒ, thật à? Sao vậy?\nPhản hồi khi ngạc nhiên, rồi hỏi lý do ngay.\nCách nói tương đương: Oh, why not?\n\n[4] Grammar Focus\nQuá khứ đơn: câu phủ định\ndidn't (did not) + động từ nguyên mẫu, dùng cho mọi chủ ngữ. Sau didn't không chia quá khứ: không nói “didn't went”.\nI [[didn't go]] to work yesterday.\nShe [[didn't call]] me back.\n\nQuá khứ đơn: câu hỏi Yes/No và câu trả lời ngắn\nDid + chủ ngữ + động từ nguyên mẫu…? Trả lời: Yes, I did. / No, I didn't.\n[[Did]] you [[have]] lunch? – [[Yes, I did]].\n[[Did]] they [[win]]? – [[No, they didn't]].\n\n[5] Role Play — track 20\nA: Did you watch the new superhero movie?\nB: Yes, I did, ________. But I ________ it.\nA: Oh, really? Why? Did you fall asleep?\nB: No, I didn't! But it was really ________.\n\n[6] Substitution Drill — track 21\n1. Yes, I did, __on Friday__.\na. last night\nb. with my sister\nc. after work\n\n2. But I __didn't like__ it.\na. didn't enjoy\nb. didn't understand\nc. really loved\n\n3. But it was really __long__.\na. boring\nb. slow\nc. loud\n",
+     "pdf": "Level 2/unit 11/unit 11.pdf",
+     "tracks": [
+      {
+       "track": 15,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 11/3-15_U11-1_Conversation.mp3"
+      },
+      {
+       "track": 16,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 11/3-16_U11-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 17,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 11/3-17_U11-3_Repetition.mp3"
+      },
+      {
+       "track": 18,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 11/3-18_U11-4_Overlapping.mp3"
+      },
+      {
+       "track": 19,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 11/3-19_U11-5_Shadowing.mp3"
+      },
+      {
+       "track": 20,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 11/3-20_U11-6_Role_Play.mp3"
+      },
+      {
+       "track": 21,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 11/3-21_U11-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 12",
+     "number": 12,
+     "folder": "Level 2/unit 12",
+     "md": "Level 2/unit 12/unit 12.md",
+     "mdText": "[HEADER] unit 12 — CD3\n\n[1] Conversation — track 22, 24, 25\nSchool is almost over. Zoe and Quan are talking about their summer plans.\nZoe: Summer's almost here! What **are** you **going to** do?\nQuan: **I'm going to** visit my cousins in Australia.\nZoe: That's exciting! **Are** you **going to** stay long?\nQuan: For three weeks. And **I'm going to** learn to surf!\n\n[2] Speak Like a Native — track 23\n1. What are you going to do?\nsmooth: “What are you”\nchange: “going to” (→ “gonna”)\nstrong: “do”\nTrong văn nói, “going to” thường đọc thành “gonna” /ˈɡʌnə/. Cả câu nghe như “wa-đơ-yơ-gơ-nơ-đu”. Câu hỏi Wh- xuống giọng ở cuối.\n\n2. I'm going to visit my cousins in Australia.\nchange: “going to” (→ “gonna”)\nweak: “my”, “in”\nstrong: “visit”, “cousins”, “Australia”\n“I'm going to” đọc nhanh thành “am-gơ-nơ”. “Australia” nhấn vào âm tiết thứ hai: “o-STRÂY-li-ơ”.\n\n3. For three weeks.\nweak: “For”\nstrong: “three weeks”\nÂm /θ/ trong “three”: đặt đầu lưỡi giữa hai hàm răng rồi thổi hơi; đừng đọc thành “tri” hay “sri”. “For” đọc nhẹ /fər/.\n\n[MẸO PHÁT ÂM]\nTrong văn nói, “going to” + động từ thường đọc thành “gonna” /ˈɡʌnə/.\nKhông rút gọn khi “going to” nghĩa là “đi đến”: I'm going to Australia.\nÂm /θ/ (three, think) phải đặt lưỡi giữa hai răng; đừng thay bằng /t/ hay /s/.\nNhấn vào động từ chính và nơi chốn: I'm gonna VISIT my COUSINS in auSTRAlia.\n\n[3] Study Notes\n**Summer's almost here!**\nSắp đến hè rồi!\n“almost” nghĩa là “gần như, sắp”; “Summer's” là dạng rút gọn của “Summer is”.\nCách nói tương đương: Summer's coming soon!\n\n**That's exciting!**\nHấp dẫn quá!\nCâu phản hồi khi nghe tin vui hoặc một kế hoạch hay của người khác.\nCách nói tương đương: How exciting!\n\n[4] Grammar Focus\nbe going to: kế hoạch, dự định\nam / is / are + going to + động từ nguyên mẫu: nói về việc mình đã định làm trong tương lai.\n[[I'm going to]] buy a new phone.\n[[She's going to]] study in Japan.\nWe [[aren't going to]] stay home this weekend.\n\nCâu hỏi với be going to\nĐưa am / is / are lên trước chủ ngữ. Câu hỏi Wh-: What / Where / When + am / is / are + chủ ngữ + going to…?\n[[Are]] you [[going to]] cook tonight? – Yes, I am.\nWhere [[is]] he [[going to]] live?\n\n[5] Role Play — track 27\nA: Summer's almost here! What are you going to do?\nB: I'm going to visit ________ in Australia.\nA: That's exciting! Are you going to stay long?\nB: For ________. And I'm going to ________!\n\n[6] Substitution Drill — track 28\n1. I'm going to visit __my cousins__ in Australia.\na. my aunt\nb. some old friends\nc. my host family\n\n2. For __three weeks__.\na. a month\nb. ten days\nc. the whole summer\n\n3. And I'm going to __learn to surf__!\na. see some kangaroos\nb. try new food\nc. take lots of photos\n",
+     "pdf": "Level 2/unit 12/unit 12.pdf",
+     "tracks": [
+      {
+       "track": 22,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 2/unit 12/3-22_U12-1_Conversation.mp3"
+      },
+      {
+       "track": 23,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 2/unit 12/3-23_U12-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 24,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 2/unit 12/3-24_U12-3_Repetition.mp3"
+      },
+      {
+       "track": 25,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 2/unit 12/3-25_U12-4_Overlapping.mp3"
+      },
+      {
+       "track": 26,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 2/unit 12/3-26_U12-5_Shadowing.mp3"
+      },
+      {
+       "track": 27,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 2/unit 12/3-27_U12-6_Role_Play.mp3"
+      },
+      {
+       "track": 28,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 2/unit 12/3-28_U12-7_Substitution_Drill.mp3"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Level 3",
+   "number": 3,
+   "units": [
+    {
+     "name": "unit 1",
+     "number": 1,
+     "folder": "Level 3/unit 1",
+     "md": "Level 3/unit 1/unit 1.md",
+     "mdText": "[HEADER] unit 1 — CD1\n\n[1] Conversation — track 1, 3, 4\nKate wants to see a movie with Binh this weekend.\nKate: Are you free Saturday? Let's see a movie!\nBinh: Sorry, I can't. **I'm helping** my dad at his shop.\nKate: Oh, OK. What about Sunday afternoon?\nBinh: Well, **I'm meeting** my study group at two.\nKate: **What are** you **doing** that evening?\nBinh: **I'm not doing** anything. See you at seven!\n\n[2] Speak Like a Native — track 2\n1. I'm helping my dad at his shop.\nlinking: “dad‿at‿his”\nweak: “my”, “at his”\nstrong: “helping”, “dad”, “shop”\n“his” đọc nhẹ nên âm /h/ bị nuốt; cả cụm “dad at his” nối thành “đa-đơ-tiz”. Nhấn vào hoạt động và người: “helping”, “dad”, “shop”.\n\n2. Well, I'm meeting my study group at two.\nchange: “meeting” (t → d nhẹ)\nweak: “my”, “at”\nstrong: “meeting”, “study group”, “two”\nÂm “t” giữa hai nguyên âm của “meeting” đọc thành “d” nhẹ: “mi-đing”. Khi nói về lịch hẹn, nhấn vào việc làm và thời gian.\n\n3. I'm not doing anything.\nlinking: “doing‿anything”\nstrong: “not”, “anything”\nÂm /ŋ/ cuối của “doing” nối vào “anything”: “đu-in-ge-ni-thing”. “not” được nhấn mạnh vì đây là ý chính: mình rảnh.\n\n[MẸO PHÁT ÂM]\nDạng rút gọn I'm, we're, she's đọc thành một âm tiết.\nÂm /h/ của “his, her, him” thường bị nuốt khi đọc nhẹ: at his shop → “ơ-tiz-shop”.\nÂm “t” giữa hai nguyên âm đọc thành “d” nhẹ: meeting → “mi-đing”.\nKhi kể lịch hẹn, nhấn vào hoạt động và thời gian: I'm MEETING my study GROUP at TWO.\n\n[3] Study Notes\n**Are you free Saturday?**\nThứ Bảy bạn rảnh không?\nCâu hỏi trước khi rủ ai làm gì. Người Mỹ thường bỏ “on”: Are you free (on) Saturday?\nCách nói tương đương: Are you busy on Saturday?\n\n**Sorry, I can't.**\nXin lỗi, mình không đi được.\nCách từ chối lời mời nhẹ nhàng; thường nói thêm lý do ngay sau đó.\nCách nói tương đương: I'm afraid I can't.\n\n[4] Grammar Focus\nHiện tại tiếp diễn diễn tả lịch hẹn trong tương lai\nam / is / are + V-ing + thời gian tương lai (tonight, tomorrow, on Friday…). Dùng cho việc đã sắp xếp, đã hẹn với người khác; be going to (Level 2) thì chỉ là dự định.\n[[I'm seeing]] the dentist tomorrow.\n[[We're having]] dinner with Tom on Friday.\n[[She's flying]] to Seoul next week.\n\nHỏi về kế hoạch: What are you doing…?\nDùng “What are you doing + thời gian tương lai?” để hỏi lịch của ai đó trước khi rủ rê.\n[[What are you doing]] tonight? – [[I'm working]] late.\n[[Are you doing]] anything this weekend?\n\n[5] Role Play — track 6\nA: Are you free Saturday? Let's see a movie!\nB: Sorry, I can't. I'm helping ________.\nA: Oh, OK. What about Sunday afternoon?\nB: Well, I'm meeting ________ at two.\nA: What are you doing that evening?\nB: I'm not doing anything. See you at ________!\n\n[6] Substitution Drill — track 7\n1. I'm helping __my dad at his shop__.\na. my friend move house\nb. my aunt at her café\nc. at the school festival\n\n2. Well, I'm meeting __my study group__ at two.\na. my cousins\nb. a client\nc. my old classmates\n\n3. See you at __seven__!\na. six thirty\nb. the theater\nc. the bus stop\n",
+     "pdf": "Level 3/unit 1/unit 1.pdf",
+     "tracks": [
+      {
+       "track": 1,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 1/1-01_U01-1_Conversation.mp3"
+      },
+      {
+       "track": 2,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 1/1-02_U01-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 3,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 1/1-03_U01-3_Repetition.mp3"
+      },
+      {
+       "track": 4,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 1/1-04_U01-4_Overlapping.mp3"
+      },
+      {
+       "track": 5,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 1/1-05_U01-5_Shadowing.mp3"
+      },
+      {
+       "track": 6,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 1/1-06_U01-6_Role_Play.mp3"
+      },
+      {
+       "track": 7,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 1/1-07_U01-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 2",
+     "number": 2,
+     "folder": "Level 3/unit 2",
+     "md": "Level 3/unit 2/unit 2.md",
+     "mdText": "[HEADER] unit 2 — CD1\n\n[1] Conversation — track 8, 10, 11\nHien has a bandage on her hand. Her coworker Oscar asks about it.\nOscar: Hien, what happened to your hand?\nHien: I cut it. **I was cooking** dinner last night.\nOscar: Oh no! How did that happen?\nHien: **I was cutting** onions **when** my phone rang.\nOscar: Let me guess. You answered it?\nHien: Yes. And **while** I **was talking**, I cut my finger!\n\n[2] Speak Like a Native — track 9\n1. I was cooking dinner last night.\nweak: “was”\nstrong: “cooking dinner”, “last night”\n“was” đọc nhẹ /wəz/. Âm “t” cuối của “last” gần như mất trước “night”: “las-nait”.\n\n2. I was cutting onions when my phone rang.\nchange: “cutting” (t → d nhẹ)\nlinking: “cutting‿onions”\nweak: “was”, “when my”\nstrong: “onions”, “phone rang”\n“cutting” đọc thành “cơ-đing”, rồi nối vào “onions”: “cơ-đing-ơn-yơnz”. Nhấn mạnh “phone rang” vì đây là sự việc bất ngờ xen vào.\n\n3. Let me guess.\nchange: “Let me” (→ “lemme”)\nstrong: “guess”\nKhi nói nhanh, “Let me” đọc thành “lemme” /ˈlemi/: âm “t” biến mất. Nhấn vào “guess”.\n\n[MẸO PHÁT ÂM]\n“was / were” trong thì quá khứ tiếp diễn đọc nhẹ: /wəz/, /wər/.\nÂm “t” giữa hai nguyên âm đọc thành “d” nhẹ: cutting → “cơ-đing”.\n“Let me” khi nói nhanh thành “lemme” /ˈlemi/.\nMệnh đề “when…” kể sự việc xen vào nên thường được nhấn, vì đó là điểm bất ngờ của câu chuyện.\n\n[3] Study Notes\n**What happened to your hand?**\nTay bạn bị sao vậy?\n“What happened to + bộ phận cơ thể / đồ vật?” dùng khi thấy có gì đó không ổn.\nCách nói tương đương: What's wrong with your hand?\n\n**Let me guess.**\nĐể mình đoán nhé.\nNói trước khi đoán điều người kia sắp kể, thường mang ý đùa vui.\nCách nói tương đương: I bet you answered it.\n\n[4] Grammar Focus\nQuá khứ tiếp diễn: was / were + V-ing\nDùng để nói việc đang diễn ra tại một thời điểm trong quá khứ.\nAt eight, I [[was having]] breakfast.\nThey [[were playing]] cards all night.\n[[Was]] it [[raining]] this morning?\n\nQuá khứ tiếp diễn + when / while\nViệc dài đang diễn ra dùng quá khứ tiếp diễn; việc ngắn xen vào dùng quá khứ đơn sau “when”. “while” đi với việc đang diễn ra.\nI [[was sleeping]] [[when]] the phone rang.\n[[While]] she [[was driving]], it started to snow.\n\n[5] Role Play — track 13\nA: Hien, what happened to your hand?\nB: I cut it. I was ________ last night.\nA: Oh no! How did that happen?\nB: I was cutting onions when ________.\nA: Let me guess. You answered it?\nB: Yes. And while I was ________, I cut my finger!\n\n[6] Substitution Drill — track 14\n1. I was __cooking dinner__ last night.\na. making a salad\nb. washing the dishes\nc. fixing my bike\n\n2. I was cutting onions when __my phone rang__.\na. the doorbell rang\nb. my cat jumped up\nc. someone knocked\n\n3. And while I was __talking__, I cut my finger!\na. laughing\nb. looking at the screen\nc. walking around\n",
+     "pdf": "Level 3/unit 2/unit 2.pdf",
+     "tracks": [
+      {
+       "track": 8,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 2/1-08_U02-1_Conversation.mp3"
+      },
+      {
+       "track": 9,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 2/1-09_U02-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 10,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 2/1-10_U02-3_Repetition.mp3"
+      },
+      {
+       "track": 11,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 2/1-11_U02-4_Overlapping.mp3"
+      },
+      {
+       "track": 12,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 2/1-12_U02-5_Shadowing.mp3"
+      },
+      {
+       "track": 13,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 2/1-13_U02-6_Role_Play.mp3"
+      },
+      {
+       "track": 14,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 2/1-14_U02-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 3",
+     "number": 3,
+     "folder": "Level 3/unit 3",
+     "md": "Level 3/unit 3/unit 3.md",
+     "mdText": "[HEADER] unit 3 — CD1\n\n[1] Conversation — track 15, 17, 18\nFiona isn't feeling well at work. Her coworker Thanh is worried.\nFiona: I feel awful. I have a bad headache.\nThanh: You look pale. You **should** go home and rest.\nFiona: But I have a big meeting at three.\nThanh: You **shouldn't** worry. I can take notes.\nFiona: Thanks. **Should** I see a doctor?\nThanh: Yes, you **should**. And drink lots of warm water.\n\n[2] Speak Like a Native — track 16\n1. You should go home and rest.\nweak: “should”, “and”\nstrong: “go home”, “rest”\n“should” đọc nhẹ /ʃəd/, chữ “l” câm. “and” đọc nhẹ /ən/: “gô-hôm-ơn-rest”. Nhấn vào lời khuyên chính: “go home”, “rest”.\n\n2. You shouldn't worry.\nstrong: “shouldn't”, “worry”\n“shouldn't” luôn đọc mạnh; âm “t” cuối gần như không bật ra: “shu-đn”. “worry” đọc /ˈwɜːri/: “wơ-ri”.\n\n3. Should I see a doctor?\nlinking: “Should‿I”\nweak: “a”\nstrong: “see”, “doctor”\n“Should I” nối thành “shu-đai”. “a” đọc rất nhẹ. Câu hỏi Yes/No nên lên giọng ở cuối.\n\n[MẸO PHÁT ÂM]\nChữ “l” trong should, could, would là âm câm: /ʃʊd/.\nTrong câu khẳng định, “should” đọc nhẹ /ʃəd/; còn “shouldn't” luôn đọc mạnh.\nÂm “t” cuối của “shouldn't” gần như không bật ra: “shu-đn”.\nTrong câu trả lời ngắn “Yes, you should.”, “should” đứng cuối nên đọc mạnh và rõ.\n\n[3] Study Notes\n**I feel awful.**\nMình thấy khó chịu quá.\n“feel + tính từ” dùng để nói cảm giác của cơ thể: I feel sick / tired / better.\nCách nói tương đương: I don't feel well.\n\n**You look pale.**\nTrông bạn xanh xao quá.\n“look + tính từ” nghĩa là “trông có vẻ…”, dùng khi nhận xét vẻ ngoài của ai đó.\nCách nói tương đương: You don't look well.\n\n[4] Grammar Focus\nshould / shouldn't: lời khuyên\nshould + động từ nguyên mẫu = nên; shouldn't = không nên. Dùng giống nhau cho mọi chủ ngữ.\nYou [[should]] eat more vegetables.\nHe [[shouldn't]] stay up so late.\nKids [[shouldn't]] drink coffee.\n\nHỏi xin lời khuyên: Should I…?\nShould + chủ ngữ + động từ nguyên mẫu…? Trả lời: Yes, you should. / No, you shouldn't. Hỏi rộng hơn: What should I do?\n[[Should I]] call her? – [[Yes, you should]].\n[[What should I]] wear tonight?\n\n[5] Role Play — track 20\nA: I feel awful. I have a bad headache.\nB: You look pale. You should ________.\nA: But I have a big meeting at three.\nB: You shouldn't worry. I can ________.\nA: Thanks. Should I see a doctor?\nB: Yes, you should. And drink lots of ________.\n\n[6] Substitution Drill — track 21\n1. You should __go home and rest__.\na. take a day off\nb. lie down for a bit\nc. take some medicine\n\n2. I can __take notes__.\na. tell the boss\nb. lead the meeting\nc. send you the slides\n\n3. And drink lots of __warm water__.\na. hot tea\nb. orange juice\nc. ginger tea\n",
+     "pdf": "Level 3/unit 3/unit 3.pdf",
+     "tracks": [
+      {
+       "track": 15,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 3/1-15_U03-1_Conversation.mp3"
+      },
+      {
+       "track": 16,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 3/1-16_U03-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 17,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 3/1-17_U03-3_Repetition.mp3"
+      },
+      {
+       "track": 18,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 3/1-18_U03-4_Overlapping.mp3"
+      },
+      {
+       "track": 19,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 3/1-19_U03-5_Shadowing.mp3"
+      },
+      {
+       "track": 20,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 3/1-20_U03-6_Role_Play.mp3"
+      },
+      {
+       "track": 21,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 3/1-21_U03-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 4",
+     "number": 4,
+     "folder": "Level 3/unit 4",
+     "md": "Level 3/unit 4/unit 4.md",
+     "mdText": "[HEADER] unit 4 — CD1\n\n[1] Conversation — track 22, 24, 25\nSimon wants to join a new gym. Lien works at the front desk.\nSimon: Hi. I'd like to join the gym.\nLien: Great! First, you **must** fill out this form.\nSimon: Sure. What are the rules here?\nLien: You **must** wear sports shoes. And you **mustn't** eat here.\nSimon: OK. Can I bring a water bottle?\nLien: Of course. But you **mustn't** leave it on the machines.\n\n[2] Speak Like a Native — track 23\n1. First, you must fill out this form.\nlinking: “fill‿out”\nweak: “must”\nstrong: “First”, “form”\n“must” đọc nhẹ /məst/, âm “t” mất trước “fill”: “mơs-fil”. “fill out” nối thành “fi-lao”.\n\n2. And you mustn't eat here.\nlinking: “mustn't‿eat”\nstrong: “mustn't”, “eat”\nChữ “t” đầu tiên trong “mustn't” là âm câm: /ˈmʌsnt/, đọc “mơ-sơnt”. Âm /t/ cuối nối vào “eat”: “mơ-sơn-tít”.\n\n3. Can I bring a water bottle?\nlinking: “Can‿I”\nchange: “water bottle” (t → d nhẹ)\nstrong: “water bottle”\n“Can I” nối thành “kơ-nai”. Trong giọng Mỹ, “water bottle” nghe như “wa-đơ ba-đồ”. Lên giọng ở cuối câu hỏi.\n\n[MẸO PHÁT ÂM]\n“must” trong câu khẳng định đọc nhẹ /məst/; âm “t” thường mất trước phụ âm: must fill → “mơs-fil”.\n“mustn't” có chữ “t” đầu câm: /ˈmʌsnt/ “mơ-sơnt”, và luôn được đọc mạnh.\nTrong giọng Mỹ, “t” giữa hai nguyên âm và trong đuôi “-ttle” nghe gần như “d”: water bottle → “wa-đơ ba-đồ”.\nCâu nói về quy định đọc rõ ràng, nhấn vào hành động: you MUST WEAR sports SHOES.\n\n[3] Study Notes\n**I'd like to join the gym.**\nTôi muốn đăng ký tập ở đây.\n“join” là “tham gia, trở thành thành viên” (câu lạc bộ, lớp học, nhóm). Ôn lại “I'd like to” ở Level 2.\nCách nói tương đương: I want to sign up.\n\n**Of course.**\nTất nhiên rồi.\nCách đồng ý tự nhiên, cho thấy yêu cầu của người kia là hoàn toàn bình thường.\nCách nói tương đương: Sure.\n\n[4] Grammar Focus\nmust: phải (quy định, việc bắt buộc)\nmust + động từ nguyên mẫu, dùng cho mọi chủ ngữ. Hay gặp trong nội quy, biển báo, hoặc khi người nói thấy việc đó thật sự cần thiết.\nVisitors [[must]] sign in at the desk.\nYou [[must]] wear a helmet on a motorbike.\n\nmustn't: không được phép\nmustn't + động từ nguyên mẫu = cấm, không được làm. Trong văn nói, người Mỹ thường dùng “can't” với nghĩa tương tự.\nYou [[mustn't]] smoke in the hotel.\nStudents [[mustn't]] use phones during the test.\nYou [[can't]] park here.\n\n[5] Role Play — track 27\nA: Hi. I'd like to join the gym.\nB: Great! First, you must ________.\nA: Sure. What are the rules here?\nB: You must wear ________. And you mustn't eat here.\nA: OK. Can I bring a water bottle?\nB: Of course. But you mustn't leave it ________.\n\n[6] Substitution Drill — track 28\n1. First, you must __fill out this form__.\na. show your ID\nb. pay the first month\nc. sign up online\n\n2. You must wear __sports shoes__.\na. clean shoes\nb. a T-shirt\nc. comfortable clothes\n\n3. But you mustn't leave it __on the machines__.\na. on the floor\nb. in the changing room\nc. near the weights\n",
+     "pdf": "Level 3/unit 4/unit 4.pdf",
+     "tracks": [
+      {
+       "track": 22,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 4/1-22_U04-1_Conversation.mp3"
+      },
+      {
+       "track": 23,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 4/1-23_U04-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 24,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 4/1-24_U04-3_Repetition.mp3"
+      },
+      {
+       "track": 25,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 4/1-25_U04-4_Overlapping.mp3"
+      },
+      {
+       "track": 26,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 4/1-26_U04-5_Shadowing.mp3"
+      },
+      {
+       "track": 27,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 4/1-27_U04-6_Role_Play.mp3"
+      },
+      {
+       "track": 28,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 4/1-28_U04-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 5",
+     "number": 5,
+     "folder": "Level 3/unit 5",
+     "md": "Level 3/unit 5/unit 5.md",
+     "mdText": "[HEADER] unit 5 — CD2\n\n[1] Conversation — track 1, 3, 4\nClara is visiting Hanoi. She asks her friend Huy where to eat.\nClara: Where can I get good pho, Huy?\nHuy: Try the shop near the lake. It's **the best**!\nClara: Great! Is it expensive?\nHuy: No, it's cheap. But it's **the most popular**, so go early.\nClara: OK. What's **the easiest** way to get there?\nHuy: Take a motorbike taxi. It's **the fastest**.\n\n[2] Speak Like a Native — track 2\n1. Try the shop near the lake.\nweak: “the”\nstrong: “Try”, “shop”, “lake”\nÂm “tr” trong “Try” đọc gần như “chr”: “chrai”. “the” đọc rất nhẹ /ðə/. Nhấn vào “shop” và “lake”.\n\n2. But it's the most popular, so go early.\nchange: “But‿it's” (t → d nhẹ)\nweak: “the”, “so”\nstrong: “most popular”, “early”\n“But it's” nối thành “bơ-đits”. Âm “t” của “most” mất trước “popular”: “mous-pa-piu-lơ”. Nhấn vào “most popular” và “early”.\n\n3. What's the easiest way to get there?\nlinking: “the‿easiest”\nweak: “to”\nstrong: “easiest”, “there”\n“the” đứng trước nguyên âm nên đọc /ði/: “đi-i-zi-ịst”. “easiest” có ba âm tiết, nhấn vào âm đầu. Câu hỏi Wh- xuống giọng ở cuối.\n\n[MẸO PHÁT ÂM]\n“the” đọc /ðə/ trước phụ âm (the best), nhưng /ði/ trước nguyên âm (the easiest).\nĐuôi -est đọc nhẹ /ɪst/; âm “t” cuối thường mất trước phụ âm: the fastest way → “fas-tịs-wây”.\nÂm “t” của “most” cũng mất trước phụ âm: most popular → “mous-pa-piu-lơ”.\nÂm “tr” (try, train) đọc gần như “chr”: try → “chrai”.\n\n[3] Study Notes\n**Where can I get good pho?**\nĂn phở ngon ở đâu nhỉ?\n“Where can I get + món ăn / đồ vật?” dùng để hỏi chỗ ăn, chỗ mua.\nCách nói tương đương: Where's a good place for pho?\n\n**So go early.**\nVậy nên đi sớm nhé.\n“so” nghĩa là “vì vậy”, nối nguyên nhân với kết quả hoặc với lời khuyên.\nCách nói tương đương: You should go early. (Unit 3)\n\n[4] Grammar Focus\nSo sánh nhất với tính từ ngắn: the + tính từ-est\nDùng để nói ai / cái gì “nhất” trong một nhóm. Tính từ một âm tiết thêm -est: cheap → the cheapest, big → the biggest. Bất quy tắc: good → the best, bad → the worst.\nEverest is [[the highest]] mountain in the world.\nThis is [[the biggest]] room in the hotel.\nThat was [[the worst]] day of my life.\n\nSo sánh nhất với tính từ dài: the most + tính từ\nTính từ từ hai âm tiết trở lên dùng “the most”: the most popular. Riêng tính từ tận cùng -y thì đổi y → iest: easy → the easiest.\nIt's [[the most expensive]] hotel here.\nShe's [[the most famous]] singer in Korea.\nMath is [[the easiest]] subject for me.\n\n[5] Role Play — track 6\nA: Where can I get good pho, Huy?\nB: Try ________. It's the best!\nA: Great! Is it expensive?\nB: No, it's cheap. But it's ________, so go early.\nA: OK. What's the easiest way to get there?\nB: Take a motorbike taxi. It's ________.\n\n[6] Substitution Drill — track 7\n1. Try __the shop near the lake__.\na. the stall by the market\nb. my uncle's restaurant\nc. the place on my street\n\n2. But it's __the most popular__, so go early.\na. the busiest\nb. the most crowded\nc. the smallest\n\n3. It's __the fastest__.\na. the cheapest\nb. the most fun\nc. the most convenient\n",
+     "pdf": "Level 3/unit 5/unit 5.pdf",
+     "tracks": [
+      {
+       "track": 1,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 5/2-01_U05-1_Conversation.mp3"
+      },
+      {
+       "track": 2,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 5/2-02_U05-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 3,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 5/2-03_U05-3_Repetition.mp3"
+      },
+      {
+       "track": 4,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 5/2-04_U05-4_Overlapping.mp3"
+      },
+      {
+       "track": 5,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 5/2-05_U05-5_Shadowing.mp3"
+      },
+      {
+       "track": 6,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 5/2-06_U05-6_Role_Play.mp3"
+      },
+      {
+       "track": 7,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 5/2-07_U05-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 6",
+     "number": 6,
+     "folder": "Level 3/unit 6",
+     "md": "Level 3/unit 6/unit 6.md",
+     "mdText": "[HEADER] unit 6 — CD2\n\n[1] Conversation — track 8, 10, 11\nEthan is having his first driving lesson. Kim is his teacher.\nEthan: I'm so nervous. I can't drive **well** yet.\nKim: Don't worry. Just drive **slowly** and **carefully**.\nEthan: OK. Is this speed all right?\nKim: Yes, you're doing **well**. Now turn left **gently**.\nEthan: Oops! Sorry, I stopped very **suddenly**.\nKim: That's OK. You're learning **quickly**!\n\n[2] Speak Like a Native — track 9\n1. Just drive slowly and carefully.\nchange: “Just” (mất âm t cuối)\nweak: “and”\nstrong: “slowly”, “carefully”\n“Just drive” đọc thành “jơs-đraiv”. Đuôi -ly đọc nhẹ /li/. “carefully” chỉ có ba âm tiết: “ke-fơ-li”.\n\n2. Yes, you're doing well.\nweak: “you're”\nstrong: “well”\n“you're” đọc nhẹ /jər/. Âm “l” cuối của “well” là “l tối”: cong lưỡi lên, nghe gần như “weo”.\n\n3. You're learning quickly!\nstrong: “learning”, “quickly”\n“learning” đọc /ˈlɜːrnɪŋ/: “lơ-ning”. “qu” trong “quickly” đọc /kw/: “quých-li”. Nhấn vào cả hai từ để khen ngợi.\n\n[MẸO PHÁT ÂM]\nĐuôi -ly của trạng từ đọc nhẹ /li/: slowly → “slâu-li”, carefully → “ke-fơ-li”.\nÂm “l” cuối từ (well, feel) là “l tối”: cong lưỡi lên, nghe gần như “o”: well → “weo”.\n“qu” luôn đọc /kw/: quickly → “quých-li”.\nÂm “t” cuối của “just” thường mất trước phụ âm: just drive → “jơs-đraiv”.\n\n[3] Study Notes\n**I'm so nervous.**\nMình hồi hộp quá.\n“nervous” là lo lắng, hồi hộp trước kỳ thi, buổi phỏng vấn hoặc khi làm việc gì lần đầu.\nCách nói tương đương: I'm really worried.\n\n**You're doing well.**\nBạn đang làm tốt lắm.\nCâu động viên khi ai đó đang học hoặc đang làm một việc khó.\nCách nói tương đương: Keep it up!\n\n[4] Grammar Focus\nTrạng từ chỉ cách thức: tính từ + -ly\nTrạng từ đứng sau động từ (hoặc sau tân ngữ) để nói hành động diễn ra như thế nào: slow → slowly, careful → carefully. Tính từ tận cùng -y: easy → easily.\nPlease speak [[slowly]].\nShe opened the box [[carefully]].\nHe passed the test [[easily]].\n\nTrạng từ bất quy tắc: well, fast, hard\ngood → well (không nói “goodly”); fast và hard giữ nguyên dạng.\nYou speak English very [[well]].\nHe runs really [[fast]].\nThey work [[hard]] every day.\n\n[5] Role Play — track 13\nA: I'm so nervous. I can't drive well yet.\nB: Don't worry. Just drive ________.\nA: OK. Is this speed all right?\nB: Yes, you're doing well. Now ________ gently.\nA: Oops! Sorry, I stopped very suddenly.\nB: That's OK. You're learning ________!\n\n[6] Substitution Drill — track 14\n1. Just drive __slowly and carefully__.\na. calmly\nb. slowly and safely\nc. nice and slowly\n\n2. Now __turn left__ gently.\na. turn right\nb. brake\nc. stop\n\n3. You're learning __quickly__!\na. fast\nb. really well\nc. very quickly\n",
+     "pdf": "Level 3/unit 6/unit 6.pdf",
+     "tracks": [
+      {
+       "track": 8,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 6/2-08_U06-1_Conversation.mp3"
+      },
+      {
+       "track": 9,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 6/2-09_U06-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 10,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 6/2-10_U06-3_Repetition.mp3"
+      },
+      {
+       "track": 11,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 6/2-11_U06-4_Overlapping.mp3"
+      },
+      {
+       "track": 12,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 6/2-12_U06-5_Shadowing.mp3"
+      },
+      {
+       "track": 13,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 6/2-13_U06-6_Role_Play.mp3"
+      },
+      {
+       "track": 14,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 6/2-14_U06-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 7",
+     "number": 7,
+     "folder": "Level 3/unit 7",
+     "md": "Level 3/unit 7/unit 7.md",
+     "mdText": "[HEADER] unit 7 — CD2\n\n[1] Conversation — track 15, 17, 18\nAlice is trying on shoes at a department store. Loc works there.\nLoc: How are the shoes? Do they fit?\nAlice: Not really. They're **too small**. My toes hurt.\nLoc: Let's try a bigger size. How about these?\nAlice: Well, they're **big enough**. But the heels are **too high**.\nLoc: We have them in a flat style, too.\nAlice: Perfect! Oh no, they're **too expensive**!\n\n[2] Speak Like a Native — track 16\n1. They're too small.\nweak: “They're”\nstrong: “too small”\n“too” mang nghĩa “quá” nên được nhấn và kéo dài nguyên âm /uː/. Âm “l” cuối của “small” là “l tối”: “smoo-l”.\n\n2. Well, they're big enough.\nlinking: “big‿enough”\nstrong: “big”, “enough”\nÂm /g/ của “big” nối vào “enough”: “bi-gi-nấp”. “enough” nhấn vào âm tiết thứ hai, chữ “gh” đọc /f/.\n\n3. But the heels are too high.\nweak: “the”, “are”\nstrong: “heels”, “too high”\n“heels” có nguyên âm /iː/ dài, đừng đọc thành “hills”. Chữ “gh” trong “high” là âm câm: /haɪ/.\n\n[MẸO PHÁT ÂM]\n“too” mang nghĩa “quá” nên luôn được nhấn và kéo dài: TOO small.\n“enough” nhấn vào âm tiết thứ hai, chữ “gh” đọc /f/: “i-nấp”.\nPhụ âm cuối của từ trước nối vào “enough”: big‿enough → “bi-gi-nấp”.\nChữ “gh” trong “high, right, light” là âm câm.\n\n[3] Study Notes\n**Do they fit?**\nCó vừa không?\n“fit” là “vừa (kích cỡ)”, dùng khi thử quần áo, giày dép.\nCách nói tương đương: Are they the right size?\n\n**My toes hurt.**\nNgón chân mình đau quá.\n“hurt” (đau) đứng sau bộ phận cơ thể: My back hurts. / My feet hurt.\nCách nói tương đương: They hurt my toes.\n\n[4] Grammar Focus\ntoo + tính từ: quá…\n“too” mang nghĩa tiêu cực, cho thấy có vấn đề: This tea is too hot (nên chưa uống được). Có thể thêm “to + động từ”: too hot to drink.\nThis coffee is [[too hot]].\nThe bag is [[too heavy]] to carry.\nI'm [[too tired]] to cook tonight.\n\ntính từ + enough: đủ…\n“enough” đứng sau tính từ. Phủ định: not + tính từ + enough = không đủ…\nIs the room [[big enough]]?\nHe isn't [[old enough]] to drive.\n\n[5] Role Play — track 20\nA: How are the shoes? Do they fit?\nB: Not really. They're ________. My toes hurt.\nA: Let's try a bigger size. How about these?\nB: Well, they're big enough. But ________.\nA: We have them in a flat style, too.\nB: Perfect! Oh no, they're ________!\n\n[6] Substitution Drill — track 21\n1. They're __too small__.\na. too tight\nb. too narrow\nc. not big enough\n\n2. But __the heels are too high__.\na. the color is too bright\nb. they're too heavy\nc. they aren't comfortable enough\n\n3. Oh no, they're __too expensive__!\na. way too expensive\nb. too much for me\nc. over my budget\n",
+     "pdf": "Level 3/unit 7/unit 7.pdf",
+     "tracks": [
+      {
+       "track": 15,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 7/2-15_U07-1_Conversation.mp3"
+      },
+      {
+       "track": 16,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 7/2-16_U07-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 17,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 7/2-17_U07-3_Repetition.mp3"
+      },
+      {
+       "track": 18,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 7/2-18_U07-4_Overlapping.mp3"
+      },
+      {
+       "track": 19,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 7/2-19_U07-5_Shadowing.mp3"
+      },
+      {
+       "track": 20,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 7/2-20_U07-6_Role_Play.mp3"
+      },
+      {
+       "track": 21,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 7/2-21_U07-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 8",
+     "number": 8,
+     "folder": "Level 3/unit 8",
+     "md": "Level 3/unit 8/unit 8.md",
+     "mdText": "[HEADER] unit 8 — CD2\n\n[1] Conversation — track 22, 24, 25\nRuby and Tien are getting ready for a party at their new apartment.\nRuby: Guests arrive at seven. Is there enough food?\nTien: Yes, we have **a lot of** pizza. And **a few** salads.\nRuby: Great. What about drinks?\nTien: We only have **a little** juice. Let's buy some more.\nRuby: OK. Did you invite the neighbors?\nTien: Just **a few**. Our apartment isn't big enough!\n\n[2] Speak Like a Native — track 23\n1. Yes, we have a lot of pizza.\nsmooth: “a lot of”\nchange: “lot‿of” (t → d nhẹ)\nstrong: “lot”, “pizza”\n“a lot of” đọc liền như một từ: “ơ-la-đơv”; khi nói nhanh còn nghe như “a lotta”. Nhấn vào “lot” và “pizza”.\n\n2. We only have a little juice.\nchange: “little” (t → d nhẹ)\nweak: “a”\nstrong: “only”, “little”, “juice”\nTrong giọng Mỹ, “little” đọc thành “li-đồ”. “only” được nhấn để làm rõ ý “chỉ có (một ít)”.\n\n3. Just a few.\nlinking: “Just‿a”\nstrong: “few”\n“Just a” nối thành “jơs-tơ”. “few” đọc /fjuː/: “phiu”, kéo dài và nhấn rõ.\n\n[MẸO PHÁT ÂM]\n“a lot of” đọc liền như một từ: “ơ-la-đơv”, khi nói nhanh còn “a lotta”.\nTrong giọng Mỹ, “t” giữa hai nguyên âm và trong đuôi “-ttle” đọc gần như “d”: little → “li-đồ”.\n“a” trong a lot of, a few, a little đọc rất nhẹ /ə/ nhưng không được bỏ, vì “few” và “a few” khác nghĩa.\nNhấn vào từ chỉ số lượng (lot, few, little) khi số lượng là thông tin chính.\n\n[3] Study Notes\n**Is there enough food?**\nCó đủ đồ ăn không?\n“enough + danh từ” nghĩa là “đủ…”; ở Unit 7 ta đã học “tính từ + enough”.\nCách nói tương đương: Do we have enough food?\n\n**Let's buy some more.**\nMình mua thêm đi.\n“some more” là “thêm một ít nữa”, dùng được cho cả danh từ đếm được và không đếm được.\nCách nói tương đương: Let's get more.\n\n[4] Grammar Focus\na lot of: nhiều\n“a lot of” dùng được với danh từ đếm được số nhiều (a lot of friends) và danh từ không đếm được (a lot of money). Cách nói thân mật hơn: “lots of”.\nShe has [[a lot of]] friends.\nWe don't have [[a lot of]] time.\n\na few / a little: một vài, một ít\n“a few” + danh từ đếm được số nhiều; “a little” + danh từ không đếm được. Bỏ “a” (few, little) thì nghĩa là “rất ít, gần như không có”.\nI have [[a few]] questions.\nAdd [[a little]] salt, please.\nVery [[few]] people came.\n\n[5] Role Play — track 27\nA: Guests arrive at seven. Is there enough food?\nB: Yes, we have a lot of ________. And a few salads.\nA: Great. What about drinks?\nB: We only have ________. Let's buy some more.\nA: OK. Did you invite the neighbors?\nB: Just a few. Our apartment isn't ________!\n\n[6] Substitution Drill — track 28\n1. Yes, we have a lot of __pizza__.\na. fried chicken\nb. snacks\nc. spring rolls\n\n2. We only have __a little juice__.\na. a little milk tea\nb. a few bottles of water\nc. a few cans of soda\n\n3. Our apartment isn't __big enough__!\na. very big\nb. large enough\nc. that big\n",
+     "pdf": "Level 3/unit 8/unit 8.pdf",
+     "tracks": [
+      {
+       "track": 22,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 8/2-22_U08-1_Conversation.mp3"
+      },
+      {
+       "track": 23,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 8/2-23_U08-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 24,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 8/2-24_U08-3_Repetition.mp3"
+      },
+      {
+       "track": 25,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 8/2-25_U08-4_Overlapping.mp3"
+      },
+      {
+       "track": 26,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 8/2-26_U08-5_Shadowing.mp3"
+      },
+      {
+       "track": 27,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 8/2-27_U08-6_Role_Play.mp3"
+      },
+      {
+       "track": 28,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 8/2-28_U08-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 9",
+     "number": 9,
+     "folder": "Level 3/unit 9",
+     "md": "Level 3/unit 9/unit 9.md",
+     "mdText": "[HEADER] unit 9 — CD3\n\n[1] Conversation — track 1, 3, 4\nThe picnic is over. Diana and Kien are cleaning up.\nDiana: **Whose** sunglasses are these? Are they **yours**?\nKien: No, they aren't **mine**. I think they're Jenny's.\nDiana: OK. And this blue jacket?\nKien: That's **hers**, too. She left early.\nDiana: What about these plates? Are they **ours**?\nKien: No, they're **theirs**. The family next to us lent them.\n\n[2] Speak Like a Native — track 2\n1. Whose sunglasses are these?\nlinking: “sunglasses‿are”\nweak: “are”\nstrong: “Whose”, “sunglasses”\n“Whose” đọc /huːz/, giống hệt “who's”. “sunglasses are” nối thành “sơn-gla-si-zơ”. Câu hỏi Wh- xuống giọng ở cuối.\n\n2. No, they aren't mine.\nstrong: “aren't”, “mine”\nĐại từ sở hữu “mine” đứng cuối câu nên được nhấn mạnh, khác với “my” đọc nhẹ (Level 2, Unit 1). Âm “t” của “aren't” gần như mất trước “mine”.\n\n3. That's hers, too.\nstrong: “hers”, “too”\n“hers” đọc rõ cả âm /h/ đầu và /z/ cuối: /hɜːrz/. Không giống “her” đọc nhẹ ở giữa câu. Nhấn vào “too”.\n\n[MẸO PHÁT ÂM]\nĐại từ sở hữu (mine, yours, hers, ours, theirs) thường đứng cuối câu nên luôn được nhấn.\nNgược lại, tính từ sở hữu (my, your, her) đứng trước danh từ thì đọc nhẹ.\n“Whose” và “who's” đọc giống nhau /huːz/; dựa vào ngữ cảnh để hiểu.\nÂm /z/ cuối của yours, hers, ours, theirs phải rung nhẹ, đừng bỏ.\n\n[3] Study Notes\n**I think they're Jenny's.**\nMình nghĩ là của Jenny.\n“I think…” dùng khi không chắc chắn hoàn toàn. “Jenny's” là “của Jenny”, không cần nhắc lại danh từ.\nCách nói tương đương: Maybe they're Jenny's.\n\n**She left early.**\nCô ấy về sớm rồi.\n“left” là quá khứ của “leave” (rời đi, ra về).\nCách nói tương đương: She went home early.\n\n[4] Grammar Focus\nĐại từ sở hữu: mine / yours / his / hers / ours / theirs\nThay cho “tính từ sở hữu + danh từ” để khỏi lặp lại danh từ: my bag → mine. Không đặt danh từ sau đại từ sở hữu.\nThis seat is [[mine]].\nIs this pen [[yours]]?\nOur car is old, but [[theirs]] is new.\n\nWhose…? và câu trả lời\n“Whose + danh từ” dùng để hỏi chủ sở hữu. Trả lời bằng đại từ sở hữu hoặc tên + 's.\n[[Whose]] keys are these? – They're [[his]].\n[[Whose]] car is that? – It's [[my dad's]].\n\n[5] Role Play — track 6\nA: Whose sunglasses are these? Are they yours?\nB: No, they aren't mine. I think they're ________.\nA: OK. And this blue jacket?\nB: That's hers, too. She left ________.\nA: What about these plates? Are they ours?\nB: No, they're ________. The family next to us lent them.\n\n[6] Substitution Drill — track 7\n1. I think they're __Jenny's__.\na. Mark's\nb. your sister's\nc. the teacher's\n\n2. She left __early__.\na. in a hurry\nb. before lunch\nc. an hour ago\n\n3. No, they're __theirs__.\na. his\nb. hers\nc. the café's\n",
+     "pdf": "Level 3/unit 9/unit 9.pdf",
+     "tracks": [
+      {
+       "track": 1,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 9/3-01_U09-1_Conversation.mp3"
+      },
+      {
+       "track": 2,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 9/3-02_U09-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 3,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 9/3-03_U09-3_Repetition.mp3"
+      },
+      {
+       "track": 4,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 9/3-04_U09-4_Overlapping.mp3"
+      },
+      {
+       "track": 5,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 9/3-05_U09-5_Shadowing.mp3"
+      },
+      {
+       "track": 6,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 9/3-06_U09-6_Role_Play.mp3"
+      },
+      {
+       "track": 7,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 9/3-07_U09-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 10",
+     "number": 10,
+     "folder": "Level 3/unit 10",
+     "md": "Level 3/unit 10/unit 10.md",
+     "mdText": "[HEADER] unit 10 — CD3\n\n[1] Conversation — track 8, 10, 11\nIt's a rainy Sunday. Hugo and Hanh are bored at home.\nHugo: I'm so bored. What should we do today?\nHanh: **Why don't we** go to the new shopping mall?\nHugo: It's always too crowded on Sundays.\nHanh: OK. **How about watching** a movie at home?\nHugo: Good idea! **Let's** order some pizza, too.\nHanh: Great! And **let's not** pick a scary one!\n\n[2] Speak Like a Native — track 9\n1. Why don't we go to the new shopping mall?\nsmooth: “Why don't we”\nchange: “don't‿we” (mất âm t)\nweak: “to the”\nstrong: “new shopping mall”\n“Why don't we” đọc liền thành “wai-đôn-wi”. Nhấn vào địa điểm được gợi ý. Giọng vui vẻ, thân thiện.\n\n2. How about watching a movie at home?\nchange: “How‿about” (nối bằng âm /w/)\nlinking: “watching‿a”\nstrong: “watching”, “movie”, “home”\n“How about” nối bằng một âm /w/ nhẹ: “hao-wơ-baot”. “watching a” nối thành “wo-chin-gơ”. Nhấn vào hoạt động được gợi ý.\n\n3. Let's order some pizza, too.\nlinking: “Let's‿order”\nweak: “some”\nstrong: “order”, “pizza”, “too”\n“Let's order” nối thành “lét-sor-đơ”. Chữ “zz” trong “pizza” đọc /ts/: “pít-sơ”.\n\n[MẸO PHÁT ÂM]\n“Why don't we…?” đọc liền, âm “t” của “don't” gần như mất: “wai-đôn-wi”.\n“How about” nối bằng một âm /w/ nhẹ: “hao-wơ-baot”; khi nói nhanh còn “hao-bao”.\nChữ “zz” trong “pizza” đọc /ts/: “pít-sơ”.\nLời rủ rê nên nói với giọng vui vẻ, nhấn vào hoạt động được gợi ý.\n\n[3] Study Notes\n**I'm so bored.**\nChán quá đi.\n“bored” là cảm thấy chán; “boring” là gây chán. Đừng nói “I'm boring” (Tôi là người nhàm chán).\nCách nói tương đương: There's nothing to do.\n\n**Good idea!**\nÝ hay đấy!\nCâu đồng ý nhanh khi nghe một lời gợi ý.\nCách nói tương đương: Sounds good!\n\n[4] Grammar Focus\nRủ rê, gợi ý: Let's… / Let's not…\nLet's + động từ nguyên mẫu = mình cùng… nhé. Phủ định: Let's not + động từ nguyên mẫu.\n[[Let's]] take a break.\n[[Let's not]] tell him yet.\n\nWhy don't we…? / How about + V-ing?\nHai cách gợi ý nhẹ nhàng hơn “Let's”. Sau “Why don't we” là động từ nguyên mẫu; sau “How about” là V-ing hoặc danh từ.\n[[Why don't we]] eat out tonight?\n[[How about going]] to the beach?\n[[How about]] Friday? – Sounds good.\n\n[5] Role Play — track 13\nA: I'm so bored. What should we do today?\nB: Why don't we ________?\nA: It's always too crowded on Sundays.\nB: OK. How about ________ at home?\nA: Good idea! Let's order some pizza, too.\nB: Great! And let's not pick ________!\n\n[6] Substitution Drill — track 14\n1. Why don't we __go to the new shopping mall__?\na. visit the museum\nb. go bowling\nc. try that new café\n\n2. How about __watching a movie__ at home?\na. playing board games\nb. baking a cake\nc. doing karaoke\n\n3. And let's not pick __a scary one__!\na. a sad one\nb. a really long one\nc. a romantic comedy\n",
+     "pdf": "Level 3/unit 10/unit 10.pdf",
+     "tracks": [
+      {
+       "track": 8,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 10/3-08_U10-1_Conversation.mp3"
+      },
+      {
+       "track": 9,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 10/3-09_U10-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 10,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 10/3-10_U10-3_Repetition.mp3"
+      },
+      {
+       "track": 11,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 10/3-11_U10-4_Overlapping.mp3"
+      },
+      {
+       "track": 12,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 10/3-12_U10-5_Shadowing.mp3"
+      },
+      {
+       "track": 13,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 10/3-13_U10-6_Role_Play.mp3"
+      },
+      {
+       "track": 14,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 10/3-14_U10-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 11",
+     "number": 11,
+     "folder": "Level 3/unit 11",
+     "md": "Level 3/unit 11/unit 11.md",
+     "mdText": "[HEADER] unit 11 — CD3\n\n[1] Conversation — track 15, 17, 18\nIsabel meets her neighbor Tai on the street. He's carrying a lot of bags.\nIsabel: Hi, Tai! Where are you going?\nTai: To the post office, **to send** a package.\nIsabel: What are those bags for?\nTai: I went to the market **to buy** food.\nIsabel: Wow! I only went out **to get** coffee.\nTai: Lucky you! Then I'm off to the bank **to pay** bills.\n\n[2] Speak Like a Native — track 16\n1. To the post office, to send a package.\nlinking: “post‿office”\nweak: “To the”, “to”, “a”\nstrong: “post office”, “send”, “package”\n“to” chỉ mục đích đọc rất nhẹ /tə/. Âm /t/ cuối của “post” nối vào “office”: “pâu-sto-fis”. Nhấn vào nơi chốn và việc cần làm.\n\n2. I went to the market to buy food.\nchange: “went‿to” (t + t → một âm “t”)\nweak: “to the”, “to”\nstrong: “market”, “buy food”\nHai âm “t” của “went to” chỉ đọc một lần: “wen-tơ”. Các từ nhỏ (to, the) đọc lướt; nhấn vào “market” và “buy food”.\n\n3. Then I'm off to the bank to pay bills.\nlinking: “I'm‿off”\nweak: “to the”, “to”\nstrong: “off”, “bank”, “pay bills”\n“I'm off” nối thành “ai-mof”, nghĩa là “mình đi đây”. Nhấn vào nơi đến và mục đích: “bank”, “pay bills”.\n\n[MẸO PHÁT ÂM]\n“to” chỉ mục đích đọc rất nhẹ /tə/, gần như “tơ”.\nHai âm “t” đứng cạnh nhau chỉ đọc một lần: went‿to → “wen-tơ”.\nPhụ âm cuối nối vào nguyên âm đầu của từ sau: post‿office → “pâu-sto-fis”, I'm‿off → “ai-mof”.\nNhấn vào nơi chốn và mục đích; các từ nhỏ như to, the, a đọc lướt.\n\n[3] Study Notes\n**What are those bags for?**\nMấy cái túi đó để làm gì vậy?\n“What… for?” dùng để hỏi mục đích, lý do.\nCách nói tương đương: Why do you have all those bags?\n\n**Lucky you!**\nSướng thế!\nCâu nói vui khi người kia có điều gì đó dễ chịu hơn mình.\nCách nói tương đương: You're so lucky!\n\n[4] Grammar Focus\nto + động từ: chỉ mục đích\nDùng “to + động từ nguyên mẫu” để nói mục đích của hành động (để làm gì).\nI went to the bank [[to get]] some cash.\nShe's saving money [[to buy]] a car.\nWe got up early [[to see]] the sunrise.\n\nTrả lời Why…? bằng To + động từ\nCó thể trả lời câu hỏi “Why…?” hoặc “What… for?” chỉ bằng “To + động từ”.\nWhy are you learning English? – [[To get]] a better job.\nWhy did he call? – [[To say]] sorry.\n\n[5] Role Play — track 20\nA: Hi, Tai! Where are you going?\nB: To the post office, ________.\nA: What are those bags for?\nB: I went to the market ________.\nA: Wow! I only went out to get coffee.\nB: Lucky you! Then I'm off to the bank ________.\n\n[6] Substitution Drill — track 21\n1. To the post office, __to send a package__.\na. to pick up a letter\nb. to buy some stamps\nc. to mail a gift\n\n2. I went to the market __to buy food__.\na. to get some fruit\nb. to buy fresh fish\nc. to pick up some rice\n\n3. Then I'm off to the bank __to pay bills__.\na. to get some cash\nb. to open an account\nc. to change money\n",
+     "pdf": "Level 3/unit 11/unit 11.pdf",
+     "tracks": [
+      {
+       "track": 15,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 11/3-15_U11-1_Conversation.mp3"
+      },
+      {
+       "track": 16,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 11/3-16_U11-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 17,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 11/3-17_U11-3_Repetition.mp3"
+      },
+      {
+       "track": 18,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 11/3-18_U11-4_Overlapping.mp3"
+      },
+      {
+       "track": 19,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 11/3-19_U11-5_Shadowing.mp3"
+      },
+      {
+       "track": 20,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 11/3-20_U11-6_Role_Play.mp3"
+      },
+      {
+       "track": 21,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 11/3-21_U11-7_Substitution_Drill.mp3"
+      }
+     ]
+    },
+    {
+     "name": "unit 12",
+     "number": 12,
+     "folder": "Level 3/unit 12",
+     "md": "Level 3/unit 12/unit 12.md",
+     "mdText": "[HEADER] unit 12 — CD3\n\n[1] Conversation — track 22, 24, 25\nLaura and Duy are planning a trip to Ha Long Bay this weekend.\nLaura: Are we still going to Ha Long Bay Saturday?\nDuy: I'm not sure. It **might** rain this weekend.\nLaura: Oh no. Should we change the date?\nDuy: **Maybe**. The boat tour **may** be canceled.\nLaura: Let's check the weather again tomorrow morning.\nDuy: Good idea. And bring a jacket. It **might** be cold!\n\n[2] Speak Like a Native — track 23\n1. I'm not sure.\nstrong: “not sure”\nChữ “s” trong “sure” đọc là /ʃ/: “shua”. Nhấn vào “not sure” và hạ giọng ở cuối câu.\n\n2. It might rain this weekend.\nchange: “might‿rain” (âm “t” mất)\nstrong: “might”, “rain”\n“might” mang ý “có thể” nên được đọc rõ, nhưng âm “t” cuối gần như mất trước “rain”: “mai-rên”.\n\n3. The boat tour may be canceled.\nweak: “The”, “may be”\nstrong: “boat tour”, “canceled”\n“may be” (có thể bị) đọc nhẹ và liền, nghe gần giống “maybe”. Đuôi -ed của “canceled” đọc /d/: “ken-sồld” (Level 2, Unit 9).\n\n[MẸO PHÁT ÂM]\nÂm “t” cuối của “might” thường mất trước phụ âm: might rain → “mai-rên”.\n“maybe” (có lẽ) là một từ, nhấn âm đầu: MAY-be; “may be” (có thể là) thì nhấn vào từ phía sau.\nChữ “s” trong “sure” đọc là /ʃ/: “shua”.\nĐuôi -ed của “canceled” đọc /d/ vì “cancel” tận cùng bằng âm hữu thanh /l/.\n\n[3] Study Notes\n**I'm not sure.**\nMình không chắc nữa.\nCâu trả lời khi chưa biết chắc chắn; thường nói thêm lý do ngay sau đó.\nCách nói tương đương: I don't know yet.\n\n**Let's check the weather again.**\nMình xem lại dự báo thời tiết nhé.\n“check” là kiểm tra, xem lại; “check the weather” là xem dự báo thời tiết.\nCách nói tương đương: Let's look at the forecast again.\n\n[4] Grammar Focus\nmay / might: có thể, có lẽ\nmay / might + động từ nguyên mẫu: nói về điều có thể xảy ra nhưng không chắc chắn. “might” thường ít chắc chắn hơn “may” một chút.\nShe [[might]] be late tonight.\nWe [[may]] move to Da Nang next year.\nTake an umbrella. It [[might]] rain.\n\nPhủ định và maybe\nPhủ định: may not / might not. “maybe” (một từ) là trạng từ, thường đứng đầu câu, nghĩa là “có lẽ”.\nHe [[might not]] come to the party.\nI [[may not]] have time tomorrow.\n[[Maybe]] she's at home.\n\n[5] Role Play — track 27\nA: Are we still going to Ha Long Bay Saturday?\nB: I'm not sure. It might ________ this weekend.\nA: Oh no. Should we change the date?\nB: Maybe. The boat tour may ________.\nA: Let's check the weather again tomorrow morning.\nB: Good idea. And bring a jacket. It might be ________!\n\n[6] Substitution Drill — track 28\n1. It might __rain__ this weekend.\na. be stormy\nb. be very windy\nc. rain all day\n\n2. The boat tour may __be canceled__.\na. be full\nb. start late\nc. not run\n\n3. It might be __cold__!\na. windy\nb. chilly at night\nc. cold on the boat\n",
+     "pdf": "Level 3/unit 12/unit 12.pdf",
+     "tracks": [
+      {
+       "track": 22,
+       "step": 1,
+       "name": "Conversation",
+       "file": "Level 3/unit 12/3-22_U12-1_Conversation.mp3"
+      },
+      {
+       "track": 23,
+       "step": 2,
+       "name": "Speak Like a Native",
+       "file": "Level 3/unit 12/3-23_U12-2_Speak_Like_a_Native.mp3"
+      },
+      {
+       "track": 24,
+       "step": 3,
+       "name": "Repetition",
+       "file": "Level 3/unit 12/3-24_U12-3_Repetition.mp3"
+      },
+      {
+       "track": 25,
+       "step": 4,
+       "name": "Overlapping",
+       "file": "Level 3/unit 12/3-25_U12-4_Overlapping.mp3"
+      },
+      {
+       "track": 26,
+       "step": 5,
+       "name": "Shadowing",
+       "file": "Level 3/unit 12/3-26_U12-5_Shadowing.mp3"
+      },
+      {
+       "track": 27,
+       "step": 6,
+       "name": "Role Play",
+       "file": "Level 3/unit 12/3-27_U12-6_Role_Play.mp3"
+      },
+      {
+       "track": 28,
+       "step": 7,
+       "name": "Substitution Drill",
+       "file": "Level 3/unit 12/3-28_U12-7_Substitution_Drill.mp3"
       }
      ]
     }

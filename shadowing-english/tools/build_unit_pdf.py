@@ -5,7 +5,8 @@ Usage:
 
 A unit .md follows the 6-block template ([HEADER], [1] … [6]). For each unit the
 script validates the template rules, then writes <unit>.pdf next to the .md
-(unless --check is given).
+(unless --check is given). Size rules differ per level (LEVEL_RULES); levels
+without rules (4, 5: transcribed from the book) are not checked.
 
 Inline markup:
   **text**   bold (grammar point in Conversation / Study Notes headline)
@@ -47,6 +48,17 @@ GREY = "#9A9A9A"
 GREEN = "#3A9D5D"
 LABEL_COLORS = {"smooth": BLUE, "linking": BLUE, "change": BLUE, "weak": GREY, "strong": ORANGE}
 LABELS = tuple(LABEL_COLORS)
+
+# Conversation turns, words per turn, words in total, Grammar Focus blocks,
+# max words per grammar example, words per drill option.
+LEVEL_RULES = {
+    1: {"turns": 4, "turn_words": (3, 6), "total_words": (20, 30), "grammar_blocks": (1, 1),
+        "example_words": 7, "option_words": (1, 3)},
+    2: {"turns": 4, "turn_words": (4, 10), "total_words": (30, 40), "grammar_blocks": (1, 2),
+        "example_words": 8, "option_words": (1, 4)},
+    3: {"turns": 6, "turn_words": (4, 12), "total_words": (36, 48), "grammar_blocks": (2, 2),
+        "example_words": 9, "option_words": (1, 5)},
+}
 
 BASE = 8.8
 S = {
@@ -155,21 +167,23 @@ def words(text):
     return [w for w in re.split(r"\s+", strip_markup(text)) if re.search(r"[A-Za-z0-9]", w)]
 
 
-def check_unit(d, max_turn_words=6):
+def check_unit(d, rules):
     problems = []
     conv = d["conversation"]["lines"]
     plain = [strip_markup(t) for _, t in conv]
     speakers = [n for n, _ in conv]
     b_name = speakers[1] if len(speakers) > 1 else None
 
-    if len(conv) != 4:
-        problems.append(f"Conversation has {len(conv)} turns (expected 4)")
+    if len(conv) != rules["turns"]:
+        problems.append(f"Conversation has {len(conv)} turns (expected {rules['turns']})")
     counts = [len(words(t)) for _, t in conv]
+    lo, hi = rules["turn_words"]
     for (name, t), n in zip(conv, counts):
-        if not 3 <= n <= max_turn_words:
-            problems.append(f"Turn '{name}: {strip_markup(t)}' has {n} words (3–{max_turn_words})")
-    if not 20 <= sum(counts) <= 30:
-        problems.append(f"Conversation total {sum(counts)} words (20–30)")
+        if not lo <= n <= hi:
+            problems.append(f"Turn '{name}: {strip_markup(t)}' has {n} words ({lo}–{hi})")
+    lo, hi = rules["total_words"]
+    if not lo <= sum(counts) <= hi:
+        problems.append(f"Conversation total {sum(counts)} words ({lo}–{hi})")
     bolds = sum(len(re.findall(r"\*\*.+?\*\*", t)) for _, t in conv)
     if bolds < 3:
         problems.append(f"Grammar point bold only {bolds} times (≥3)")
@@ -185,13 +199,16 @@ def check_unit(d, max_turn_words=6):
 
     if len(d["study_notes"]) != 2:
         problems.append(f"Study Notes has {len(d['study_notes'])} items (expected 2)")
+    lo, hi = rules["grammar_blocks"]
+    if not lo <= len(d["grammar_focus"]) <= hi:
+        problems.append(f"Grammar Focus has {len(d['grammar_focus'])} blocks ({lo}–{hi})")
     for gf in d["grammar_focus"]:
         if not 2 <= len(gf["examples"]) <= 3:
             problems.append(f"Grammar '{gf['title']}' has {len(gf['examples'])} examples (2–3)")
         for ex in gf["examples"]:
             for part in re.split(r"\s+[–-]\s+", ex):
-                if len(words(part)) > 7:
-                    problems.append(f"Grammar example over 7 words: {ex}")
+                if len(words(part)) > rules["example_words"]:
+                    problems.append(f"Grammar example over {rules['example_words']} words: {ex}")
             if strip_markup(ex) in " ".join(plain):
                 problems.append(f"Grammar example copied from dialogue: {ex}")
 
@@ -205,9 +222,10 @@ def check_unit(d, max_turn_words=6):
             problems.append(f"Drill sentence not in B's lines: {full}")
         if len(it["options"]) != 3:
             problems.append(f"Drill '{full}' has {len(it['options'])} options")
+        lo, hi = rules["option_words"]
         for opt in it["options"]:
-            if not 1 <= len(words(opt)) <= 3:
-                problems.append(f"Drill option not 1–3 words: {opt}")
+            if not lo <= len(words(opt)) <= hi:
+                problems.append(f"Drill option not {lo}–{hi} words: {opt}")
     if len(sd) != 3:
         problems.append(f"Substitution Drill has {len(sd)} sentences (expected 3)")
 
@@ -379,13 +397,18 @@ def main(argv):
     target = Path(next(a for a in argv if not a.startswith("--")))
     files = sorted(target.glob("unit */unit *.md"), key=lambda p: int(re.findall(r"\d+", p.stem)[0])) \
         if target.is_dir() else [target]
-    level = re.search(r"Level \d+", str(target.resolve()))
+    level = re.search(r"Level (\d+)", str(target.resolve()))
+    rules = LEVEL_RULES.get(int(level.group(1))) if level else None
     failed = False
     for f in files:
         d = parse_unit(f)
-        problems, counts = check_unit(d)
-        status = "OK" if not problems else f"{len(problems)} problem(s)"
-        print(f"{f.name}: words/turn {counts} = {sum(counts)} — {status}")
+        if rules:
+            problems, counts = check_unit(d, rules)
+            status = "OK" if not problems else f"{len(problems)} problem(s)"
+            print(f"{f.name}: words/turn {counts} = {sum(counts)} — {status}")
+        else:
+            problems = []
+            print(f"{f.name}: no size rules for this level — not checked")
         for p in problems:
             print("   -", p)
         failed |= bool(problems)
