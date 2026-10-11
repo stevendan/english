@@ -15,6 +15,7 @@ Inline markup:
   ________   Role Play blank
   ‿          linking mark
 """
+import io
 import re
 import sys
 from pathlib import Path
@@ -58,18 +59,37 @@ LEVEL_RULES = {
         "example_words": 8, "option_words": (1, 4)},
     3: {"turns": 6, "turn_words": (4, 12), "total_words": (36, 48), "grammar_blocks": (2, 2),
         "example_words": 9, "option_words": (1, 5)},
+    6: {"turns": 8, "turn_words": (3, 16), "total_words": (70, 85), "grammar_blocks": (2, 2),
+        "example_words": 10, "option_words": (1, 5)},
+    7: {"turns": 8, "turn_words": (3, 18), "total_words": (78, 92), "grammar_blocks": (2, 2),
+        "example_words": 10, "option_words": (1, 6)},
+    8: {"turns": 8, "turn_words": (2, 20), "total_words": (85, 100), "grammar_blocks": (2, 2),
+        "example_words": 11, "option_words": (1, 6)},
+    9: {"turns": 10, "turn_words": (2, 20), "total_words": (92, 106), "grammar_blocks": (2, 2),
+        "example_words": 12, "option_words": (1, 6)},
+    10: {"turns": 10, "turn_words": (2, 22), "total_words": (100, 115), "grammar_blocks": (2, 2),
+         "example_words": 12, "option_words": (1, 6)},
 }
 
 BASE = 8.8
-S = {
-    "body": ParagraphStyle("body", fontName="Arial", fontSize=BASE, leading=BASE * 1.32),
-    "italic": ParagraphStyle("italic", fontName="Arial-Italic", fontSize=BASE - 0.4, leading=BASE * 1.28),
-    "bold": ParagraphStyle("bold", fontName="Arial-Bold", fontSize=BASE + 0.4, leading=BASE * 1.4),
-    "label": ParagraphStyle("label", fontName="Arial", fontSize=BASE - 0.4, leading=BASE * 1.25, leftIndent=10),
-    "indent": ParagraphStyle("indent", fontName="Arial", fontSize=BASE, leading=BASE * 1.38, leftIndent=12),
-    "tip": ParagraphStyle("tip", fontName="Arial", fontSize=BASE - 0.5, leading=BASE * 1.25),
-    "header": ParagraphStyle("header", fontName="Arial-Bold", fontSize=BASE + 0.2, leading=BASE * 1.3, textColor=white),
-}
+# Long units (Level 6+) shrink the text a little to stay on one page; smallest size allowed last.
+FIT_SIZES = (8.8, 8.6, 8.4, 8.2, 8.0, 7.8)
+
+
+def make_styles(base):
+    return {
+        "body": ParagraphStyle("body", fontName="Arial", fontSize=base, leading=base * 1.32),
+        "italic": ParagraphStyle("italic", fontName="Arial-Italic", fontSize=base - 0.4, leading=base * 1.28),
+        "bold": ParagraphStyle("bold", fontName="Arial-Bold", fontSize=base + 0.4, leading=base * 1.4),
+        "label": ParagraphStyle("label", fontName="Arial", fontSize=base - 0.4, leading=base * 1.25, leftIndent=10),
+        "indent": ParagraphStyle("indent", fontName="Arial", fontSize=base, leading=base * 1.38, leftIndent=12),
+        "tip": ParagraphStyle("tip", fontName="Arial", fontSize=base - 0.5, leading=base * 1.25),
+        "header": ParagraphStyle("header", fontName="Arial-Bold", fontSize=base + 0.2, leading=base * 1.3,
+                                 textColor=white),
+    }
+
+
+S = make_styles(BASE)
 
 
 # ---------------------------------------------------------------- parsing
@@ -322,12 +342,11 @@ def tip_box(lines, width):
     return t
 
 
-def build(d, out_path, title):
-    page_w, page_h = A4
-    margin_x, margin_top, margin_bottom = 15 * mm, 13 * mm, 11 * mm
-    gutter = 9 * mm
-    col_w = (page_w - 2 * margin_x - gutter) / 2
-    name_w = max(pdfmetrics.stringWidth(n + ":", "Arial", BASE) for n, _ in d["conversation"]["lines"]) + 8
+def make_bands(d, col_w, base):
+    """The (left, right) stories of the three bands, typeset at a base font size."""
+    global S
+    S = make_styles(base)
+    name_w = max(pdfmetrics.stringWidth(n + ":", "Arial", base) for n, _ in d["conversation"]["lines"]) + 8
 
     # Band 1: Conversation | Study Notes
     conv = d["conversation"]
@@ -361,25 +380,38 @@ def build(d, out_path, title):
         b3_right += [X(f"{i}.&nbsp;&nbsp;{md(it['sentence'])}")]
         b3_right += [X(f"<b>{letter}.</b> {md(opt)}", "indent") for letter, opt in zip("abc", it["options"])]
         b3_right += [Spacer(1, 6)]
+    return [(b1_left, b1_right), (b2_left, b2_right), (b3_left, b3_right)]
 
-    c = canvas.Canvas(str(out_path), pagesize=A4)
+
+def build(d, out_path, title):
+    """Write the one-page PDF (out_path None: only measure). Returns (font size used, free space in pt)."""
+    page_w, page_h = A4
+    margin_x, margin_top, margin_bottom = 15 * mm, 13 * mm, 11 * mm
+    gutter = 9 * mm
+    col_w = (page_w - 2 * margin_x - gutter) / 2
+    band_gap = 10
+    available = page_h - margin_top - 2 - margin_bottom
+    c = canvas.Canvas(str(out_path) if out_path else io.BytesIO(), pagesize=A4)
+
+    def height(story):
+        return sum(f.wrapOn(c, col_w, page_h)[1] for f in story)
+
+    for base in FIT_SIZES:
+        bands = make_bands(d, col_w, base)
+        heights = [max(height(l), height(r)) for l, r in bands]
+        needed = sum(heights) + band_gap * (len(bands) - 1)
+        if needed <= available:
+            break
+    else:
+        raise ValueError(f"content is {needed - available:.0f}pt too tall for one page, even at {base}pt")
+    if not out_path:
+        return base, available - needed
+
     c.setTitle(title)
     c.setFont("Arial-Bold", 10)
     c.drawString(margin_x, page_h - margin_top + 3, d["unit_label"])
     c.setFont("Arial", 10)
     c.drawRightString(margin_x + col_w, page_h - margin_top + 3, d["cd_label"])
-
-    def height(story):
-        return sum(f.wrapOn(c, col_w, page_h)[1] for f in story)
-
-    bands = [(b1_left, b1_right), (b2_left, b2_right), (b3_left, b3_right)]
-    heights = [max(height(l), height(r)) for l, r in bands]
-    band_gap = 10
-    available = page_h - margin_top - 2 - margin_bottom
-    needed = sum(heights) + band_gap * (len(bands) - 1)
-    if needed > available:
-        raise ValueError(f"content is {needed - available:.0f}pt too tall for one page")
-
     y = page_h - margin_top - 2
     for (left, right), h in zip(bands, heights):
         for x, story in ((margin_x, left), (margin_x + col_w + gutter, right)):
@@ -390,6 +422,7 @@ def build(d, out_path, title):
                 raise ValueError("a block did not fit in its frame")
         y -= h + band_gap
     c.save()
+    return base, available - needed
 
 
 def main(argv):
@@ -404,8 +437,14 @@ def main(argv):
         d = parse_unit(f)
         if rules:
             problems, counts = check_unit(d, rules)
+            try:
+                size, free = build(d, None, "")
+                page = f"page {size}pt, {free:.0f}pt free"
+            except ValueError as e:
+                problems.append(f"PDF: {e}")
+                page = "page overflow"
             status = "OK" if not problems else f"{len(problems)} problem(s)"
-            print(f"{f.name}: words/turn {counts} = {sum(counts)} — {status}")
+            print(f"{f.name}: words/turn {counts} = {sum(counts)}, {page} — {status}")
         else:
             problems = []
             print(f"{f.name}: no size rules for this level — not checked")
@@ -415,8 +454,8 @@ def main(argv):
         if not check_only:
             title = f"Speak Up English - {level.group(0) if level else ''} - {d['unit_label']}"
             try:
-                build(d, f.with_suffix(".pdf"), title)
-                print("   wrote", f.with_suffix(".pdf"))
+                size, _ = build(d, f.with_suffix(".pdf"), title)
+                print("   wrote", f.with_suffix(".pdf"), f"({size}pt)" if size != BASE else "")
             except (ValueError, OSError) as e:
                 print("   PDF NOT written:", e)
                 failed = True

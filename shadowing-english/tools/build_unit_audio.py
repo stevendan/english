@@ -32,17 +32,41 @@ FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 RATE = 44100
 CACHE = Path(tempfile.gettempdir()) / "speakup_tts_cache"
 TTS_RATE = "-5%"
+LEVEL_TTS_RATE = {7: "+0%", 8: "+0%", 9: "+0%", 10: "+5%"}  # closer to natural speed at higher levels
 
 NARRATOR = "en-US-ChristopherNeural"
 FEMALE_VOICES = ["en-US-AvaNeural", "en-US-EmmaNeural", "en-US-AriaNeural", "en-US-JennyNeural", "en-US-MichelleNeural"]
 MALE_VOICES = ["en-US-AndrewNeural", "en-US-BrianNeural", "en-US-GuyNeural", "en-US-EricNeural",
                "en-US-RogerNeural", "en-US-SteffanNeural"]
+# From Level 8 each unit pairs an American speaker with a British, Australian, Irish or New Zealand one.
+LEVEL_VOICES = {
+    8: (["en-GB-SoniaNeural", "en-US-AvaNeural", "en-GB-LibbyNeural", "en-US-JennyNeural"],
+        ["en-US-AndrewNeural", "en-GB-RyanNeural", "en-US-BrianNeural", "en-GB-ThomasNeural"]),
+    9: (["en-GB-SoniaNeural", "en-US-AriaNeural", "en-AU-NatashaNeural", "en-US-EmmaNeural", "en-GB-LibbyNeural",
+         "en-US-MichelleNeural"],
+        ["en-US-GuyNeural", "en-AU-WilliamMultilingualNeural", "en-US-EricNeural", "en-GB-RyanNeural",
+         "en-US-AndrewNeural", "en-GB-ThomasNeural"]),
+    10: (["en-IE-EmilyNeural", "en-US-AvaNeural", "en-AU-NatashaNeural", "en-GB-SoniaNeural", "en-NZ-MollyNeural",
+          "en-US-JennyNeural"],
+         ["en-GB-RyanNeural", "en-NZ-MitchellNeural", "en-US-BrianNeural", "en-IE-ConnorNeural",
+          "en-US-AndrewNeural", "en-AU-WilliamMultilingualNeural"]),
+}
 FEMALE_NAMES = {"Emma", "Sarah", "Linh", "Anna", "Mai", "Yuki", "Phuong", "Hoa", "Olivia", "Ana", "Jisoo", "Lan",
                 "Amy", "Kathy", "Tara", "Naomi",
                 "Grace", "Trang", "Sophie", "Hannah", "Lily", "Julia", "Rachel", "Maria", "Lucy", "Nina", "Ella",
                 "Zoe",  # Level 2
                 "Kate", "Hien", "Fiona", "Lien", "Clara", "Kim", "Alice", "Ruby", "Diana", "Hanh", "Isabel",
-                "Laura"}  # Level 3
+                "Laura",  # Level 3
+                "Hazel", "Thao", "Nora", "Erin", "Chloe", "Vivian", "Paula", "Huong", "Monica", "Sandra", "Wendy",
+                "Gloria",  # Level 6
+                "Bella", "Jade", "Leah", "Molly", "Tessa", "Carmen", "Giang", "Irene", "Joanna", "Yvonne", "Rita",
+                "Chau",  # Level 7
+                "Abigail", "Bridget", "Daisy", "Eleanor", "Freya", "Heidi", "Hong", "Ingrid", "Margot", "Priya",
+                "Selena", "Nhi",  # Level 8
+                "Amber", "Beatrice", "Cora", "Delia", "Esther", "Flora", "Vy", "Gemma", "Harriet", "Imogen", "Thu",
+                "Lorna",  # Level 9
+                "Annabel", "Celeste", "Danielle", "Evelyn", "Felicity", "Georgia", "Ngan", "Helena", "Juliet",
+                "Lydia", "Quynh", "Miranda"}  # Level 10
 
 SECTIONS = ["Conversation", "Speak Like a Native", "Repetition", "Overlapping", "Shadowing",
             "Role Play", "Substitution Drill"]
@@ -257,10 +281,13 @@ def render(track, out_mp3, tags):
 
 
 async def main(argv):
+    global TTS_RATE, FEMALE_VOICES, MALE_VOICES
     target = Path(argv[0])
     files = sorted(target.glob("unit */unit *.md"), key=lambda p: int(re.findall(r"\d+", p.stem)[0])) \
         if target.is_dir() else [target]
     level = re.search(r"Level (\d+)", str(target.resolve())).group(1)
+    TTS_RATE = LEVEL_TTS_RATE.get(int(level), TTS_RATE)
+    FEMALE_VOICES, MALE_VOICES = LEVEL_VOICES.get(int(level), (FEMALE_VOICES, MALE_VOICES))
     CACHE.mkdir(exist_ok=True)
     sem = asyncio.Semaphore(4)
 
